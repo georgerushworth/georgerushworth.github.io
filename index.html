@@ -76,6 +76,9 @@
             </p>
         </div>
         <figure id="Location2"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+                </div>
+        <figure id="Location3"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+
     </section>
 
 
@@ -119,6 +122,25 @@
 
 
     </script>
+
+    <script>
+        // This is a comment in JavaScript - it's a different language to HTML and CSS
+
+        let figure_3_spec = "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json"; // We're storing the URL of the graph we want to display in a variable
+                                                                                                                    // You should have a spec for a graph in this same folder. Just specify its name here, e.g. let figure_1_spec = "chart1.json"
+
+        vegaEmbed('#Location3', figure_3_spec) // We're using the vegaEmbed function to put a graph in the element with id figure_1
+
+        // Do you want to add more graphs?
+        // try defining a new variable for figure_3_spec, adding VegaEmbed for Location3, and adding a new section in the HTML
+        // e.g. 
+        // let figure_3_spec = ...
+        // vegaEmbed('#Location3', figure_3_spec)
+
+
+    </script>
+
+    
 
 </body>
     
