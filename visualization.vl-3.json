@@ -1,0 +1,24 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_wealth.csv"
+  },
+  "title": {
+    "text": "Net Worth Held by the Top 0.1%",
+    "subtitle": "Board of Governors of the Federal Reserve System (US) via FRED®"
+  },
+  "mark": {"type": "line", "color": "navy"},
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "axis": {"title": "", "grid": false}
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "axis": {"title": "", "grid": false}
+    }
+  },
+  "config": {}
+}
