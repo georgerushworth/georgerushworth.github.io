@@ -109,13 +109,13 @@ This week, I will create and embed two new custom charts into my live website us
         <figure id="Location4"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
                 </div>
         
-                <h3>A chart from the web</h3>
+                <h3>Using the Economics Observatory to create a chart</h3>
 
-        <p>This graph shows how inflation rates have changed over time in four G7 countries — France, Germany, the United Kingdom, and the United States.
+        <p>This chart shows the growth of renewable energy output in China over time, measured in gigawatt-hours (GWh). 
 </p>
 
 
-        <figure id="Location3"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+        <figure id="Location5"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
 
     </section>
 
@@ -186,6 +186,16 @@ This week, I will create and embed two new custom charts into my live website us
      
 
     </script>
+
+      <script>
+
+        let figure_5_spec = "Renewables_China,json"; 
+
+        vegaEmbed('#Location5', figure_5_spec) 
+     
+
+    </script>
+
 
 
     
