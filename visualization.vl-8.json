@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 10 Happiest Countries in 2023",
+  "data": {
+    "values": [
+      {"country": "Finland", "rank": 1},
+      {"country": "Denmark", "rank": 2},
+      {"country": "Iceland", "rank": 3},
+      {"country": "Israel", "rank": 4},
+      {"country": "Netherlands", "rank": 5},
+      {"country": "Sweden", "rank": 6},
+      {"country": "Norway", "rank": 7},
+      {"country": "Switzerland", "rank": 8},
+      {"country": "Luxembourg", "rank": 9},
+      {"country": "New Zealand", "rank": 10}
+    ]
+  },
+  "layer": [
+    {"mark": {"type": "bar", "color": "#d32f2f"}},
+    {
+      "mark": {"type": "text", "color": "white", "align": "left", "dx": 5},
+      "encoding": {"text": {"field": "rank"}}
+    }
+  ],
+  "encoding": {
+    "y": {"field": "country", "type": "ordinal", "sort": "x", "title": null},
+    "x": {"field": "rank", "type": "quantitative", "title": null, "axis": null},
+    "color": {"value": "#d32f2f"}
+  },
+  "title": {
+    "text": "Top 10 Happiest Countries in 2023",
+    "subtitle": "According to the 2023 World Happiness Report"
+  },
+  "config": {"axis": {"grid": false}}
+}
