@@ -1,0 +1,173 @@
+<style>
+/* Import CMU Serif font */
+@import url('https://fonts.cdnfonts.com/css/computer-modern');
+
+/* Root variables for consistent theming */
+:root {
+  --serif-font: 'Computer Modern Serif', 'CMU Serif', Georgia, 'Times New Roman', serif;
+  --sans-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --mono-font: 'Menlo', 'Monaco', 'Courier New', monospace;
+  --primary-color: #24292f;
+  --secondary-color: #57606a;
+  --accent-color: #0969da;
+  --border-color: #d0d7de;
+  --bg-subtle: #f6f8fa;
+}
+
+body {
+  font-family: var(--serif-font);
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--primary-color);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+}
+
+/* Headings maintain serif but slightly heavier */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--serif-font);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.5em;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.3em;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 2em;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3em;
+}
+
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.25em; }
+h5 { font-size: 1.1em; }
+h6 { font-size: 1em; color: var(--secondary-color); }
+
+/* Paragraphs with proper spacing */
+p {
+  margin-bottom: 1.2em;
+  text-indent: 0;
+}
+
+/* Links - elegant and understated */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent-color);
+}
+
+/* Code blocks - monospace, not justified */
+code {
+  font-family: var(--mono-font);
+  font-size: 0.9em;
+  background: var(--bg-subtle);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  text-align: left;
+}
+
+pre {
+  font-family: var(--mono-font);
+  font-size: 0.875em;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  text-align: left;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Blockquotes */
+blockquote {
+  margin: 1.5em 0;
+  padding: 0 1em;
+  border-left: 4px solid var(--border-color);
+  color: var(--secondary-color);
+  font-style: italic;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: 1.2em;
+  padding-left: 2em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  text-align: left;
+}
+
+th, td {
+  border: 1px solid var(--border-color);
+  padding: 10px 16px;
+}
+
+th {
+  background: var(--bg-subtle);
+  font-weight: 600;
+}
+
+/* Horizontal rules */
+hr {
+  height: 0;
+  border: 0;
+  border-top: 2px solid var(--border-color);
+  margin: 2em 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+}
+
+/* Small caps for sophistication */
+.small-caps {
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+
+/* Drop cap for chapter starts */
+.drop-cap::first-letter {
+  float: left;
+  font-size: 4em;
+  line-height: 0.85;
+  margin: 0.1em 0.1em 0 0;
+  font-weight: 600;
+}
+</style>
