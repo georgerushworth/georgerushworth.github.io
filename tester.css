@@ -1,0 +1,234 @@
+/* professional-news.css
+   A clean, professional news-site stylesheet inspired by The Telegraph / NYT aesthetics.
+   - Modern typographic scale
+   - Readable serif headlines + neutral sans body
+   - Responsive article layout, masthead, nav, sidebars
+   - Utilities: grid, containers, image styles, pullquotes, captions
+   - Use with HTML structure examples provided below (see comments)
+
+   NOTE: This is a design starting point. Replace font-family fallbacks with
+   served web fonts (e.g. 'Merriweather', 'Georgia', 'Inter') as desired.
+*/
+
+:root{
+  /* Palette */
+  --bg: #ffffff;
+  --paper: #fbfbfb;
+  --text: #111213; /* near-black for excellent contrast */
+  --muted: #6b6f73; /* for meta and captions */
+  --accent: #c8102e; /* classic news red (adjust) */
+  --divider: #e6e6e6;
+  --shadow: rgba(16,18,20,0.06);
+
+  /* Typography scale */
+  --font-serif: "Merriweather", "Georgia", serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --base-size: 18px; /* comfortable reading size */
+  --scale-1: calc(var(--base-size) * 0.8);   /* small */
+  --scale-0: var(--base-size);              /* body */
+  --scale-1-0: calc(var(--base-size) * 1.15);/* caption */
+  --scale-2: calc(var(--base-size) * 1.5);   /* subhead */
+  --scale-3: calc(var(--base-size) * 2.0);   /* headline */
+  --leading-tight: 1.15;
+  --leading-relaxed: 1.6;
+
+  /* Layout */
+  --max-width: 1060px;
+  --gutter: 24px;
+
+  /* Utility */
+  --radius: 8px;
+}
+
+/* Base Reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: var(--font-sans);
+  font-size: var(--base-size);
+  color:var(--text);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 calc(var(--gutter) / 2);
+}
+
+/* Masthead / Header */
+.site-header{
+  padding:20px 0;
+  border-bottom:1px solid var(--divider);
+  background:linear-gradient(180deg, rgba(255,255,255,0.98), transparent);
+}
+.site-brand{
+  display:flex;align-items:center;gap:16px;
+}
+.site-brand .logo{
+  font-family:var(--font-serif);
+  font-size:28px;
+  letter-spacing:0.6px;
+  font-weight:700;
+}
+.site-nav{
+  margin-top:8px;
+  display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--muted)
+}
+.site-nav a{color:inherit}
+
+.header-meta{display:flex;gap:12px;align-items:center;font-size:13px;color:var(--muted)}
+
+/* Top story / hero */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:24px;
+  align-items:start;
+  margin:26px 0 34px;
+}
+.hero .hero-article{padding-right:8px}
+.hero .eyebrow{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.hero h1{
+  font-family:var(--font-serif);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height:1.05;
+  margin:8px 0 12px;
+}
+.hero .lead{
+  font-size:var(--scale-1-0);
+  color:var(--muted);
+  line-height:var(--leading-relaxed);
+}
+.hero .hero-image img{width:100%;height:auto;border-radius:6px;box-shadow:0 6px 20px var(--shadow)}
+
+/* Article layout */
+.article{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:28px;
+}
+.main-article{background:transparent}
+.article .article-meta{color:var(--muted);font-size:13px;margin-bottom:4px}
+.article h2{font-family:var(--font-serif);font-size:28px;margin:8px 0 12px}
+.article p{margin:0 0 18px;line-height:var(--leading-relaxed);font-size:var(--scale-0)}
+
+/* Pull quote */
+.pull-quote{
+  font-family:var(--font-serif);
+  font-size:22px;
+  line-height:1.15;
+  padding:18px 20px;
+  border-left:3px solid var(--accent);
+  background:linear-gradient(90deg, rgba(200,200,200,0.03), transparent);
+  margin:18px 0;
+}
+
+/* Byline */
+.byline{display:flex;gap:12px;align-items:center;color:var(--muted);font-size:14px}
+.byline img{width:44px;height:44px;border-radius:50%}
+
+/* Image caption */
+.figure{margin:0 0 18px}
+.figure img{width:100%;height:auto;display:block;border-radius:6px}
+.figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* Media & embed responsive */
+.embed-responsive{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px}
+.embed-responsive iframe, .embed-responsive video{position:absolute;top:0;left:0;width:100%;height:100%}
+
+/* Sidebar */
+.sidebar{font-size:15px}
+.sidebar .card{background:var(--paper);padding:14px;border:1px solid var(--divider);border-radius:8px;margin-bottom:16px}
+.sidebar .card h3{font-size:16px;margin:0 0 8px}
+
+/* Lists & links */
+.headline-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.headline-list li{padding:8px 6px;border-bottom:1px solid var(--divider)}
+.headline-list li:last-child{border-bottom:none}
+.headline-list a{display:block;font-weight:600}
+.headline-list .kicker{font-size:12px;color:var(--muted);text-transform:uppercase}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--divider);padding:28px 0;color:var(--muted);font-size:14px}
+
+/* Utility helpers */
+.kicker{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.small{font-size:var(--scale-1);color:var(--muted)}
+.center{text-align:center}
+
+/* Print-friendly adjustments */
+@media print{
+  body{background:#fff;color:#000}
+  .site-nav, .sidebar, .site-footer{display:none}
+  .container{max-width:100%}
+}
+
+/* Mobile responsiveness */
+@media (max-width:920px){
+  .hero{grid-template-columns:1fr;}
+  .article{grid-template-columns:1fr}
+  .hero .hero-image{order:2}
+}
+@media (max-width:520px){
+  :root{--base-size:16px}
+  .site-brand .logo{font-size:22px}
+  .hero h1{font-size:24px}
+}
+
+/* Optional dark mode (prefers-color-scheme) */
+@media (prefers-color-scheme:dark){
+  :root{ --paper:#0b0b0c; --bg:#050506; --text:#e8e8e8; --muted:#9aa0a6; --divider:rgba(255,255,255,0.06) }
+  body{background:var(--bg);color:var(--text)}
+  .site-header, .site-footer{border-color:var(--divider)}
+}
+
+/* Example HTML structure (keep this comment, it's helpful):
+
+<header class="site-header">
+  <div class="container">
+    <div class="site-brand">
+      <div class="logo">YourPaper</div>
+      <div class="header-meta">Latest · Subscribe</div>
+    </div>
+    <nav class="site-nav"> <a>World</a> <a>Business</a> ...</nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <article class="hero-article">
+      <div class="eyebrow">Analysis</div>
+      <h1>Major headline goes here</h1>
+      <p class="lead">Subhead — an engaging deck summarising the story in one strong paragraph.</p>
+    </article>
+    <aside class="hero-image">
+      <img src="..." alt="...">
+    </aside>
+  </section>
+
+  <section class="article">
+    <article class="main-article">
+      <div class="article-meta">By Jane Doe | 16 November 2025</div>
+      <h2>Article title</h2>
+      <p>Intro paragraph...</p>
+      <blockquote class="pull-quote">Important quote highlighted from the piece.</blockquote>
+      <figure class="figure"><img src="..."><figcaption class="figcaption">Photo: credit</figcaption></figure>
+      <p>More body text...</p>
+    </article>
+
+    <aside class="sidebar">
+      <div class="card"><h3>Most read</h3><ul class="headline-list"><li><a>Story</a></li></ul></div>
+    </aside>
+  </section>
+</main>
+
+<footer class="site-footer container">...links and legal...</footer>
+
+*/
