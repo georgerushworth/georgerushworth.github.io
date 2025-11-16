@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Shiller CAPE Ratio: 154 Years of Market Valuations",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "color": "#2C3E50",
+    "subtitle": "Are we in a bubble? (1871-2025)",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#7F8C8D"
+  },
+  "width": 900,
+  "height": 450,
+  "padding": {"bottom": 30},
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/cleanedpe.csv",
+    "format": {"type": "csv"}
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {"color": "#004b7d", "strokeWidth": 3},
+        "color": {
+          "gradient": "linear",
+          "stops": [
+            {"offset": 0, "color": "rgba(52, 152, 219, 0.4)"},
+            {"offset": 1, "color": "rgba(52, 152, 219, 0.05)"}
+          ]
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {"format": "%Y", "labelAngle": 0},
+          "grid": false
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "CAPE Ratio",
+          "scale": {"domain": [20, 50], "zero": true},
+          "grid": false
+        },
+        "tooltip": [
+          {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Year",
+            "format": "%Y"
+          },
+          {
+            "field": "Value",
+            "type": "quantitative",
+            "title": "CAPE",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [{"level": "High", "y": 25}, {"level": "Average", "y": 17}]
+      },
+      "mark": {"type": "rule", "strokeDash": [5, 5], "strokeWidth": 2},
+      "encoding": {
+        "y": {"field": "y", "type": "quantitative"},
+        "color": {
+          "field": "level",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Average", "High"],
+            "range": ["#27AE60", "#F39C12"]
+          },
+          "legend": {"title": "CAPE Levels"}
+        }
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "color": "red", "size": 200},
+      "encoding": {"x": {"datum": {"year": 2025}}, "y": {"datum": 37.14}}
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -20,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "red"
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2025}},
+        "y": {"datum": 37.14},
+        "text": {"value": "37.1"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "top",
+        "dx": 0,
+        "dy": 250,
+        "fontSize": 10,
+        "color": "#95A5A6",
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {"datum": {"year": 1872}},
+        "y": {"datum": 20},
+        "text": {
+          "value": "Data: Robert Shiller (Yale University) | Annual values (January 1) | Updated: November 2025"
+        }
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "axis": {"grid": false}}
+}
