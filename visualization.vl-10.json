@@ -1,0 +1,136 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "24-Hour Price Change (%)",
+    "subtitle": ["Top 10 cryptocurrencies by market cap", ""],
+    "anchor": "start"
+  },
+  "width": 400,
+  "height": 300,
+  "data": {
+    "url": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10",
+    "format": {"type": "json"}
+  },
+  "encoding": {
+    "y": {
+      "field": "name",
+      "type": "nominal",
+      "sort": {"field": "price_change_percentage_24h", "order": "descending"},
+      "title": null,
+      "axis": {"labelFontSize": 12, "grid": false}
+    },
+    "x": {
+      "field": "price_change_percentage_24h",
+      "type": "quantitative",
+      "title": null,
+      "axis": {
+        "format": "+.2f",
+        "grid": true,
+        "gridDash": [1, 5],
+        "gridOpacity": 0.5,
+        "ticks": false,
+        "labelPadding": 5
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "color": {
+          "condition": {
+            "test": "datum.price_change_percentage_24h > 0",
+            "value": "#10b981"
+          },
+          "value": "#ef4444"
+        },
+        "tooltip": [
+          {"field": "name", "title": "Cryptocurrency"},
+          {
+            "field": "price_change_percentage_24h",
+            "title": "24h Change (%)",
+            "format": "+.2f"
+          },
+          {
+            "field": "current_price",
+            "title": "Current Price",
+            "format": "$,.2f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": {"param": "hover", "empty": false}}],
+      "mark": {"type": "bar", "opacity": 0.7}
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "name", "title": "Cryptocurrency"},
+          {
+            "field": "price_change_percentage_24h",
+            "title": "24h Change (%)",
+            "format": "+.2f"
+          },
+          {
+            "field": "current_price",
+            "title": "Current Price",
+            "format": "$,.2f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["name"],
+            "nearest": true,
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Montserrat, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisY": {"grid": false},
+    "axisX": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
