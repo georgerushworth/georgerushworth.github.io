@@ -2,16 +2,15 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Shiller CAPE Ratio: 154 Years of Market Valuations",
-    "fontSize": 16,
-    "fontWeight": "bold",
-    "color": "#2C3E50",
-    "subtitle": "Are we in a bubble? (1871-2025)",
-    "subtitleFontSize": 12,
-    "subtitleColor": "#7F8C8D"
+    "subtitle": [
+      "Are we in a bubble? (1871-2025)",
+      "Data: Robert Shiller (Yale University) | Annual values (January 1) | Updated: 2025",
+      ""
+    ],
+    "anchor": "start"
   },
-  "width": 900,
-  "height": 450,
-  "padding": {"bottom": 30},
+  "width": 600,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/cleanedpe.csv",
     "format": {"type": "csv"}
@@ -20,29 +19,39 @@
     {
       "mark": {
         "type": "area",
-        "line": {"color": "#004b7d", "strokeWidth": 3},
-        "color": {
-          "gradient": "linear",
-          "stops": [
-            {"offset": 0, "color": "rgba(52, 152, 219, 0.4)"},
-            {"offset": 1, "color": "rgba(52, 152, 219, 0.05)"}
-          ]
-        }
+        "line": {"color": "#4269d0", "strokeWidth": 2.5},
+        "color": "#4269d0",
+        "opacity": 0.3
       },
       "encoding": {
         "x": {
           "field": "Date",
           "type": "temporal",
-          "title": "Year",
-          "axis": {"format": "%Y", "labelAngle": 0},
-          "grid": false
+          "title": null,
+          "axis": {
+            "format": "%Y",
+            "labelAngle": 0,
+            "grid": false,
+            "tickCount": 10
+          }
         },
         "y": {
           "field": "Value",
           "type": "quantitative",
           "title": "CAPE Ratio",
-          "scale": {"domain": [20, 50], "zero": true},
-          "grid": false
+          "scale": {"domain": [0, 50]},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridOpacity": 0.5,
+            "ticks": false,
+            "labelPadding": 5,
+            "titleAngle": 0,
+            "titleAlign": "left",
+            "titleBaseline": "bottom",
+            "titleX": 0,
+            "titleY": -5
+          }
         },
         "tooltip": [
           {
@@ -62,7 +71,7 @@
     },
     {
       "data": {
-        "values": [{"level": "High", "y": 25}, {"level": "Average", "y": 17}]
+        "values": [{"level": "Average", "y": 17}, {"level": "High", "y": 25}]
       },
       "mark": {"type": "rule", "strokeDash": [5, 5], "strokeWidth": 2},
       "encoding": {
@@ -72,49 +81,90 @@
           "type": "nominal",
           "scale": {
             "domain": ["Average", "High"],
-            "range": ["#27AE60", "#F39C12"]
+            "range": ["#10b981", "#f59e0b"]
           },
-          "legend": {"title": "CAPE Levels"}
-        }
+          "legend": {"title": null, "orient": "top", "direction": "horizontal"}
+        },
+        "tooltip": [
+          {"field": "level", "type": "nominal", "title": "Level"},
+          {"field": "y", "type": "quantitative", "title": "CAPE Value"}
+        ]
       }
     },
     {
-      "mark": {"type": "point", "filled": true, "color": "red", "size": 200},
-      "encoding": {"x": {"datum": {"year": 2025}}, "y": {"datum": 37.14}}
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#ef4444",
+        "size": 150
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2025}},
+        "y": {"datum": 37.14},
+        "tooltip": [
+          {"datum": "2025", "title": "Year"},
+          {"datum": "37.14", "title": "Current CAPE"}
+        ]
+      }
     },
     {
       "mark": {
         "type": "text",
-        "dy": -20,
+        "dy": -15,
         "fontSize": 12,
         "fontWeight": "bold",
-        "color": "red"
+        "color": "#ef4444"
       },
       "encoding": {
         "x": {"datum": {"year": 2025}},
         "y": {"datum": 37.14},
         "text": {"value": "37.1"}
       }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "top",
-        "dx": 0,
-        "dy": 250,
-        "fontSize": 10,
-        "color": "#95A5A6",
-        "fontStyle": "italic"
-      },
-      "encoding": {
-        "x": {"datum": {"year": 1872}},
-        "y": {"datum": 20},
-        "text": {
-          "value": "Data: Robert Shiller (Yale University) | Annual values (January 1) | Updated: November 2025"
-        }
-      }
     }
   ],
-  "config": {"view": {"stroke": null}, "axis": {"grid": false}}
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "area": {"opacity": 0.3},
+    "line": {"strokeWidth": 2.5},
+    "point": {"filled": true},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Montserrat, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "legend": {
+      "titleFont": "Montserrat, sans-serif",
+      "titleFontSize": 14,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#1a1a1a",
+      "labelFontSize": 12
+    },
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
 }
