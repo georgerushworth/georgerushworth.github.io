@@ -61,3 +61,197 @@
                     Automated Data Visualization for Public Policy. The simplest visualizations are at the top and the
                     most complex are at the bottom.</p>
 
+                
+    <section>
+        <div class="chart-description">
+            <h2>Coding Challenge 1: Displaying charts</h2>
+            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
+This week, I’ll embed two Vega-Lite charts on my GitHub Pages site using vegaEmbed.
+            </p>
+        </div>
+
+        <h3>A locally stored chart</h3>
+
+        <p> The chart below shows how real GDP per capita has changed over time for six different countries.
+        </p>
+
+        <figure id="Location2"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+                </div>
+        
+                <h3>A chart from the web</h3>
+
+        <p>This graph shows how inflation rates have changed over time in four G7 countries — France, Germany, the United Kingdom, and the United States.
+</p>
+
+
+        <figure id="Location3"> style="flex: 1; min-width: 0;"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+
+    </section>
+
+        <section>
+        <div class="chart-description">
+            <h2>Coding Challenge 2: Building my own charts</h2>
+            <p> <!-- This is a paragraph, it's the main way to display text on a web page -->
+This week, I will create and embed two new custom charts into my live website using VegaEmbed.                </p>
+        </div>
+
+        <h3>Using FRED to create a chart</h3>
+
+        <p> This chart shows a line chart tracking the share of total U.S. net worth held by the top 0.1% over time.
+        </p>
+
+        <figure id="Location4"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+                </div>
+        
+                <h3>Using the Economics Observatory to create a chart</h3>
+
+        <p>This chart shows the growth of renewable energy output in China over time, measured in gigawatt-hours (GWh). Please note: this chart takes a few seconds to load. 
+</p>
+
+
+        <figure id="Location5"></figure> <!-- we give it an id so we can put a vega-lite graph here with VegaEmbed -->
+
+    </section>
+
+            <section>
+        <div class="chart-description">
+            <h2>Coding Challenge 3: Debate </h2>
+
+<p> Position: Governments should prioritise growth-oriented tax cuts even when unfunded, as economic expansion will generate offsetting revenues. Truss's mini-budget will be used as a case-study. </p>  
+
+                                    <h3>Impact on Bank Rate</h3>
+
+             <figure id="Location6"></figure> 
+                </div>
+
+<p> Refute #1: Unfunded tax cuts in Truss’s 2022 mini-budget fueled inflation fears, prompting steeper rate hikes that stifled growth instead of boosting it. </p>
+    </section>
+
+    
+                                    <h3>Impact on Gilt Yield</h3>
+
+             <figure id="Location7"></figure> 
+                </div>
+
+
+<p> Refute #2: Truss’s 2022 mini-budget spiked gilt yields and crashed investor confidence, proving unfunded tax cuts can destabilise markets, not generate offsetting revenues. </p>
+    </section>
+
+     <section>
+        <div class="chart-description">
+            <h2>Coding Challenge 4: Replication </h2>
+
+            <p> This week I will re-create, and then improve, someone else's chart. An image of my chosen chart is below. </p>  
+<img src="Image.jpeg" width="300">
+
+
+                                                <h3>My Replication</h3>
+
+            
+             <figure id="Location8"></figure> 
+                </div>
+
+                                                            <h3>My Improvement</h3>
+
+             <figure id="Location9"></figure> 
+                </div>
+
+         <p>I replaced misleading rank bars with actual happiness scores, showing true differences, correct direction, and clearer context - making the chart accurate and easier to read. </p>
+
+                <h2>Coding Challenge 5: Accessing Data </h2>
+                <h3>API Task: 24-Hour Cryptocurrency Price Change </h3>
+
+         <p> CoinGecko API returns JSON array of top cryptocurrencies by market cap, including price, volume, and 24-hour percentage changes for real-time market analysis.</p>
+             <figure id="Location10"></figure> 
+
+                         <h3>Scraper Task: </h3>
+          <p>Scraped 39 years of Forbes billionaire data from Wikipedia, calculated annual top-10 averages. Main challenge: identifying correct year from page headings and handling duplicate tables.
+</p>           <a href="https://colab.research.google.com/drive/12xg4uQ5jDTBjLSJliavehQOfCqnJH4nI">Google Colab Link</a> 
+ <figure id="Location11"></figure> 
+
+                </div>
+     
+    </section>
+
+            
+
+    
+    <script>
+
+        let figure_1_spec = "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json"; 
+        vegaEmbed('#Location1', figure_1_spec)
+        
+    </script>
+
+    <script>
+        // This is a comment in JavaScript - it's a different language to HTML and CSS
+
+        let figure_2_spec = "wk1_chart2.json"; 
+
+        vegaEmbed('#Location2', figure_2_spec) 
+
+        
+
+
+    </script>
+
+    <script>
+        // This is a comment in JavaScript - it's a different language to HTML and CSS
+
+        let figure_3_spec = "https://rdeconomist.github.io/charts/library/chartLine2.json"; 
+                                                                                                                  
+        vegaEmbed('#Location3', figure_3_spec) 
+
+    </script>
+
+    <script>
+        let figure_4_spec = "visualization.vl-3.json"; 
+        vegaEmbed('#Location4', figure_4_spec) 
+    </script>
+
+      <script>
+        let figure_5_spec = "visualization.vl-4.json"; 
+        vegaEmbed('#Location5', figure_5_spec) 
+    </script>
+
+    <script>
+        let figure_6_spec = "visualization.vl-6.json"; 
+        vegaEmbed('#Location6', figure_6_spec) 
+    </script>
+
+    <script>
+        let figure_7_spec = "visualization.vl-7.json"; 
+        vegaEmbed('#Location7', figure_7_spec) 
+    </script>
+
+ <script>
+        let figure_8_spec = "visualization.vl-8.json"; 
+        vegaEmbed('#Location8', figure_8_spec) 
+    </script>
+    
+    <script>
+        let figure_9_spec = "visualization.vl-9.json"; 
+        vegaEmbed('#Location9', figure_9_spec) 
+    </script>
+
+    
+    <script>
+        let figure_10_spec = "visualization.vl-10.json"; 
+        vegaEmbed('#Location10', figure_10_spec) 
+    </script>
+
+    
+    <script>
+        let figure_11_spec = "visualization.vl-11.json"; 
+        vegaEmbed('#Location11', figure_11_spec) 
+    </script>
+
+    
+
+
+
+</body>
+    
+</html>
+
+
