@@ -1,0 +1,98 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 10 Happiest Countries in 2023",
+  "title": {
+    "text": "Top 10 Happiest Countries in 2023",
+    "subtitle": ["According to the 2023 World Happiness Report", ""],
+    "anchor": "start"
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "values": [
+      {"country": "Finland", "score": 7.8},
+      {"country": "Denmark", "score": 7.59},
+      {"country": "Iceland", "score": 7.53},
+      {"country": "Israel", "score": 7.47},
+      {"country": "Netherlands", "score": 7.4},
+      {"country": "Sweden", "score": 7.4},
+      {"country": "Norway", "score": 7.32},
+      {"country": "Switzerland", "score": 7.24},
+      {"country": "Luxembourg", "score": 7.23},
+      {"country": "New Zealand", "score": 7.12}
+    ]
+  },
+  "encoding": {
+    "y": {
+      "field": "country",
+      "type": "ordinal",
+      "sort": "-x",
+      "title": null,
+      "axis": {"labelFontSize": 12, "grid": false}
+    },
+    "x": {
+      "field": "score",
+      "type": "quantitative",
+      "title": null,
+      "scale": {"domain": [0, 8]},
+      "axis": null
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar"},
+      "encoding": {
+        "color": {"value": "#4269d0"},
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {
+            "field": "score",
+            "type": "quantitative",
+            "title": "Happiness Score",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "color": "white",
+        "align": "left",
+        "dx": 5,
+        "fontWeight": "bold"
+      },
+      "encoding": {"text": {"field": "score", "format": ".2f"}}
+    }
+  ],
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "bar": {"color": "#4269d0"},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Montserrat, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisY": {"grid": false},
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
