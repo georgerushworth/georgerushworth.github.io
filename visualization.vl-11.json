@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Average Net Worth of Top 10 Billionaires by Year",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://georgerushworth.github.io/forbes_billionaires_history-3.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "Average Net Worth of Top 10",
+      "type": "quantitative",
+      "scale": {"domain": [0, 200]},
+      "axis": {
+        "title": "Billions USD",
+        "grid": true,
+        "gridDash": [1, 5],
+        "gridOpacity": 0.5,
+        "ticks": false,
+        "labelPadding": 5,
+        "tickCount": 8,
+        "titleAngle": 0,
+        "titleAlign": "left",
+        "titleBaseline": "bottom",
+        "titleX": 0,
+        "titleY": -5
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "strokeWidth": 2},
+      "encoding": {
+        "tooltip": [
+          {"field": "Year", "type": "ordinal"},
+          {
+            "field": "Average Net Worth of Top 10",
+            "type": "quantitative",
+            "title": "Avg. Net Worth",
+            "format": ",.1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": {"param": "hover", "empty": false}}],
+      "mark": {"type": "bar", "opacity": 0.8}
+    },
+    {
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Year", "type": "ordinal", "title": "Year"},
+          {
+            "field": "Average Net Worth of Top 10",
+            "type": "quantitative",
+            "title": "Avg. Net Worth (B USD)",
+            "format": ",.1f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["Year"],
+            "nearest": true,
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ]
+    }
+  ],
+  "title": {
+    "text": "Average Net Worth of Top 10 Billionaires (1987-2025)",
+    "subtitle": ["Forbes World's Billionaires List, in billions USD", ""],
+    "anchor": "start"
+  },
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "bar": {"color": "#4269d0"},
+    "rule": {"color": "#4269d0"},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Montserrat, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
