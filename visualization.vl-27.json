@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Scottish Schools",
+    "anchor": "start",
+    "subtitle": [
+      "Each point represents a school | Source: Scottish Government 2023",
+      ""
+    ]
+  },
+  "width": 600,
+  "height": 400,
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_SCT_2025_05.topojson",
+        "format": {"type": "topojson", "feature": "object_name"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightblue",
+        "stroke": "white",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/SG_SchoolRoll_2023.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 20,
+        "opacity": 0.6,
+        "color": "#2E5090"
+      },
+      "encoding": {
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "tooltip": [
+          {"field": "SchoolName", "title": "School"},
+          {"field": "SchoolType", "title": "Type"},
+          {"field": "PupilRoll", "title": "Pupils", "format": ","},
+          {"field": "AddressLine3", "title": "Town"}
+        ]
+      }
+    }
+  ],
+  "projection": {"type": "mercator"},
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleFont": "Montserrat, sans-serif",
+      "subtitleColor": "#676A86"
+    }
+  }
+}
