@@ -1,0 +1,105 @@
+<!doctype html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Portfolio | George Rushworth</title>
+    <link rel="stylesheet" href="theme.css">
+
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Emoji favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="Portfolio | George Rushworth">
+    <meta property="og:description" content="A portfolio of data visualization and economic analysis projects">
+    
+    <!-- Vega and Vega-Lite for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            font-family: 'EB Garamond', serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'EB Garamond', sans-serif;
+        }
+        
+        .navbar-brand {
+            font-family: 'EB Garamond', sans-serif;
+        }
+        
+        p, li, blockquote {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+        
+        .lead {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.35rem;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 992px) {
+            .chart-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navScroll">
+    <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
+        <div class="container-fluid d-flex justify-content-between">
+            <!-- Left side - Name/Home link -->
+            <a class="navbar-brand pe-md-4 fs-4 text-center" href="index.html">
+                <span class="ms-md-1 mt-1 fw-bolder me-md-5">George Rushworth</span>
+            </a>
+
+            <!-- Right side - Social links -->
+            <div class="d-flex align-items-center">
+                <a href="https://github.com/yourusername" aria-label="Home" class="fs-6 link-fancy me-2">
+                    Home </a>
+               <span class="mx-2">|</span>
+                <a href="https://georgerushworth.github.io/test.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">
+                    Portfolio </a>
+                 <span class="mx-2">|</span>
+                <a href="https://georgerushworth.github.io/project.html" aria-label="Project" class="fs-6 link-fancy me-2">
+                    Project </a>
+                <span class="mx-2">|</span>
+                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">
+                    GitHub </a>
+                <span class="mx-2">|</span>
+                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-vh-3">
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col-12 col-lg-10 col-xl-8">
+<h1 class="display-large fw-bold">Market Bull or Bloated Bubble?</h1>
+                <p class="lead pt-2 py-vh-2">Project on Asset Price Inflation and Economic Inequality</p>
+            </div>
