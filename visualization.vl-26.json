@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Wales Fertility Rates by Local Authority",
+    "anchor": "start",
+    "subtitle": ["Average number of children per woman | Source: ONS", ""]
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/MappingWorkshop/geo_data/LAD_WLS_2025_05.topojson",
+    "format": {"type": "topojson", "feature": "object_name"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.LAD25CD",
+      "from": {
+        "data": {
+          "url": "https://georgerushworth.github.io/fertility-clean.csv"
+        },
+        "key": "geo_id",
+        "fields": ["value", "date"]
+      }
+    },
+    {"calculate": "substring(datum.date, 0, 4)", "as": "year_str"},
+    {"calculate": "toNumber(datum.year_str)", "as": "year"},
+    {"filter": "datum.year == 2024"}
+  ],
+  "mark": {"type": "geoshape", "stroke": "#676A86", "strokeWidth": 0.8},
+  "encoding": {
+    "color": {
+      "field": "value",
+      "type": "quantitative",
+      "scale": {"scheme": "blues", "domain": [1.1, 1.7]},
+      "legend": {
+        "title": "Fertility Rate",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 200,
+        "format": ".2f"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "properties.LAD25NM",
+        "type": "nominal",
+        "title": "Local Authority"
+      },
+      {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Fertility Rate",
+        "format": ".2f"
+      },
+      {"field": "year", "type": "quantitative", "title": "Year"}
+    ]
+  },
+  "projection": {"type": "mercator"},
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "legend": {
+      "titleFont": "Montserrat, sans-serif",
+      "titleFontSize": 14,
+      "labelFont": "Montserrat, sans-serif",
+      "labelFontSize": 12,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#676A86"
+    },
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleFont": "Montserrat, sans-serif",
+      "subtitleColor": "#676A86"
+    }
+  }
+}
