@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Portfolio | George Rushworth</title>
-    <link rel="stylesheet" href="theme.css">
-    <!-- Link to Google Fonts -->
+    
+    <!-- Link to Google Fonts - LOAD THIS FIRST -->
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Theme CSS loads second -->
+    <link rel="stylesheet" href="theme.css">
     
     <!-- Emoji favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
@@ -18,41 +21,39 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navScroll">
+    <!-- Inline style to override everything - placed right at top of body -->
     <style>
+        * {
+            font-family: inherit;
+        }
+        
+        body, body * {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
         body {
             background-color: #F8FAFC;
+        }
+        
+        h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 * {
             font-family: 'Instrument Serif', serif !important;
         }
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Instrument Serif', serif !important;
-        }
-        
-        .navbar-brand, .navbar-brand span {
+        .navbar-brand, .navbar-brand *, nav a, nav a *, .link-fancy, .link-fancy *, .display-6, .display-6 *, footer a, footer a * {
             font-family: 'Instrument Sans', sans-serif !important;
         }
         
-        nav a, nav a.link-fancy, .link-fancy {
-            font-family: 'Instrument Sans', sans-serif !important;
-        }
-        
-        p, li, blockquote {
+        p, p *, li, li *, blockquote, blockquote * {
             font-family: 'Instrument Serif', serif !important;
             font-size: 1.15rem;
             line-height: 1.7;
         }
         
-        .lead {
+        .lead, .lead * {
             font-family: 'Instrument Serif', serif !important;
             font-size: 1.35rem;
-        }
-        
-        .display-6 {
-            font-family: 'Instrument Sans', sans-serif !important;
-        }
-        
-        footer a {
-            font-family: 'Instrument Sans', sans-serif !important;
         }
         
         .chart-grid {
@@ -72,8 +73,7 @@
             }
         }
     </style>
-</head>
-<body data-bs-spy="scroll" data-bs-target="#navScroll">
+
     <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
         <div class="container-fluid d-flex justify-content-between">
             <!-- Left side - Name/Home link -->
@@ -109,6 +109,7 @@
 
             <div class="row d-flex justify-content-center text-start">
                 <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
+                    
                     
                     <!-- CC1 -->
                     <h5 style="text-align: center; font-weight: bold;">CC1: Hosting</h5>                   
