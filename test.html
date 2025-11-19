@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="theme.css">
 
     <!-- Link to Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
 
     <!-- Open Graph meta tags -->
     <meta property="og:title" content="Portfolio | George Rushworth">
@@ -21,157 +21,334 @@
 
     <style>
         body {
-            background-color: #F8FAFC;
+            background-color: #FFFFFF;
             font-family: 'Instrument Serif', serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Instrument Serif', sans-serif;
+        /* White House-style clean navigation */
+        nav {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1.5rem 0;
         }
         
         .navbar-brand {
-            font-family: 'Instrument Serif', sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            text-decoration: none;
         }
         
+        nav a {
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 400;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            color: #0066cc;
+        }
+        
+        .nav-links a {
+            margin-left: 2rem;
+        }
+        
+        /* White House-style headers */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Instrument Sans', sans-serif;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-top: 2rem;
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e5;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+        }
+        
+        h5 {
+            font-size: 1.25rem;
+            margin-top: 2rem;
+        }
+        
+        /* Body text */
         p, li, blockquote {
             font-family: 'Instrument Serif', serif;
-            font-size: 1.15rem;
+            font-size: 1.125rem;
             line-height: 1.7;
+            color: #1a1a1a;
+            margin-bottom: 1.25rem;
         }
         
         .lead {
             font-family: 'Instrument Serif', serif;
-            font-size: 1.35rem;
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 2rem;
         }
-
+        
+        /* White House-style container */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* White House-style spacing */
+        main {
+            padding: 3rem 0 5rem 0;
+        }
+        
+        /* Chart containers */
+        figure {
+            margin: 2rem 0;
+        }
+        
         .chart-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 20px 0;
+            gap: 2rem;
+            margin: 2.5rem 0;
         }
-
+        
         @media (max-width: 992px) {
             .chart-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-links a {
+                margin-left: 1rem;
+            }
         }
-
+        
         @media (max-width: 576px) {
             .chart-grid {
                 grid-template-columns: 1fr;
             }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            p, li, blockquote {
+                font-size: 1rem;
+            }
+            
+            .lead {
+                font-size: 1.25rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+        
+        /* Clean link styling */
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Code formatting */
+        tt, code {
+            font-family: 'Courier New', monospace;
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        
+        /* Bold text */
+        b, strong {
+            font-weight: 600;
+        }
+        
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e5e5e5;
+            border-radius: 4px;
+        }
+        
+        /* Footer navigation */
+        .footer-nav {
+            border-top: 1px solid #e5e5e5;
+            margin-top: 5rem;
+        }
+        
+        .footer-nav a {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-nav a:hover {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .footer-nav svg {
+            transition: transform 0.2s;
+        }
+        
+        .footer-nav a:hover svg {
+            transform: translateX(5px);
+        }
+        
+        footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 3rem;
+        }
+        
+        footer .small {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.875rem;
+            color: #666;
         }
     </style>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#navScroll">
-    <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
-        <div class="container-fluid d-flex justify-content-between">
-            <!-- Left side - Name/Home link -->
-            <a class="navbar-brand pe-md-4 fs-4 text-center" href="index.html">
-                <span class="ms-md-1 mt-1 fw-bolder me-md-5">George Rushworth</span>
-            </a>
-
-            <!-- Right side - Social links -->
-            <div class="d-flex align-items-center">
-                <a href="https://georgerushworth.github.io/home.html" aria-label="Home" class="fs-6 link-fancy me-2">
-                    Home </a>
-               <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/test.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">
-                    Portfolio </a>
-                 <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/project.html" aria-label="Project" class="fs-6 link-fancy me-2">
-                    Project </a>
-                <span class="mx-2">|</span>
-                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">
-                    GitHub </a>
-                <span class="mx-2">|</span>
-                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">
-                    LinkedIn
+<body>
+    <nav>
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Left side - Name/Home link -->
+                <a class="navbar-brand" href="index.html">
+                    George Rushworth
                 </a>
+
+                <!-- Right side - Social links -->
+                <div class="nav-links d-flex align-items-center">
+                    <a href="https://georgerushworth.github.io/home.html" aria-label="Home">
+                        Home</a>
+                    <a href="https://georgerushworth.github.io/test.html" aria-label="Portfolio">
+                        Portfolio</a>
+                    <a href="https://georgerushworth.github.io/project.html" aria-label="Project">
+                        Project</a>
+                    <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub">
+                        GitHub</a>
+                    <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn">
+                        LinkedIn
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container py-vh-3">
+    <main class="container">
         <div class="row d-flex justify-content-center text-center">
             <div class="col-12 col-lg-10 col-xl-8">
-                <h1 class="display-large fw-bold">Data Visualisation Portfolio</h1>
-                <p class="lead pt-2 py-vh-2">A collection of coding challenges (CC) exploring data visualisation, web scraping, APIs, and interactive charts.</p>
+                <h1>Data Visualisation Portfolio</h1>
+                <p class="lead">A collection of coding challenges (CC) exploring data visualisation, web scraping, APIs, and interactive charts.</p>
             </div>
 
             <div class="row d-flex justify-content-center text-start">
-                <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
+                <div class="col-12 col-lg-10 col-xl-8">
                     
                     <!-- CC1 -->
-                    <h5 style="text-align: center; font-weight: bold;">CC1: Hosting</h5>                   
+                    <h2>CC1: Hosting</h2>                   
                     <p>
-                        Task: Set up a Github account and live page using GitHub Pages; add two charts using the <tt>vegaEmbed</tt> function.
+                        <b>Task:</b> Set up a Github account and live page using GitHub Pages; add two charts using the <tt>vegaEmbed</tt> function.
                     </p>
 
-                    <h5 style="font-weight: bold">Chart 1: Real GDP Per Capita</h5>
-
+                    <h3>Chart 1: Real GDP Per Capita</h3>
                     <p>This chart shows how real GDP per capita has evolved across six countries over time.</p>
                     <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
                         <figure id="Location12"></figure>
                     </div>
-                    <div style="height: 20px;"></div>
 
-                    
-                    <b>Chart 2: G7 Inflation Rates</b>
+                    <h3>Chart 2: G7 Inflation Rates</h3>
                     <p>This chart tracks inflation rates in four G7 economies—France, Germany, the United Kingdom, and the United States.</p>
                     <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
                         <figure id="Location18"></figure>
                     </div>
                     
-                    <div style="height: 80px;"></div>
                     <!-- CC2 -->
-                    <h5 style="text-align: center; font-weight: bold;">CC2: Building</h4>                   
+                    <h2>CC2: Building</h2>                   
                     <p><b>Task:</b> Build two charts using the Economics Observatory "create" tool and embed them on the page.</p>
 
-                    <h5 style="font-weight: bold">Chart 1: US Wealth Concentration</h5>
+                    <h3>Chart 1: US Wealth Concentration</h3>
                     <p>This chart tracks the share of total U.S. net worth held by the top 0.1%, using FRED data.</p>
                     <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
                         <figure id="Location19"></figure>
                     </div>
 
-                    <h5 style="font-weight: bold">Chart 2: China's Renewable Energy</h5>
+                    <h3>Chart 2: China's Renewable Energy</h3>
                     <p>This visualisation shows the dramatic growth of renewable energy output in China, measured in gigawatt-hours (GWh).</p>
                     <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
                         <figure id="Location20"></figure>
                     </div>
                     
-                    <div style="height: 80px;"></div>
                     <!-- CC3 -->
                     <h2>CC3: Debating</h2>
                     <p><b>Task:</b> Produce two charts that support or refute a topic of policy debate.</p>
                     
                     <p><b>Policy Position:</b> Governments should prioritise growth-oriented tax cuts even when unfunded, as economic expansion will generate offsetting revenues.</p>
 
-                    <h5 style="font-weight: bold">Chart 1: Bank Rate Response</h5>
+                    <h3>Chart 1: Bank Rate Response</h3>
                     <div style="text-align: center;">
                         <figure id="Location21"></figure>
                     </div>
                     <p><b>Commentary:</b> Unfunded tax cuts in Truss's mini-budget fueled inflation fears, prompting steeper rate hikes that stifled growth.</p>
 
-                    <h5 style="font-weight: bold">Chart 2: Gilt Yield Impact</h5>
+                    <h3>Chart 2: Gilt Yield Impact</h3>
                     <div style="text-align: center;">
                         <figure id="Location22"></figure>
                     </div>
                     <p><b>Commentary:</b> The mini-budget spiked gilt yields, crashed investor confidence, and proved unfunded cuts destabilise markets rather than generate revenues.</p>
 
                     <!-- CC4 -->
-                    <h5 style="font-weight: bold">CC4: Replication</h5>
+                    <h2>CC4: Replication</h2>
                     <p><b>Task:</b> Find a published chart, replicate it, and then improve on it.</p>
                     
                     <h3>Original Chart</h3>
                     <div style="text-align: center;">
-<img src="Image.jpeg" alt="Original happiness rankings chart" style="width: 600px; height: 400px; object-fit: contain; background: #F8FAFC; margin: 20px 0;">                 </div>
+                        <img src="Image.jpeg" alt="Original happiness rankings chart" style="width: 600px; height: 400px; object-fit: contain; background: #FFFFFF; margin: 20px 0;">
+                    </div>
 
                     <h3>My Replication</h3>
                     <div style="text-align: center;">
@@ -210,7 +387,6 @@
                     <figure id="Location28"></figure>
                     
                     <div class="chart-grid">
-                        <!-- Placeholder for 6 charts - you'll need to create these -->
                         <figure id="cc6_chart1"></figure>
                         <figure id="cc6_chart2"></figure>
                         <figure id="cc6_chart3"></figure>
@@ -232,7 +408,7 @@
                     <h3>Wales: Choropleth Map</h3>
                     <p><i>Note: This section is in progress. Map will show regional data across Welsh constituencies.</i></p>
                     <div style="text-align: center;">
-                            <figure id="Location26"></figure>
+                        <figure id="Location26"></figure>
                     </div>
 
                 </div>
@@ -241,25 +417,31 @@
     </main>
 
     <!-- Navigation footer -->
-    <div class="container d-flex justify-content-between">
-        <div class="col border-top border-end py-vh-3 d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-            </svg>
-            <a href="index.html" class="ms-2 display-6">Home</a>
-        </div>
-        <div class="col border-top text-end py-vh-3 d-flex align-items-center justify-content-end">
-            <a href="#" class="me-2 display-6">Next Project</a>
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-            </svg>
+    <div class="container footer-nav">
+        <div class="row">
+            <div class="col-6" style="border-right: 1px solid #e5e5e5;">
+                <a href="index.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16" style="margin-right: 0.5rem;">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    Home
+                </a>
+            </div>
+            <div class="col-6 text-end">
+                <a href="#" style="justify-content: flex-end;">
+                    Next Project
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16" style="margin-left: 0.5rem;">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container text-center small py-vh-3">
-            Template inspired by <a href="https://templatedeck.com" class="link-fancy" target="_blank">templatedeck.com</a>
+            Template inspired by <a href="https://templatedeck.com" target="_blank">templatedeck.com</a>
         </div>
     </footer>
 
@@ -287,15 +469,6 @@
         let figure_27_spec = "visualization.vl-27.json";        
         let figure_28_spec = "visualization.vl-28.json";
 
-
-
-
-
-
-
-
-
-
         // Embed completed charts
         vegaEmbed('#Location2', figure_2_spec);
         vegaEmbed('#Location3', figure_3_spec);
@@ -318,38 +491,6 @@
         vegaEmbed('#Location26', figure_26_spec);        
         vegaEmbed('#Location27', figure_27_spec);
         vegaEmbed('#Location28', figure_28_spec);
-
-
-
-
-
-
-        
-
-
-
-
-
-        // CC6 Dashboard charts - add when ready
-        // Example loop for embedding (when you have the specs):
-        /*
-        const cc6_specs = [
-            "cc6_chart1.json",
-            "cc6_chart2.json", 
-            "cc6_chart3.json",
-            "cc6_chart4.json",
-            "cc6_chart5.json",
-            "cc6_chart6.json"
-        ];
-        
-        cc6_specs.forEach((spec, index) => {
-            vegaEmbed(`#cc6_chart${index + 1}`, spec, {width: 300, height: 250});
-        });
-        */
-
-        // CC7 Maps - add when ready
-        // vegaEmbed('#cc7_scotland', 'scotland_map.json');
-        // vegaEmbed('#cc7_wales', 'wales_map.json');
 
         // Handle footnote links smoothly
         document.addEventListener('click', function(e) {
