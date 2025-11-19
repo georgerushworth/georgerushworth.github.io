@@ -1,0 +1,156 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "US Economic Indicators Dashboard",
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_economic_data.csv"
+  },
+  "transform": [{"filter": "toDate(datum.date) >= toDate('2015-01-01')"}],
+  "columns": 3,
+  "facet": {
+    "field": "series",
+    "type": "ordinal",
+    "sort": {"op": "min", "field": "date"},
+    "title": null
+  },
+  "spec": {
+    "width": 250,
+    "height": 180,
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "temporal",
+        "title": null,
+        "axis": {"grid": false}
+      }
+    },
+    "layer": [
+      {
+        "encoding": {
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "scale": {"type": "linear", "zero": false},
+            "title": null,
+            "axis": {"grid": true}
+          },
+          "tooltip": [
+            {
+              "field": "date",
+              "type": "temporal",
+              "title": "Date",
+              "format": "%b %Y"
+            },
+            {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Value",
+              "format": ".1f"
+            },
+            {"field": "series", "type": "nominal", "title": "Series"}
+          ]
+        },
+        "layer": [
+          {"mark": {"type": "line", "strokeWidth": 2}},
+          {
+            "transform": [{"filter": {"param": "hover", "empty": false}}],
+            "mark": {"type": "point", "size": 80}
+          }
+        ]
+      },
+      {
+        "mark": "rule",
+        "encoding": {
+          "opacity": {
+            "condition": {"value": 0.3, "param": "hover", "empty": false},
+            "value": 0
+          },
+          "tooltip": [
+            {
+              "field": "date",
+              "type": "temporal",
+              "format": "%b %Y",
+              "title": "Date"
+            },
+            {"field": "series", "type": "nominal", "title": "Series"},
+            {
+              "field": "value",
+              "type": "quantitative",
+              "format": ".1f",
+              "title": "Value"
+            }
+          ]
+        },
+        "params": [
+          {
+            "name": "hover",
+            "select": {
+              "type": "point",
+              "fields": ["date", "series"],
+              "nearest": true,
+              "on": "pointerover",
+              "clear": "pointerout"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "resolve": {"scale": {"y": "independent"}},
+  "title": {
+    "text": "US Economic Indicators",
+    "subtitle": [
+      "Data: Federal Reserve Economic Data (FRED) | 2015 - 2025",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "range": {"category": {"scheme": "observable10"}},
+    "point": {"filled": true, "size": 80, "color": "#4269d0", "opacity": 0.95},
+    "line": {"color": "#4269d0", "strokeWidth": 2},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Montserrat, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "title": null,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisXTemporal": {"grid": false},
+    "axisYQuantitative": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false,
+      "labelPadding": 5,
+      "tickCount": 4,
+      "titleAngle": 0,
+      "titleAlign": "left",
+      "titleBaseline": "bottom",
+      "titleX": 0,
+      "titleY": -5
+    },
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleFont": "Montserrat, sans-serif",
+      "subtitleColor": "#676A86",
+      "anchor": "start",
+      "offset": 20
+    }
+  }
+}
