@@ -13,8 +13,8 @@
     "title": null
   },
   "spec": {
-    "width": 600,
-    "height": 400,
+    "width": 150,
+    "height": 120,
     "encoding": {
       "x": {
         "field": "date",
