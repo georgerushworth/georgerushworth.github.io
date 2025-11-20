@@ -57,23 +57,23 @@
   },
   "projection": {"type": "mercator"},
   "config": {
-    "font": "Montserrat, sans-serif",
+    "font": "Instrument Sans, sans-serif",
     "view": {"stroke": "transparent"},
     "background": "#F8FAFC",
     "legend": {
-      "titleFont": "Montserrat, sans-serif",
+      "titleFont": "Instrument Sans, sans-serif",
       "titleFontSize": 14,
-      "labelFont": "Montserrat, sans-serif",
+      "labelFont": "Instrument Sans, sans-serif",
       "labelFontSize": 12,
       "titleColor": "#1a1a1a",
       "labelColor": "#676A86"
     },
     "title": {
-      "font": "Montserrat, sans-serif",
+      "font": "Instrument Sans, sans-serif",
       "fontSize": 16,
       "color": "#1a1a1a",
       "subtitleFontSize": 14,
-      "subtitleFont": "Montserrat, sans-serif",
+      "subtitleFont": "Instrument Sans, sans-serif",
       "subtitleColor": "#676A86"
     }
   }
