@@ -22,6 +22,7 @@
       {"country": "New Zealand", "score": 7.12}
     ]
   },
+  "mark": {"type": "bar"},
   "encoding": {
     "y": {
       "field": "country",
@@ -33,47 +34,30 @@
     "x": {
       "field": "score",
       "type": "quantitative",
-      "title": null,
+      "title": "Happiness Score",
       "scale": {"domain": [0, 8]},
-      "axis": null
-    }
-  },
-  "layer": [
-    {
-      "mark": {"type": "bar"},
-      "encoding": {
-        "color": {"value": "#4269d0"},
-        "tooltip": [
-          {"field": "country", "type": "nominal", "title": "Country"},
-          {
-            "field": "score",
-            "type": "quantitative",
-            "title": "Happiness Score",
-            "format": ".2f"
-          }
-        ]
-      }
+      "axis": {"labelFontSize": 12}
     },
-    {
-      "mark": {
-        "type": "text",
-        "color": "white",
-        "align": "left",
-        "dx": 5,
-        "fontWeight": "bold"
-      },
-      "encoding": {"text": {"field": "score", "format": ".2f"}}
-    }
-  ],
+    "color": {"value": "#4269d0"},
+    "tooltip": [
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {
+        "field": "score",
+        "type": "quantitative",
+        "title": "Happiness Score",
+        "format": ".2f"
+      }
+    ]
+  },
   "config": {
-    "font": "Instrument Sans, sans-serif",
+    "font": "Instrumental Sans, sans-serif",
     "view": {"stroke": "transparent"},
     "background": "#F8FAFC",
     "bar": {"color": "#4269d0"},
     "axis": {
       "labelColor": "#676A86",
       "labelFontSize": 11,
-      "labelFont": "Instrument Sans, sans-serif",
+      "labelFont": "Instrumental Sans, sans-serif",
       "labelOpacity": 0.7,
       "tickColor": "#676A86",
       "tickOpacity": 0.5,
@@ -88,7 +72,7 @@
     },
     "axisY": {"grid": false},
     "title": {
-      "font": "Instrument Sans, sans-serif",
+      "font": "Instrumental Sans, sans-serif",
       "fontSize": 16,
       "color": "#1a1a1a",
       "subtitleFontSize": 14,
