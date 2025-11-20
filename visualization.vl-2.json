@@ -74,7 +74,7 @@
     ]
   },
   "config": {
-    "font": "Montserrat, sans-serif",
+    "font": "Instrument Sans, sans-serif",
     "view": {"stroke": "transparent"},
     "background": "#F8FAFC",
     "range": {"category": {"scheme": "observable10"}},
@@ -83,7 +83,7 @@
     "axis": {
       "labelColor": "#676A86",
       "labelFontSize": 11,
-      "labelFont": "Montserrat, sans-serif",
+      "labelFont": "Instrument Sans, sans-serif",
       "labelOpacity": 0.7,
       "tickColor": "#676A86",
       "tickOpacity": 0.5,
@@ -104,14 +104,14 @@
       "ticks": false
     },
     "legend": {
-      "titleFont": "Montserrat, sans-serif",
+      "titleFont": "Instrument Sans, sans-serif",
       "titleFontSize": 14,
       "titleColor": "#1a1a1a",
       "labelColor": "#1a1a1a",
       "labelFontSize": 12
     },
     "title": {
-      "font": "Montserrat, sans-serif",
+      "font": "Instrument Sans, sans-serif",
       "fontSize": 16,
       "color": "#1a1a1a",
       "subtitleFontSize": 14,
