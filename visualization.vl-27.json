@@ -47,15 +47,15 @@
   ],
   "projection": {"type": "mercator"},
   "config": {
-    "font": "Montserrat, sans-serif",
+    "font": "Instrument Sans, sans-serif",
     "view": {"stroke": "transparent"},
     "background": "#F8FAFC",
     "title": {
-      "font": "Montserrat, sans-serif",
+      "font": "Instrument Sans, sans-serif",
       "fontSize": 16,
       "color": "#1a1a1a",
       "subtitleFontSize": 14,
-      "subtitleFont": "Montserrat, sans-serif",
+      "subtitleFont": "Instrument Sans, sans-serif",
       "subtitleColor": "#676A86"
     }
   }
