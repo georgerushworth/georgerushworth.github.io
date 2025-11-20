@@ -23,7 +23,7 @@
     "y": {
       "field": "value",
       "type": "quantitative",
-      "title": "Share of Total Wealth (%)",
+      "title": "Total Wealth",
       "axis": {
         "grid": true,
         "gridDash": [1, 5],
