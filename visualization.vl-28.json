@@ -14,7 +14,7 @@
   },
   "spec": {
     "width": 150,
-    "height": 120,
+    "height": 150,
     "encoding": {
       "x": {
         "field": "date",
