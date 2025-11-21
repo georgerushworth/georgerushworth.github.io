@@ -4,71 +4,41 @@
   "data": {
     "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_economic_data.csv"
   },
-
   "transform": [
+    {"filter": "toDate(datum.date) >= toDate('2015-01-01')"},
     {
-      "filter": "toDate(datum.date) >= toDate('2015-01-01')"
-    },
-    {
-      "lookup": "series",
-      "from": {
-        "data": {
-          "values": [
-            {"series": "US GDP", "label": "US GDP (Billions USD)"},
-            {"series": "US Unemployment", "label": "US Unemployment (%)"},
-            {"series": "US CPI", "label": "US CPI (Index)"},
-            {"series": "Fed Funds Rate", "label": "Fed Funds Rate (%)"},
-            {"series": "10-Year Treasury", "label": "10-Year Treasury (%)"},
-            {"series": "30-Year Mortgage", "label": "30-Year Mortgage (%)"}
-          ]
-        },
-        "key": "series",
-        "fields": ["label"]
-      }
+      "calculate": "datum.series == 'US Unemployment' ? 'US Unemployment (%)' : datum.series == 'US GDP' ? 'US GDP (Billions $)' : datum.series == 'US CPI' ? 'US CPI (Index)' : datum.series == 'Fed Funds Rate' ? 'Fed Funds Rate (%)' : datum.series == '10-Year Treasury' ? '10-Year Treasury (%)' : datum.series == '30-Year Mortgage' ? '30-Year Mortgage (%)' : datum.series",
+      "as": "series_with_units"
     }
   ],
-
   "columns": 3,
   "facet": {
-    "field": "label",
-    "type": "nominal",
-    "header": {
-      "title": null,
-      "labelFontSize": 14,
-      "labelColor": "#1a1a1a",
-      "labelPadding": 6
-    }
+    "field": "series_with_units",
+    "type": "ordinal",
+    "sort": {"op": "min", "field": "date"},
+    "title": null
   },
-
   "spec": {
     "width": 150,
     "height": 150,
-
     "encoding": {
       "x": {
         "field": "date",
         "type": "temporal",
         "title": null,
         "axis": {"grid": false}
-      },
-      "y": {
-        "field": "value",
-        "type": "quantitative",
-        "scale": {"type": "linear", "zero": false},
-        "axis": {
-          "labels": true,
-          "ticks": true,
-          "grid": true,
-          "labelColor": "#676A86",
-          "labelFontSize": 11,
-          "tickCount": 4
-        }
       }
     },
-
     "layer": [
       {
         "encoding": {
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "scale": {"type": "linear", "zero": false},
+            "title": null,
+            "axis": {"grid": true}
+          },
           "tooltip": [
             {
               "field": "date",
@@ -82,11 +52,7 @@
               "title": "Value",
               "format": ".1f"
             },
-            {
-              "field": "series",
-              "type": "nominal",
-              "title": "Series"
-            }
+            {"field": "series", "type": "nominal", "title": "Series"}
           ]
         },
         "layer": [
@@ -97,7 +63,6 @@
           }
         ]
       },
-
       {
         "mark": "rule",
         "encoding": {
@@ -112,11 +77,7 @@
               "format": "%b %Y",
               "title": "Date"
             },
-            {
-              "field": "series",
-              "type": "nominal",
-              "title": "Series"
-            },
+            {"field": "series", "type": "nominal", "title": "Series"},
             {
               "field": "value",
               "type": "quantitative",
@@ -140,13 +101,7 @@
       }
     ]
   },
-
-  "resolve": {
-    "scale": {
-      "y": "independent"
-    }
-  },
-
+  "resolve": {"scale": {"y": "independent"}},
   "title": {
     "text": "US Economic Indicators",
     "subtitle": [
@@ -155,7 +110,6 @@
     ],
     "anchor": "start"
   },
-
   "config": {
     "font": "Instrument Sans, sans-serif",
     "view": {"stroke": "transparent"},
@@ -179,6 +133,20 @@
       "titleColor": "#676A86",
       "titleOpacity": 0.8,
       "tickSize": 4
+    },
+    "axisXTemporal": {"grid": false},
+    "axisYQuantitative": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false,
+      "labelPadding": 5,
+      "tickCount": 4,
+      "titleAngle": 0,
+      "titleAlign": "left",
+      "titleBaseline": "bottom",
+      "titleX": 0,
+      "titleY": -5
     },
     "title": {
       "font": "Instrument Sans, sans-serif",
