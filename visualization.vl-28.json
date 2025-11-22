@@ -12,6 +12,7 @@
     }
   ],
   "columns": 3,
+  "spacing": 5,
   "facet": {
     "field": "series_with_units",
     "type": "ordinal",
@@ -40,18 +41,8 @@
             "axis": {"grid": true, "labelLimit": 60, "minExtent": 60}
           },
           "tooltip": [
-            {
-              "field": "date",
-              "type": "temporal",
-              "title": "Date",
-              "format": "%b %Y"
-            },
-            {
-              "field": "value",
-              "type": "quantitative",
-              "title": "Value",
-              "format": ".1f"
-            },
+            {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
+            {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"},
             {"field": "series", "type": "nominal", "title": "Series"}
           ]
         },
@@ -71,19 +62,9 @@
             "value": 0
           },
           "tooltip": [
-            {
-              "field": "date",
-              "type": "temporal",
-              "format": "%b %Y",
-              "title": "Date"
-            },
+            {"field": "date", "type": "temporal", "format": "%b %Y", "title": "Date"},
             {"field": "series", "type": "nominal", "title": "Series"},
-            {
-              "field": "value",
-              "type": "quantitative",
-              "format": ".1f",
-              "title": "Value"
-            }
+            {"field": "value", "type": "quantitative", "format": ".1f", "title": "Value"}
           ]
         },
         "params": [
@@ -104,10 +85,7 @@
   "resolve": {"scale": {"y": "independent"}},
   "title": {
     "text": "US Economic Indicators",
-    "subtitle": [
-      "Data: Federal Reserve Economic Data (FRED) | 2015 - 2025",
-      ""
-    ],
+    "subtitle": ["Data: Federal Reserve Economic Data (FRED) | 2015 - 2025", ""],
     "anchor": "start"
   },
   "config": {
