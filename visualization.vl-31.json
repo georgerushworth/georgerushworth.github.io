@@ -1,0 +1,194 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Shiller CAPE Ratio: 154 Years of Market Valuations",
+    "subtitle": [
+      "January 2025 CAPE (37.1)",
+      "Data: Robert Shiller (Yale) | Historical mean: 17 | Red zone begins at 30",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/cleanedpe.csv",
+    "format": {"type": "csv"}
+  },
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"band": "Normal (0-20)", "y1": 0, "y2": 20},
+          {"band": "Elevated (20-30)", "y1": 20, "y2": 30},
+          {"band": "Extreme Risk (30+)", "y1": 30, "y2": 50}
+        ]
+      },
+      "mark": {"type": "rect", "opacity": 0.12},
+      "encoding": {
+        "y": {"field": "y1", "type": "quantitative"},
+        "y2": {"field": "y2"},
+        "color": {
+          "field": "band",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Normal (0-20)",
+              "Elevated (20-30)",
+              "Extreme Risk (30+)"
+            ],
+            "range": ["#10b981", "#f59e0b", "#ef4444"]
+          },
+          "legend": {
+            "title": "Risk Zones",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelLimit": 200,
+            "titleOrient": "left"
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "area",
+        "line": {"color": "#4269d0", "strokeWidth": 2.5},
+        "color": "#4269d0",
+        "opacity": 0.3
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": null,
+          "axis": {
+            "format": "%Y",
+            "labelAngle": 0,
+            "grid": false,
+            "tickCount": 10
+          }
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "title": "CAPE Ratio",
+          "scale": {"domain": [0, 50]},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridOpacity": 0.5,
+            "ticks": false,
+            "labelPadding": 5,
+            "titleAngle": 0,
+            "titleAlign": "left",
+            "titleBaseline": "bottom",
+            "titleX": 0,
+            "titleY": -5
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Year",
+            "format": "%Y"
+          },
+          {
+            "field": "Value",
+            "type": "quantitative",
+            "title": "CAPE",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"level": "Historical Mean", "y": 17}]},
+      "mark": {
+        "type": "rule",
+        "strokeDash": [8, 4],
+        "strokeWidth": 2,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "y": {"field": "y", "type": "quantitative"},
+        "tooltip": [
+          {"field": "level", "type": "nominal", "title": "Level"},
+          {"field": "y", "type": "quantitative", "title": "CAPE Value"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "color": "#4269d0",
+        "size": 150
+      },
+      "encoding": {
+        "x": {"datum": {"year": 2025}},
+        "y": {"datum": 37.14},
+        "tooltip": [
+          {"datum": "2025", "title": "Year"},
+          {"datum": "37.14", "title": "Current CAPE"},
+          {"datum": "In top 1% of all readings since 1871", "title": "Status"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -15,
+        "fontSize": 13,
+        "fontWeight": "bold",
+        "color": "#ef4444"
+      },
+      "encoding": {"x": {"datum": {"year": 2025}}, "y": {"datum": 37.14}}
+    }
+  ],
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "area": {"opacity": 0.3},
+    "line": {"strokeWidth": 2.5},
+    "point": {"filled": true},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "legend": {
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 13,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#1a1a1a",
+      "labelFontSize": 11
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
