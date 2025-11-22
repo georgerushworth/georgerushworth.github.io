@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US Economic Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .chart-container {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .chart-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .colab-link {
+            text-align: center;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>US Economic Indicators Dashboard</h1>
+    
+    <div class="colab-link">
+        <a href="YOUR_COLAB_NOTEBOOK_LINK" target="_blank">
+            📊 View Data Collection Notebook (Google Colab)
+        </a>
+    </div>
 
+    <!-- Charts will be inserted here by JavaScript -->
+    <div class="chart-grid" id="chartGrid"></div>
+
+    <script>
+        // Array of series with their GitHub raw URLs
+        const series = [
+            {
+                name: 'US GDP',
+                url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_gdp.json',
+                title: 'US GDP (Billions of Dollars)'
+            },
+            {
+                name: 'US Unemployment',
+                url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_unemployment.json',
+                title: 'Unemployment Rate (%)'
+            },
+            {
+                name: 'Inflation',
+                url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_inflation.json',
+                title: 'Inflation (%)'
+            },
+            {
+                name: '10-Year Treasury',
+                url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_10year_treasury.json',
+                title: '10-Year Treasury Rate (%)'
+            },
+            {
+                name: 'Fed Funds Rate',
+                url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_fed_funds_rate.json',
+                title: 'Federal Funds Rate (%)'
+            },
+            {
+                name: '30-Year Mortgage',
+                url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_mortgage_rate.json',
+                title: '30-Year Mortgage Rate (%)'
+            }
+        ];
+
+        // LOOP to create and embed all charts
+        series.forEach((item, index) => {
+            // Create container for this chart
+            const container = document.createElement('div');
+            container.className = 'chart-container';
+            container.id = `chart${index}`;
+            document.getElementById('chartGrid').appendChild(container);
+
+            // Vega-Lite specification
+            const spec = {
+                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                "width": 300,
+                "height": 200,
+                "title": item.title,
+                "data": {
+                    "url": item.url,
+                    "format": {"type": "json", "property": "observations"}
+                },
+                "transform": [
+                    {"filter": "datum.value != '.'"}
+                ],
+                "mark": {"type": "line", "point": false, "color": "#2c3e50"},
+                "encoding": {
+                    "x": {
+                        "field": "date",
+                        "type": "temporal",
+                        "title": "Date",
+                        "axis": {"format": "%Y"}
+                    },
+                    "y": {
+                        "field": "value",
+                        "type": "quantitative",
+                        "title": "Value"
+                    },
+                    "tooltip": [
+                        {"field": "date", "type": "temporal", "title": "Date"},
+                        {"field": "value", "type": "quantitative", "title": "Value"}
+                    ]
+                }
+            };
+
+            // Embed the chart
+            vegaEmbed(`#chart${index}`, spec, {actions: false});
+        });
+    </script>
+</body>
+</html>
