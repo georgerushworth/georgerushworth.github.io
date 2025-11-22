@@ -7,15 +7,28 @@
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Instrument Sans', sans-serif;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
+            background: #F8FAFC;
+            color: #1a1a1a;
         }
         h1 {
-            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #676A86;
+            font-size: 16px;
+            margin-bottom: 30px;
         }
         .chart-grid {
             display: grid;
@@ -24,20 +37,30 @@
             margin-top: 30px;
         }
         .chart-container {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .chart-title {
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 10px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         .colab-link {
-            text-align: center;
             margin: 20px 0;
         }
-        @media (max-width: 768px) {
+        .colab-link a {
+            color: #4269d0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .colab-link a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 900px) {
+            .chart-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
             .chart-grid {
                 grid-template-columns: 1fr;
             }
@@ -45,7 +68,8 @@
     </style>
 </head>
 <body>
-    <h1>US Economic Indicators Dashboard</h1>
+    <h1>US Economic Indicators</h1>
+    <div class="subtitle">Data: Federal Reserve Economic Data (FRED) | 2015 - 2025</div>
     
     <div class="colab-link">
         <a href="YOUR_COLAB_NOTEBOOK_LINK" target="_blank">
@@ -62,32 +86,32 @@
             {
                 name: 'US GDP',
                 url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_gdp.json',
-                title: 'US GDP (Billions of Dollars)'
+                title: 'US GDP (Billions $)'
             },
             {
                 name: 'US Unemployment',
                 url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_unemployment.json',
-                title: 'Unemployment Rate (%)'
+                title: 'US Unemployment (%)'
             },
             {
-                name: 'Inflation',
+                name: 'US CPI',
                 url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_inflation.json',
-                title: 'Inflation (%)'
+                title: 'US CPI (Index)'
             },
             {
                 name: '10-Year Treasury',
                 url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_10year_treasury.json',
-                title: '10-Year Treasury Rate (%)'
+                title: '10-Year Treasury (%)'
             },
             {
                 name: 'Fed Funds Rate',
                 url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_fed_funds_rate.json',
-                title: 'Federal Funds Rate (%)'
+                title: 'Fed Funds Rate (%)'
             },
             {
                 name: '30-Year Mortgage',
                 url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_mortgage_rate.json',
-                title: '30-Year Mortgage Rate (%)'
+                title: '30-Year Mortgage (%)'
             }
         ];
 
@@ -99,36 +123,103 @@
             container.id = `chart${index}`;
             document.getElementById('chartGrid').appendChild(container);
 
-            // Vega-Lite specification
+            // Vega-Lite specification with your styling
             const spec = {
                 "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                "width": 300,
+                "width": "container",
                 "height": 200,
-                "title": item.title,
+                "title": {
+                    "text": item.title,
+                    "font": "Instrument Sans, sans-serif",
+                    "fontSize": 14,
+                    "fontWeight": 600,
+                    "color": "#1a1a1a",
+                    "anchor": "start"
+                },
                 "data": {
                     "url": item.url,
                     "format": {"type": "json", "property": "observations"}
                 },
                 "transform": [
-                    {"filter": "datum.value != '.'"}
+                    {"filter": "datum.value != '.'"},
+                    {"filter": "toDate(datum.date) >= toDate('2015-01-01')"}
                 ],
-                "mark": {"type": "line", "point": false, "color": "#2c3e50"},
                 "encoding": {
                     "x": {
                         "field": "date",
                         "type": "temporal",
-                        "title": "Date",
-                        "axis": {"format": "%Y"}
+                        "title": null,
+                        "axis": {
+                            "grid": false,
+                            "labelColor": "#676A86",
+                            "labelFontSize": 11,
+                            "labelOpacity": 0.7,
+                            "tickColor": "#676A86",
+                            "tickOpacity": 0.5,
+                            "domainColor": "#676A86",
+                            "domainOpacity": 0.5
+                        }
+                    }
+                },
+                "layer": [
+                    {
+                        "mark": {
+                            "type": "line",
+                            "color": "#4269d0",
+                            "strokeWidth": 2
+                        },
+                        "encoding": {
+                            "y": {
+                                "field": "value",
+                                "type": "quantitative",
+                                "scale": {"zero": false},
+                                "title": null,
+                                "axis": {
+                                    "gridColor": "#676A86",
+                                    "gridDash": [1, 5],
+                                    "gridOpacity": 0.5,
+                                    "labelColor": "#676A86",
+                                    "labelFontSize": 11,
+                                    "labelOpacity": 0.7,
+                                    "tickColor": "#676A86",
+                                    "tickOpacity": 0.5,
+                                    "domainColor": "#676A86",
+                                    "domainOpacity": 0.5,
+                                    "tickCount": 4
+                                }
+                            }
+                        }
                     },
-                    "y": {
-                        "field": "value",
-                        "type": "quantitative",
-                        "title": "Value"
-                    },
-                    "tooltip": [
-                        {"field": "date", "type": "temporal", "title": "Date"},
-                        {"field": "value", "type": "quantitative", "title": "Value"}
-                    ]
+                    {
+                        "mark": "rule",
+                        "encoding": {
+                            "opacity": {
+                                "condition": {"value": 0.3, "param": "hover", "empty": false},
+                                "value": 0
+                            },
+                            "tooltip": [
+                                {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
+                                {"field": "value", "type": "quantitative", "title": "Value", "format": ".1f"}
+                            ]
+                        },
+                        "params": [
+                            {
+                                "name": "hover",
+                                "select": {
+                                    "type": "point",
+                                    "fields": ["date"],
+                                    "nearest": true,
+                                    "on": "pointerover",
+                                    "clear": "pointerout"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "config": {
+                    "font": "Instrument Sans, sans-serif",
+                    "view": {"stroke": "transparent"},
+                    "background": "white"
                 }
             };
 
