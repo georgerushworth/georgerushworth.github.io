@@ -42,25 +42,14 @@
                 "range": ["#10b981", "#f59e0b", "#ef4444"]
               },
               "legend": {
-                "title": "Risk Zones (Click to toggle)",
+                "title": "Risk Zones",
                 "orient": "bottom",
                 "direction": "horizontal",
                 "labelLimit": 200,
                 "titleOrient": "left"
               }
-            },
-            "opacity": {
-              "condition": {"param": "legend_select", "value": 0.12},
-              "value": 0.02
             }
-          },
-          "params": [
-            {
-              "name": "legend_select",
-              "select": {"type": "point", "fields": ["band"]},
-              "bind": "legend"
-            }
-          ]
+          }
         },
         {
           "mark": {
