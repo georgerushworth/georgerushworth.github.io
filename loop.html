@@ -49,14 +49,18 @@
         .chart-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
             margin: 40px 0;
+            justify-items: center;
         }
         
         .chart-container {
             background: transparent;
             border: none;
             padding: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
         
         @media (max-width: 992px) {
@@ -193,16 +197,16 @@
             // Vega-Lite specification matching your style
             const spec = {
                 "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                "width": 280,
-                "height": 200,
+                "width": 200,
+                "height": 150,
                 "title": {
                     "text": item.title,
                     "font": "Instrument Sans, sans-serif",
-                    "fontSize": 15,
+                    "fontSize": 13,
                     "fontWeight": 600,
                     "color": "#1a1a1a",
                     "anchor": "start",
-                    "offset": 10
+                    "offset": 8
                 },
                 "data": {
                     "url": item.url,
@@ -220,7 +224,7 @@
                         "axis": {
                             "grid": false,
                             "labelColor": "#676A86",
-                            "labelFontSize": 11,
+                            "labelFontSize": 10,
                             "labelOpacity": 0.7,
                             "tickColor": "#676A86",
                             "tickOpacity": 0.5,
@@ -248,13 +252,13 @@
                                     "gridDash": [1, 5],
                                     "gridOpacity": 0.5,
                                     "labelColor": "#676A86",
-                                    "labelFontSize": 11,
+                                    "labelFontSize": 10,
                                     "labelOpacity": 0.7,
                                     "tickColor": "#676A86",
                                     "tickOpacity": 0.5,
                                     "domainColor": "#676A86",
                                     "domainOpacity": 0.5,
-                                    "tickCount": 5
+                                    "tickCount": 4
                                 }
                             }
                         }
