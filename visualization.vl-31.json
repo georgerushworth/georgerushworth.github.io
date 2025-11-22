@@ -3,7 +3,7 @@
   "title": {
     "text": "Shiller CAPE Ratio: 154 Years of Market Valuations",
     "subtitle": [
-      "January 2025 CAPE (37.1)",
+      "Monthly Data Through 2025",
       "Data: Robert Shiller (Yale) | Historical mean: 17 | Red zone begins at 30",
       ""
     ],
@@ -12,7 +12,7 @@
   "width": 600,
   "height": 400,
   "data": {
-    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/cleanedpe.csv",
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/cleaned_cape_final.csv",
     "format": {"type": "csv"}
   },
   "layer": [
@@ -90,8 +90,8 @@
           {
             "field": "Date",
             "type": "temporal",
-            "title": "Year",
-            "format": "%Y"
+            "title": "Date",
+            "format": "%b %Y"
           },
           {
             "field": "Value",
@@ -117,33 +117,6 @@
           {"field": "y", "type": "quantitative", "title": "CAPE Value"}
         ]
       }
-    },
-    {
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "color": "#4269d0",
-        "size": 150
-      },
-      "encoding": {
-        "x": {"datum": {"year": 2025}},
-        "y": {"datum": 37.14},
-        "tooltip": [
-          {"datum": "2025", "title": "Year"},
-          {"datum": "37.14", "title": "Current CAPE"},
-          {"datum": "In top 1% of all readings since 1871", "title": "Status"}
-        ]
-      }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "dy": -15,
-        "fontSize": 13,
-        "fontWeight": "bold",
-        "color": "#ef4444"
-      },
-      "encoding": {"x": {"datum": {"year": 2025}}, "y": {"datum": 37.14}}
     }
   ],
   "config": {
