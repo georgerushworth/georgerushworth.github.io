@@ -37,7 +37,7 @@
             "type": "quantitative",
             "scale": {"type": "linear", "zero": false},
             "title": null,
-            "axis": {"grid": true}
+            "axis": {"grid": true, "labelLimit": 60, "minExtent": 60}
           },
           "tooltip": [
             {
@@ -146,7 +146,8 @@
       "titleAlign": "left",
       "titleBaseline": "bottom",
       "titleX": 0,
-      "titleY": -5
+      "titleY": -5,
+      "labelLimit": 50
     },
     "title": {
       "font": "Instrument Sans, sans-serif",
@@ -160,4 +161,3 @@
     }
   }
 }
-
