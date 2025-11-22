@@ -3,8 +3,8 @@
   "title": {
     "text": "Shiller CAPE Ratio: 154 Years of Market Valuations",
     "subtitle": [
-      "Are we in a bubble? (1871-2025)",
-      "Data: Robert Shiller (Yale University) | Annual values (January 1) | Updated: 2025",
+      "January 2025 CAPE (37.1)",
+      "Data: Robert Shiller (Yale) | Historical mean: 17 | Red zone begins at 30",
       ""
     ],
     "anchor": "start"
@@ -16,6 +16,35 @@
     "format": {"type": "csv"}
   },
   "layer": [
+    {
+      "data": {
+        "values": [
+          {"band": "Normal (0-20)", "y1": 0, "y2": 20},
+          {"band": "Elevated (20-30)", "y1": 20, "y2": 30},
+          {"band": "Extreme Risk (30+)", "y1": 30, "y2": 50}
+        ]
+      },
+      "mark": {"type": "rect", "opacity": 0.12},
+      "encoding": {
+        "y": {"field": "y1", "type": "quantitative"},
+        "y2": {"field": "y2"},
+        "color": {
+          "field": "band",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Normal (0-20)", "Elevated (20-30)", "Extreme Risk (30+)"],
+            "range": ["#10b981", "#f59e0b", "#ef4444"]
+          },
+          "legend": {
+            "title": "Risk Zones",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelLimit": 200,
+            "titleOrient": "left"
+          }
+        }
+      }
+    },
     {
       "mark": {
         "type": "area",
@@ -71,20 +100,13 @@
     },
     {
       "data": {
-        "values": [{"level": "Average", "y": 17}, {"level": "High", "y": 25}]
+        "values": [
+          {"level": "Historical Mean", "y": 17}
+        ]
       },
-      "mark": {"type": "rule", "strokeDash": [5, 5], "strokeWidth": 2},
+      "mark": {"type": "rule", "strokeDash": [8, 4], "strokeWidth": 2, "color": "#64748b"},
       "encoding": {
         "y": {"field": "y", "type": "quantitative"},
-        "color": {
-          "field": "level",
-          "type": "nominal",
-          "scale": {
-            "domain": ["Average", "High"],
-            "range": ["#10b981", "#f59e0b"]
-          },
-          "legend": {"title": null, "orient": "top", "direction": "horizontal"}
-        },
         "tooltip": [
           {"field": "level", "type": "nominal", "title": "Level"},
           {"field": "y", "type": "quantitative", "title": "CAPE Value"}
@@ -95,7 +117,7 @@
       "mark": {
         "type": "point",
         "filled": true,
-        "color": "#ef4444",
+        "color": "#4269d0",
         "size": 150
       },
       "encoding": {
@@ -103,7 +125,8 @@
         "y": {"datum": 37.14},
         "tooltip": [
           {"datum": "2025", "title": "Year"},
-          {"datum": "37.14", "title": "Current CAPE"}
+          {"datum": "37.14", "title": "Current CAPE"},
+          {"datum": "In top 1% of all readings since 1871", "title": "Status"}
         ]
       }
     },
@@ -111,19 +134,18 @@
       "mark": {
         "type": "text",
         "dy": -15,
-        "fontSize": 12,
+        "fontSize": 13,
         "fontWeight": "bold",
         "color": "#ef4444"
       },
       "encoding": {
         "x": {"datum": {"year": 2025}},
         "y": {"datum": 37.14},
-        "text": {"value": "37.1"}
       }
     }
   ],
   "config": {
-    "font": "Montserrat, sans-serif",
+    "font": "Instrument Sans, sans-serif",
     "view": {"stroke": "transparent"},
     "background": "#F8FAFC",
     "area": {"opacity": 0.3},
@@ -132,7 +154,7 @@
     "axis": {
       "labelColor": "#676A86",
       "labelFontSize": 11,
-      "labelFont": "Montserrat, sans-serif",
+      "labelFont": "Instrument Sans, sans-serif",
       "labelOpacity": 0.7,
       "tickColor": "#676A86",
       "tickOpacity": 0.5,
@@ -153,17 +175,17 @@
       "ticks": false
     },
     "legend": {
-      "titleFont": "Montserrat, sans-serif",
-      "titleFontSize": 14,
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 13,
       "titleColor": "#1a1a1a",
       "labelColor": "#1a1a1a",
-      "labelFontSize": 12
+      "labelFontSize": 11
     },
     "title": {
-      "font": "Montserrat, sans-serif",
+      "font": "Instrument Sans, sans-serif",
       "fontSize": 16,
       "color": "#1a1a1a",
-      "subtitleFontSize": 14,
+      "subtitleFontSize": 13,
       "subtitleColor": "#676A86"
     }
   }
