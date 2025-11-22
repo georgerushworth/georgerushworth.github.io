@@ -4,7 +4,8 @@
     "text": "UK Pint Prices by Region Over Time",
     "anchor": "start",
     "subtitle": [
-      "Average price of a pint of lager across UK regions | Source: ONS Microdata",
+      "Average price of a pint of lager across UK regions.",
+      "Source: ONS Microdata by Davies (2021)",
       ""
     ]
   },
