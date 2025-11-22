@@ -391,6 +391,144 @@
         vegaEmbed('#Location30', figure_30_spec);        
         vegaEmbed('#Location32', figure_32_spec);
 
+        // Coding Challenge 6: Loop to create dashboard
+const cc6_series = [
+    {
+        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_gdp.json',
+        title: 'US GDP (Billions $)'
+    },
+    {
+        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_unemployment.json',
+        title: 'US Unemployment (%)'
+    },
+    {
+        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_inflation.json',
+        title: 'US CPI (Index)'
+    },
+    {
+        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_10year_treasury.json',
+        title: '10-Year Treasury (%)'
+    },
+    {
+        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_fed_funds_rate.json',
+        title: 'Fed Funds Rate (%)'
+    },
+    {
+        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_mortgage_rate.json',
+        title: '30-Year Mortgage (%)'
+    }
+];
+
+// LOOP to create and embed all 6 charts
+cc6_series.forEach((item, index) => {
+    const container = document.createElement('figure');
+    container.id = `cc6_chart${index}`;
+    document.getElementById('cc6_chartGrid').appendChild(container);
+
+    const spec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "width": 200,
+        "height": 150,
+        "title": {
+            "text": item.title,
+            "font": "Instrument Sans, sans-serif",
+            "fontSize": 13,
+            "fontWeight": 600,
+            "color": "#1a1a1a",
+            "anchor": "start",
+            "offset": 8
+        },
+        "data": {
+            "url": item.url,
+            "format": {"type": "json", "property": "observations"}
+        },
+        "transform": [
+            {"filter": "datum.value != '.'"},
+            {"filter": "toDate(datum.date) >= toDate('2015-01-01')"}
+        ],
+        "encoding": {
+            "x": {
+                "field": "date",
+                "type": "temporal",
+                "title": null,
+                "axis": {
+                    "grid": false,
+                    "labelColor": "#676A86",
+                    "labelFontSize": 10,
+                    "labelOpacity": 0.7,
+                    "tickColor": "#676A86",
+                    "tickOpacity": 0.5,
+                    "domainColor": "#676A86",
+                    "domainOpacity": 0.5,
+                    "format": "%Y"
+                }
+            }
+        },
+        "layer": [
+            {
+                "mark": {
+                    "type": "line",
+                    "color": "#4269d0",
+                    "strokeWidth": 2
+                },
+                "encoding": {
+                    "y": {
+                        "field": "value",
+                        "type": "quantitative",
+                        "scale": {"zero": false},
+                        "title": null,
+                        "axis": {
+                            "gridColor": "#676A86",
+                            "gridDash": [1, 5],
+                            "gridOpacity": 0.5,
+                            "labelColor": "#676A86",
+                            "labelFontSize": 10,
+                            "labelOpacity": 0.7,
+                            "tickColor": "#676A86",
+                            "tickOpacity": 0.5,
+                            "domainColor": "#676A86",
+                            "domainOpacity": 0.5,
+                            "tickCount": 4
+                        }
+                    }
+                }
+            },
+            {
+                "mark": "rule",
+                "encoding": {
+                    "opacity": {
+                        "condition": {"value": 0.3, "param": "hover", "empty": false},
+                        "value": 0
+                    },
+                    "tooltip": [
+                        {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
+                        {"field": "value", "type": "quantitative", "title": "Value", "format": ".2f"}
+                    ]
+                },
+                "params": [
+                    {
+                        "name": "hover",
+                        "select": {
+                            "type": "point",
+                            "fields": ["date"],
+                            "nearest": true,
+                            "on": "pointerover",
+                            "clear": "pointerout"
+                        }
+                    }
+                ]
+            }
+        ],
+        "config": {
+            "font": "Instrument Sans, sans-serif",
+            "view": {"stroke": "transparent"},
+            "background": "#F8FAFC"
+        }
+    };
+
+    vegaEmbed(`#cc6_chart${index}`, spec, {actions: false});
+});
+
 
 
         // Handle footnote links smoothly
