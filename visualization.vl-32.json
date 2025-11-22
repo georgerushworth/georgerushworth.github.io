@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "UK Pint Prices by Region Over Time",
+    "anchor": "start",
+    "subtitle": [
+      "Average price of a pint of lager across UK regions | Source: ONS Microdata",
+      ""
+    ]
+  },
+  "width": 600,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/pint_analysis_chart.csv"
+  },
+  "params": [
+    {
+      "name": "yearParam",
+      "value": 2024,
+      "bind": {
+        "input": "range",
+        "min": 2000,
+        "max": 2024,
+        "step": 1,
+        "name": "Year:"
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.year == yearParam"},
+    {
+      "lookup": "region_id",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/misc/bigdata/seminar/uk_region_map.json",
+          "format": {"property": "features"}
+        },
+        "key": "properties.id",
+        "fields": ["geometry", "properties", "type"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "#676A86", "strokeWidth": 0.8},
+  "encoding": {
+    "color": {
+      "field": "price",
+      "type": "quantitative",
+      "scale": {"scheme": "teals"},
+      "legend": {
+        "title": "Price per Pint (£)",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 200,
+        "format": ".2f"
+      }
+    },
+    "tooltip": [
+      {"field": "properties.NAME_LATN", "type": "nominal", "title": "Region"},
+      {"field": "year", "type": "quantitative", "title": "Year"},
+      {
+        "field": "price",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "Avg Pint Price (£)"
+      }
+    ]
+  },
+  "projection": {"type": "mercator"},
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "legend": {
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 14,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelFontSize": 12,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#676A86"
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleFont": "Instrument Sans, sans-serif",
+      "subtitleColor": "#676A86"
+    }
+  }
+}
