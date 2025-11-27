@@ -1,0 +1,164 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Fragility Index: Systemic Risk",
+    "subtitle": [
+      "S&P 500: The 'Magnificent 7' vs. The Rest. Select a stock to focus on its contribution.",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/fragility1.csv",
+    "format": {"type": "csv", "parse": {"Date": "date", "Value": "number"}}
+  },
+  "params": [
+    {
+      "name": "selectedStock",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "NVDA",
+          "AAPL",
+          "MSFT",
+          "AMZN",
+          "GOOGL",
+          "META",
+          "TSLA"
+        ],
+        "labels": [
+          "All Stocks",
+          "Nvidia",
+          "Apple",
+          "Microsoft",
+          "Amazon",
+          "Alphabet",
+          "Meta",
+          "Tesla"
+        ],
+        "name": "Focus on Stock: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "calculate": "datum.Type === 'Rest' ? 'Rest' : datum.Ticker",
+      "as": "Stock"
+    },
+    {
+      "calculate": "selectedStock === null ? datum.Stock : (datum.Stock === selectedStock ? selectedStock : 'Others')",
+      "as": "Display_Label"
+    },
+    {
+      "calculate": "selectedStock === null ? (datum.Stock === 'Rest' ? 8 : (datum.Stock === 'NVDA' ? 1 : (datum.Stock === 'AAPL' ? 2 : (datum.Stock === 'MSFT' ? 3 : (datum.Stock === 'AMZN' ? 4 : (datum.Stock === 'GOOGL' ? 5 : (datum.Stock === 'META' ? 6 : 7))))))) : (datum.Stock === selectedStock ? 1 : 2)",
+      "as": "Order"
+    }
+  ],
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "temporal",
+      "title": null,
+      "axis": {"grid": false, "format": "%Y", "tickCount": 10, "labelAngle": 0}
+    },
+    "y": {
+      "field": "Value",
+      "type": "quantitative",
+      "stack": "normalize",
+      "title": "Market Concentration (%)",
+      "axis": {
+        "format": ".0%",
+        "grid": true,
+        "gridDash": [1, 5],
+        "gridOpacity": 0.5,
+        "ticks": false,
+        "labelPadding": 5,
+        "titleAngle": 0,
+        "titleAlign": "left",
+        "titleBaseline": "bottom",
+        "titleX": 0,
+        "titleY": -5
+      }
+    },
+    "color": {
+      "field": "Display_Label",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "NVDA",
+          "AAPL",
+          "MSFT",
+          "AMZN",
+          "GOOGL",
+          "META",
+          "TSLA",
+          "Rest",
+          "Others"
+        ],
+        "range": [
+          "#1e3a8a",
+          "#1e40af",
+          "#2563eb",
+          "#3b82f6",
+          "#60a5fa",
+          "#93c5fd",
+          "#bfdbfe",
+          "#cbd5e1",
+          "#e2e8f0"
+        ]
+      },
+      "legend": null
+    },
+    "order": {"field": "Order"},
+    "tooltip": [
+      {"field": "Date", "type": "temporal", "format": "%b %Y", "title": "Date"},
+      {"field": "Stock", "type": "nominal", "title": "Ticker"},
+      {
+        "field": "Value",
+        "type": "quantitative",
+        "format": "$,.2s",
+        "title": "Market Cap"
+      }
+    ]
+  },
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Montserrat, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
