@@ -298,9 +298,9 @@
 
                     <!-- Coding Challenge 9 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 9: Interactive Charts</h3>
-                    <p>Task: create an interactive chart with controls beyond hover/tooltips and an advanced analytics chart that goes beyond standard line/bar/scatter visuals.</p>
+                    <p>Task: create two interactive charts with controls beyond hover/tooltips.</p>
 
-                    <b>Interactive</b>
+                    <b>CAPE Ratio</b>
                     <p>The chart displays the Shiller CAPE ratio from 1871 to 2025, showing market valuations over time with coloured risk zones and a historical mean line at 17. Click and drag on the bottom brush selector to zoom into specific time periods.</p>
 
                     <div style="text-align: center;">
@@ -308,7 +308,12 @@
                         <figure id="Location31"></figure>
                     </div>
                     <div style="height: 20px;"></div>
-                    <b>Advanced Analytics</b>
+                    <b>S&P500 Composition</b>
+                     <p>The chart displays market concentration in the S&P 500 from the Magnificent 7 tech stocks versus the rest of the market over time, with an interactive selector to focus on individual stock contributions.</p>
+
+                    <div style="text-align: center;">
+                                                <div style="height: 20px;"></div>
+                        <figure id="Location33"></figure>
 
 
 
@@ -369,6 +374,8 @@
         let figure_30_spec = "visualization.vl-30.json";         
         let figure_31_spec = "visualization.vl-31.json";        
         let figure_32_spec = "visualization.vl-32.json";
+        let figure_33_spec = "visualization.vl-33.json";
+
 
 
         // Embed completed charts
@@ -395,7 +402,9 @@
         vegaEmbed('#Location28', figure_28_spec);
         vegaEmbed('#Location30', figure_30_spec);      
         vegaEmbed('#Location31', figure_31_spec);        
-        vegaEmbed('#Location32', figure_32_spec);
+        vegaEmbed('#Location32', figure_32_spec);       
+        vegaEmbed('#Location33', figure_33_spec);
+
 
 
         // Coding Challenge 6: Loop to create dashboard
