@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "The Fragility Index: Systemic Risk",
+    "text": "Market Concentration Index",
     "subtitle": [
       "S&P 500: The 'Magnificent 7' vs. The Rest. Select a stock to focus on its contribution.",
       ""
@@ -50,12 +50,20 @@
       "as": "Stock"
     },
     {
-      "calculate": "selectedStock === null ? datum.Stock : (datum.Stock === selectedStock ? selectedStock : 'Others')",
+      "calculate": "selectedStock === null ? datum.Stock : (datum.Stock === selectedStock ? selectedStock : (datum.Stock === 'Rest' ? 'Rest' : 'Other Mag 7'))",
       "as": "Display_Label"
     },
     {
-      "calculate": "selectedStock === null ? (datum.Stock === 'Rest' ? 8 : (datum.Stock === 'NVDA' ? 1 : (datum.Stock === 'AAPL' ? 2 : (datum.Stock === 'MSFT' ? 3 : (datum.Stock === 'AMZN' ? 4 : (datum.Stock === 'GOOGL' ? 5 : (datum.Stock === 'META' ? 6 : 7))))))) : (datum.Stock === selectedStock ? 1 : 2)",
+      "calculate": "selectedStock === null ? (datum.Stock === 'Rest' ? 8 : (datum.Stock === 'NVDA' ? 1 : (datum.Stock === 'AAPL' ? 2 : (datum.Stock === 'MSFT' ? 3 : (datum.Stock === 'AMZN' ? 4 : (datum.Stock === 'GOOGL' ? 5 : (datum.Stock === 'META' ? 6 : 7))))))) : (datum.Stock === selectedStock ? 1 : (datum.Stock === 'Rest' ? 3 : 2))",
       "as": "Order"
+    },
+    {
+      "joinaggregate": [{"op": "sum", "field": "Value", "as": "TotalValue"}],
+      "groupby": ["Date"]
+    },
+    {
+      "calculate": "datum.Value / datum.TotalValue",
+      "as": "Percentage"
     }
   ],
   "mark": "area",
@@ -98,7 +106,7 @@
           "META",
           "TSLA",
           "Rest",
-          "Others"
+          "Other Mag 7"
         ],
         "range": [
           "#1e3a8a",
@@ -123,6 +131,12 @@
         "type": "quantitative",
         "format": "$,.0f",
         "title": "Market Cap ($B)"
+      },
+      {
+        "field": "Percentage",
+        "type": "quantitative",
+        "format": ".1%",
+        "title": "% of Total"
       }
     ]
   },
