@@ -121,8 +121,8 @@
       {
         "field": "Value",
         "type": "quantitative",
-        "format": "$,.2s",
-        "title": "Market Cap"
+        "format": "$,.0f",
+        "title": "Market Cap ($B)"
       }
     ]
   },
