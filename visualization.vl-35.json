@@ -1,0 +1,146 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Great Divergence",
+    "subtitle": [
+      "Stock Performance Indexed (Jan 2023 = 100). The 'Mag 7' have decoupled from the average stock.",
+      "Source: Yahoo Finance",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/example1.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "calculate": "datum.Series === 'Magnificent 7 (Equal Weight)' ? 'Magnificent 7' : datum.Series === 'S&P 500 (Equal Weight)' ? 'S&P 500' : datum.Series",
+      "as": "SeriesClean"
+    }
+  ],
+  "params": [
+    {
+      "name": "seriesHover",
+      "select": {
+        "type": "point",
+        "fields": ["SeriesClean"],
+        "on": "pointerover",
+        "clear": "pointerout"
+      }
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "strokeWidth": 2.5,
+    "point": false,
+    "interpolate": "monotone"
+  },
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "temporal",
+      "title": null,
+      "axis": {"grid": false, "format": "%b %Y"}
+    },
+    "y": {
+      "field": "Indexed_Value",
+      "type": "quantitative",
+      "title": "Performance Index",
+      "scale": {"zero": false},
+      "axis": {
+        "grid": true,
+        "gridDash": [1, 5],
+        "gridOpacity": 0.5,
+        "ticks": false,
+        "labelPadding": 5,
+        "titleAngle": 0,
+        "titleAlign": "left",
+        "titleBaseline": "bottom",
+        "titleX": 0,
+        "titleY": -5
+      }
+    },
+    "color": {
+      "field": "SeriesClean",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": ["Magnificent 7", "S&P 500"],
+        "range": ["#2563eb", "#94a3b8"]
+      },
+      "legend": {
+        "orient": "none",
+        "legendX": 435,
+        "legendY": -16,
+        "direction": "horizontal",
+        "labelLimit": 200
+      }
+    },
+    "opacity": {
+      "condition": {"param": "seriesHover", "value": 1},
+      "value": 0.2
+    },
+    "tooltip": [
+      {
+        "field": "Date",
+        "type": "temporal",
+        "format": "%b %d, %Y",
+        "title": "Date"
+      },
+      {"field": "SeriesClean", "type": "nominal", "title": "Index"},
+      {
+        "field": "Indexed_Value",
+        "type": "quantitative",
+        "format": ".0f",
+        "title": "Value (Rebased)"
+      }
+    ]
+  },
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "line": {"strokeWidth": 2.5},
+    "point": {"filled": true, "size": 60},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "legend": {
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 14,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#1a1a1a",
+      "labelFontSize": 12
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
