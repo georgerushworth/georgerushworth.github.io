@@ -1,0 +1,131 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Valuation Matrix: Growth vs. Price",
+    "subtitle": [
+      "X-Axis: Earnings Growth | Y-Axis: Valuation (P/E) | Bubble Size: Market Cap",
+      "Mag 7 (Blue Palette) vs. S&P 500 (Grey).",
+      ""
+    ],
+    "anchor": "start",
+    "color": "#1a1a1a"
+  },
+  "width": 600,
+  "height": 400,
+  "padding": 20,
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/valuation_bubble_data.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "calculate": "indexof(['MSFT','AAPL','NVDA','AMZN','GOOGL','META','TSLA'], datum.Ticker) >= 0 ? 'Magnificent 7' : 'S&P 500'",
+      "as": "Group"
+    },
+    {"filter": "datum.Growth < 1.5"},
+    {"filter": "datum.PE_Ratio < 150"}
+  ],
+  "params": [
+    {
+      "name": "GroupFilter",
+      "bind": {
+        "input": "select",
+        "options": [null, "Magnificent 7", "S&P 500"],
+        "labels": ["Show All", "Magnificent 7 Only", "Rest of S&P 500"],
+        "name": "Filter View: "
+      }
+    }
+  ],
+  "mark": {
+    "type": "circle",
+    "opacity": 0.9,
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "Growth",
+      "type": "quantitative",
+      "title": "Growth Forecast (Earnings)",
+      "axis": {"format": ".0%", "tickCount": 5},
+      "scale": {"nice": true}
+    },
+    "y": {
+      "field": "PE_Ratio",
+      "type": "quantitative",
+      "title": "Valuation (P/E Ratio)",
+      "scale": {"nice": true}
+    },
+    "size": {
+      "field": "Market_Cap_B",
+      "type": "quantitative",
+      "scale": {"range": [50, 1000]},
+      "legend": null
+    },
+    "order": {"field": "Market_Cap_B", "sort": "descending"},
+    "color": {
+      "condition": {"test": "datum.Group === 'S&P 500'", "value": "#cbd5e1"},
+      "field": "Ticker",
+      "type": "nominal",
+      "scale": {
+        "domain": ["NVDA", "MSFT", "AAPL", "AMZN", "GOOGL", "META", "TSLA"],
+        "range": [
+          "#1e3a8a",
+          "#1d4ed8",
+          "#2563eb",
+          "#3b82f6",
+          "#60a5fa",
+          "#93c5fd",
+          "#bfdbfe"
+        ]
+      },
+      "legend": null
+    },
+    "opacity": {
+      "condition": {
+        "test": "GroupFilter == null || datum.Group == GroupFilter",
+        "value": 0.9
+      },
+      "value": 0.1
+    },
+    "tooltip": [
+      {"field": "Name", "type": "nominal", "title": "Company"},
+      {
+        "field": "PE_Ratio",
+        "type": "quantitative",
+        "title": "P/E Ratio",
+        "format": ".1f"
+      },
+      {
+        "field": "Growth",
+        "type": "quantitative",
+        "format": ".1%",
+        "title": "Growth"
+      },
+      {
+        "field": "Market_Cap_B",
+        "type": "quantitative",
+        "format": "$,.0f",
+        "title": "Cap ($B)"
+      }
+    ]
+  },
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "axis": {
+      "labelColor": "#676A86",
+      "titleColor": "#676A86",
+      "grid": true,
+      "gridDash": [1, 5]
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
