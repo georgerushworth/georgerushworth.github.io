@@ -10,7 +10,7 @@
     "anchor": "start"
   },
   "width": 600,
-  "height": 450,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/valuation_bubble_data.csv",
     "format": {"type": "csv"}
