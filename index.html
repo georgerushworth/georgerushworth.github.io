@@ -14,17 +14,16 @@
     
     <meta property="og:title" content="Home | George Rushworth">
     <meta property="og:description" content="A portfolio of data visualisation and economic analysis projects">
-    
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
+
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
-    <style>
+
+<style>
     :root {
         --bs-body-font-family: 'Instrument Serif', serif;
         --bs-font-sans-serif: 'Instrument Sans', sans-serif;
         --accent-color: #2563eb; /* Matches your charts */
+        --text-grey: #64748b;
     }
     
     body {
@@ -34,6 +33,7 @@
     
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Instrument Serif', serif !important;
+        color: #1a1a1a;
     }
     
     .navbar-brand, .navbar-brand span {
@@ -48,18 +48,24 @@
         font-family: 'Instrument Sans', sans-serif !important;
         font-size: 1.15rem;
         line-height: 1.7;
+        color: #334155;
     }
     
-    footer a {
+    footer, footer a {
         font-family: 'Instrument Sans', sans-serif !important;
+        color: var(--text-grey) !important;
+        text-decoration: none;
+    }
+    footer a:hover {
+        color: var(--accent-color) !important;
     }
     
-    /* --- NEW TILE STYLES (Added to your existing CSS) --- */
+    /* --- TILE GRID STYLES --- */
     .chart-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 25px;
-        margin: 40px 0;
+        gap: 30px;
+        margin: 20px 0 60px 0; /* Added bottom margin for spacing */
     }
     
     @media (max-width: 992px) {
@@ -95,16 +101,15 @@
 
     .card-tag {
         font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: var(--accent-color);
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         display: block;
     }
 
-    /* Ensure card titles match your serif theme */
     .project-card h4 {
         font-family: 'Instrument Serif', serif !important;
         font-size: 1.5rem;
@@ -119,74 +124,94 @@
         margin: 0;
         line-height: 1.5;
     }
+    
+    /* Small separator line */
+    .separator {
+        border-top: 1px solid #e2e8f0;
+        margin: 40px 0;
+    }
 </style>
 
     <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
         <div class="container-fluid d-flex justify-content-between">
             <a class="navbar-brand pe-md-4 fs-4 text-center" href="index.html">
-<span class="ms-md-1 mt-1 fw-bolder me-md-5" style="font-family: 'Instrument Serif', serif !important;">George Rushworth</span>
+                <span class="ms-md-1 mt-1 fw-bolder me-md-5" style="font-family: 'Instrument Serif', serif !important;">George Rushworth</span>
             </a>
             <div class="d-flex align-items-center">
-                <a href="index.html" aria-label="Home" class="fs-6 link-fancy me-2">
-                    Home </a>
-               <span class="mx-2">|</span>
-                <a href="portfolio.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">
-                    Portfolio </a>
-                 <span class="mx-2">|</span>
-                <a href="project.html" aria-label="Project" class="fs-6 link-fancy me-2">
-                    Project </a>
+                <a href="index.html" aria-label="Home" class="fs-6 link-fancy me-2">Home</a>
                 <span class="mx-2">|</span>
-                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">
-                    GitHub </a>
+                <a href="portfolio.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">Portfolio</a>
                 <span class="mx-2">|</span>
-                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">
-                    LinkedIn
-                </a>
+                <a href="project.html" aria-label="Project" class="fs-6 link-fancy me-2">Project</a>
+                <span class="mx-2">|</span>
+                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">GitHub</a>
+                <span class="mx-2">|</span>
+                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">LinkedIn</a>
             </div>
         </div>
     </nav>
+
     <main class="container py-vh-3">
         <div class="row d-flex justify-content-center text-center">
+            
             <div class="col-12 col-lg-10 col-xl-8">
-<h1 class="display-large fw-bold">Welcome to My Website</h1>
-                <p class="lead pt-2 py-vh-2"> This collection showcases work for PP434: Automated Data Visualisation for Policymaking, taught by Professor Richard Davies.</p>
+                <h1 class="display-large fw-bold">Welcome to My Website</h1>
+                <p class="lead pt-2 py-vh-2">This collection showcases work for PP434: Automated Data Visualisation for Policymaking, taught by Professor Richard Davies.</p>
             </div>
             
             <div class="row d-flex justify-content-center text-start">
                 <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
-                <h3 style="text-align: center; font-weight: bold;">About</h3>
+                    <h3 style="text-align: center; font-weight: bold;">About</h3>
+                    
+                    <p style="text-align: justify;">I'm George, an MSc student at LSE studying Inequalities and Social Science. I completed my BSc studies in July 2025 at LSE, where I studied International Social and Public Policy and Economics.</p>
+                    
+                    <p style="text-align: justify;">My main area of interest is wealth inequality and, more specifically, whether tax-efficient investment accounts (ISAs in the UK context) can bridge the divide.</p>
+                    
+                    <p style="text-align: justify; font-size: 1rem; color: #64748b;">
+                        <b>Technical Skills:</b> Python (Pandas, Scraper, Sklearn), Vega-Lite, HTML/CSS, APIs, and GeoJSON mapping.
+                    </p>
 
-                  <p style="text-align: justify;"> I'm George, and I'm an MSc student at LSE studying Inequalities and Social Science. I completed my BSc studies in July 2025 at LSE, where I studied International Social and Public Policy and Economics.</p>
-        
-        <p style="text-align: justify;">My main area of interest is wealth inequality and, more specifically, whether tax efficient investment accounts (ISAs in the UK context) can bridge the divide.</p>
-        
-        <div class="chart-grid">
-            
-            <a href="project.html" class="project-card">
-                <span class="card-tag">Research Project</span>
-                <h4>The Two Cycles of AI</h4>
-                <p>A rigorous analysis disentangling the speculative financial bubble from the technological utility of AI. Features 8 interactive charts, custom news scraping, and ML analysis.</p>
-            </a>
+                    <div class="separator"></div>
 
-            <a href="portfolio.html" class="project-card">
-                <span class="card-tag">Portfolio</span>
-                <h4>Data Visualisation Tasks</h4>
-                <p>A curated collection of weekly coding challenges for PP434. Includes API integration, loops, data cleaning pipelines, and map visualisations using Vega-Lite.</p>
-            </a>
+                    <h3 style="text-align: center; font-weight: bold; margin-bottom: 30px;">Selected Work</h3>
 
-            <a href="https://github.com/georgerushworth/georgerushworth.github.io" class="project-card">
-                <span class="card-tag">Source Code</span>
-                <h4>GitHub Repository</h4>
-                <p>Full transparency: Access the raw Python scripts, scraped datasets, and JSON specifications used to build this analysis. Fully reproducible and open source.</p>
-            </a>
+                    <div class="chart-grid">
+                        
+                        <a href="project.html" class="project-card">
+                            <span class="card-tag">Research Project</span>
+                            <h4>The Two Cycles of AI</h4>
+                            <p>A rigorous analysis disentangling the speculative financial bubble from the technological utility of AI. Features 8 interactive charts and ML analysis.</p>
+                        </a>
 
-        </div>
-        </div>
-</div>
+                        <a href="portfolio.html" class="project-card">
+                            <span class="card-tag">Portfolio</span>
+                            <h4>Data Visualisation Tasks</h4>
+                            <p>A curated collection of weekly coding challenges for PP434. Includes API integration, loops, data cleaning pipelines, and map visualisations.</p>
+                        </a>
 
-                </div>
+                        <a href="https://github.com/georgerushworth/georgerushworth.github.io" class="project-card">
+                            <span class="card-tag">Source Code</span>
+                            <h4>GitHub Repository</h4>
+                            <p>Full transparency: Access the raw Python scripts, scraped datasets, and JSON specifications used to build this analysis.</p>
+                        </a>
+
+                    </div>
+                    </div>
             </div>
         </div>
     </main>
+
+    <footer class="container py-4 border-top">
+        <div class="row">
+            <div class="col-12 text-center small">
+                <p class="mb-1">© 2025 George Rushworth</p>
+                <p class="mb-0">
+                    <a href="https://github.com/georgerushworth/georgerushworth.github.io" class="me-2">GitHub</a> 
+                    <a href="https://www.linkedin.com/in/grushworth/">LinkedIn</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
