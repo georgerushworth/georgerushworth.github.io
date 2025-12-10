@@ -5,125 +5,176 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Home | George Rushworth</title>
     
-    <!-- Link to Google Fonts - LOAD THIS FIRST -->
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     
-    <!-- Theme CSS loads second -->
     <link rel="stylesheet" href="theme.css">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="alternate icon" href="favicon.svg">
     
-    <!-- Open Graph meta tags -->
     <meta property="og:title" content="Home | George Rushworth">
     <meta property="og:description" content="A portfolio of data visualization and economic analysis projects">
     
-    <!-- Vega and Vega-Lite for visualizations -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
-    <!-- Inline style to override everything - placed right at top of body -->
-<style>
-    :root {
-        --bs-body-font-family: 'Instrument Serif', serif;
-        --bs-font-sans-serif: 'Instrument Sans', sans-serif;
-    }
     
-    body {
-        background-color: #F8FAFC;
-        font-family: 'Instrument Sans', sans-serif !important;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    
-    .navbar-brand, .navbar-brand span {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    
-    nav a, nav a.link-fancy, .link-fancy, .display-6 {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    
-    p, li, blockquote {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 1.15rem;
-        line-height: 1.7;
-    }
-    
-    footer a {
-        font-family: 'Instrument Sans', sans-serif !important;
-    }
-    
-    .chart-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        margin: 20px 0;
-    }
-    @media (max-width: 992px) {
-        .chart-grid {
-            grid-template-columns: repeat(2, 1fr);
+    <style>
+        :root {
+            --bs-body-font-family: 'Instrument Serif', serif;
+            --bs-font-sans-serif: 'Instrument Sans', sans-serif;
+            --accent-color: #2563eb; /* Matches your blue charts */
         }
-    }
-    @media (max-width: 576px) {
-        .chart-grid {
-            grid-template-columns: 1fr;
+        
+        body {
+            background-color: #F8FAFC;
+            font-family: 'Instrument Sans', sans-serif !important;
         }
-    }
-</style>
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        .navbar-brand, .navbar-brand span {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        nav a, nav a.link-fancy, .link-fancy, .display-6 {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        p, li, blockquote {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+        
+        footer a {
+            font-family: 'Instrument Sans', sans-serif !important;
+        }
+        
+        /* --- YOUR GRID LAYOUT --- */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        @media (max-width: 992px) {
+            .chart-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 576px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- NEW CARD STYLES (Added Only) --- */
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none; /* Removes link underline */
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--accent-color);
+        }
+
+        .card-tag {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Ensure card titles match your serif theme */
+        .project-card h4 {
+            font-family: 'Instrument Serif', serif !important;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin: 0 0 10px 0;
+        }
+
+        .project-card p {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 1rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
 
     <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
         <div class="container-fluid d-flex justify-content-between">
-            <!-- Left side - Name/Home link -->
             <a class="navbar-brand pe-md-4 fs-4 text-center" href="index.html">
-<span class="ms-md-1 mt-1 fw-bolder me-md-5" style="font-family: 'Instrument Serif', serif !important;">George Rushworth</span>
+                <span class="ms-md-1 mt-1 fw-bolder me-md-5" style="font-family: 'Instrument Serif', serif !important;">George Rushworth</span>
             </a>
-            <!-- Right side - Social links -->
             <div class="d-flex align-items-center">
-                <a href="https://georgerushworth.github.io/index.html" aria-label="Home" class="fs-6 link-fancy me-2">
-                    Home </a>
-               <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/portfolio.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">
-                    Portfolio </a>
-                 <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/project.html" aria-label="Project" class="fs-6 link-fancy me-2">
-                    Project </a>
+                <a href="index.html" aria-label="Home" class="fs-6 link-fancy me-2">Home</a>
                 <span class="mx-2">|</span>
-                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">
-                    GitHub </a>
+                <a href="portfolio.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">Portfolio</a>
                 <span class="mx-2">|</span>
-                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">
-                    LinkedIn
-                </a>
+                <a href="project.html" aria-label="Project" class="fs-6 link-fancy me-2">Project</a>
+                <span class="mx-2">|</span>
+                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">GitHub</a>
+                <span class="mx-2">|</span>
+                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">LinkedIn</a>
             </div>
         </div>
     </nav>
+
     <main class="container py-vh-3">
         <div class="row d-flex justify-content-center text-center">
             <div class="col-12 col-lg-10 col-xl-8">
-<h1 class="display-large fw-bold">Welcome to My Website</h1>
-                <p class="lead pt-2 py-vh-2"> This collection showcases work for PP434: Automated Data Visualisation for Policymaking, taught by Professor Richard Davies.</p>
+                <h1 class="display-large fw-bold">Welcome to My Website</h1>
+                <p class="lead pt-2 py-vh-2">This collection showcases work for PP434: Automated Data Visualisation for Policymaking, taught by Professor Richard Davies.</p>
             </div>
             
             <div class="row d-flex justify-content-center text-start">
                 <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
-                <h3 style="text-align: center; font-weight: bold;">About</h3>
+                    <h3 style="text-align: center; font-weight: bold;">About</h3>
+                    <p style="text-align: justify;">I'm George, and I'm an MSc student at LSE studying Inequalities and Social Science. I completed my BSc studies in July 2025 at LSE, where I studied International Social and Public Policy and Economics.</p>
+                    <p style="text-align: justify;">My main area of interest is wealth inequality and, more specifically, whether tax efficient investment accounts (ISAs in the UK context) can bridge the divide.</p>
+                    
+                    <div class="chart-grid">
+                        
+                        <a href="project.html" class="project-card">
+                            <span class="card-tag">Research Project</span>
+                            <h4>The Two Cycles of AI</h4>
+                            <p>Disentangling the speculative financial bubble from the technological utility. Features 8 interactive charts and ML analysis.</p>
+                        </a>
 
-                  <p style="text-align: justify;"> I'm George, and I'm an MSc student at LSE studying Inequalities and Social Science. I completed my BSc studies in July 2025 at LSE, where I studied International Social and Public Policy and Economics.</p>
-        
-        <p style="text-align: justify;">My main area of interest is wealth inequality and, more specifically, whether tax efficient investment accounts (ISAs in the UK context) can bridge the divide.</p>
-    </div>
-</div>
+                        <a href="portfolio.html" class="project-card">
+                            <span class="card-tag">Coursework</span>
+                            <h4>Data Portfolio</h4>
+                            <p>Weekly coding challenges covering APIs, loops, data cleaning, and map visualizations using Vega-Lite.</p>
+                        </a>
 
+                        <a href="https://github.com/georgerushworth/georgerushworth.github.io" class="project-card">
+                            <span class="card-tag">Source Code</span>
+                            <h4>GitHub Repository</h4>
+                            <p>Access the raw Python scripts, scraped datasets, and JSON specifications used in my analysis.</p>
+                        </a>
 
-<!-- Add content here -->
-
-                </div>
+                    </div>
+                    </div>
             </div>
         </div>
     </main>
