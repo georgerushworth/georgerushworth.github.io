@@ -1,6 +1,69 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json",
+  "title": {
+    "text": "The $200bn Gamble: Spending vs. Earning",
+    "subtitle": ["2025 TTM Estimates. Red = Spend, Green = Revenue."],
+    "anchor": "start",
+    "offset": 20
+  },
+  "width": 220,
+  "height": 120,
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/ai_gap_data.csv"
+  },
+  "facet": {
+    "field": "company", 
+    "type": "nominal",
+    "header": {
+      "title": null,
+      "labelFontSize": 14,
+      "labelFont": "Instrument Sans",
+      "labelFontWeight": 600
+    }
+  },
   "columns": 2,
+  "spec": {
+    "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+    "encoding": {
+      "x": {
+        "field": "metric",
+        "type": "nominal",
+        "title": null,
+        "axis": {
+          "labelAngle": 0,
+          "labelFont": "Instrument Sans, sans-serif",
+          "labelFontSize": 11,
+          "labelColor": "#676A86"
+        }
+      },
+      "y": {
+        "field": "value",
+        "type": "quantitative",
+        "title": null,
+        "axis": {
+          "format": "$.0f",
+          "tickCount": 3,
+          "gridColor": "#676A86",
+          "gridDash": [2, 2],
+          "gridOpacity": 0.5,
+          "labelFont": "Instrument Sans, sans-serif",
+          "labelColor": "#676A86"
+        }
+      },
+      "color": {
+        "field": "metric",
+        "type": "nominal",
+        "scale": {"domain": ["Spend", "Earn"], "range": ["#ef4444", "#10b981"]},
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "company", "title": "Company"},
+        {"field": "metric", "title": "Type"},
+        {"field": "value", "title": "Billions", "format": "$.1f"}
+      ]
+    }
+  },
+  "resolve": {"scale": {"y": "shared"}},
   "config": {
     "axis": {
       "domainColor": "#676A86",
@@ -40,69 +103,7 @@
       "subtitleFontSize": 14
     },
     "view": {
-      "continuousHeight": 300,
-      "continuousWidth": 300,
       "stroke": "transparent"
     }
-  },
-  "data": {
-    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/ai_gap_data.csv"
-  },
-  "facet": {
-    "column": {
-      "field": "company",
-      "header": {
-        "labelFont": "Instrument Sans",
-        "labelFontSize": 14,
-        "title": null
-      },
-      "type": "nominal"
-    }
-  },
-  "spacing": 40,
-  "spec": {
-    "encoding": {
-      "color": {
-        "field": "metric",
-        "legend": null,
-        "scale": {"domain": ["Spend", "Earn"], "range": ["#ef4444", "#10b981"]},
-        "type": "nominal"
-      },
-      "tooltip": [
-        {"field": "company", "title": "Company", "type": "nominal"},
-        {"field": "metric", "title": "Type", "type": "nominal"},
-        {
-          "field": "value",
-          "format": "$.1f",
-          "title": "Billions",
-          "type": "quantitative"
-        }
-      ],
-      "x": {
-        "axis": {"labelAngle": 0},
-        "field": "metric",
-        "title": null,
-        "type": "nominal"
-      },
-      "y": {
-        "axis": {"format": "$.0f", "tickCount": 3},
-        "field": "value",
-        "title": null,
-        "type": "quantitative"
-      }
-    },
-    "height": 120,
-    "mark": {
-      "cornerRadiusTopLeft": 3,
-      "cornerRadiusTopRight": 3,
-      "type": "bar"
-    },
-    "width": 220
-  },
-  "title": {
-    "anchor": "start",
-    "offset": 20,
-    "subtitle": ["2025 TTM Estimates. Red = Spend, Green = Revenue."],
-    "text": ["The $200bn Gamble: Spending vs. Earning"]
   }
 }
