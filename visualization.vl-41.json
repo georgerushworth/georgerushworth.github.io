@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "US State AI Adoption Interest (Total Score)",
+    "subtitle": [
+      "Higher score = greater interest in AI jobs + higher business intent to adopt AI",
+      "Source: Bookipi (2025) via Google Keyword Planner & BTOS",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://vega.github.io/vega-lite/data/us-10m.json",
+    "format": {"type": "topojson", "feature": "states"}
+  },
+  "projection": {"type": "albersUsa"},
+  "transform": [
+    {
+      "lookup": "id",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/ai_states.csv",
+          "format": {"type": "csv"}
+        },
+        "key": "id",
+        "fields": ["ai_score", "state_abbr", "full_state"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+  "encoding": {
+    "color": {
+      "field": "ai_score",
+      "type": "quantitative",
+      "scale": {"scheme": "greenblue", "domain": [0, 100]},
+      "legend": {
+        "title": "AI Adoption Score",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 300
+      }
+    },
+    "tooltip": [
+      {"field": "full_state", "type": "nominal", "title": "State"},
+      {
+        "field": "ai_score",
+        "type": "quantitative",
+        "title": "AI Score",
+        "format": ".1f"
+      }
+    ]
+  },
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "legend": {
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 14,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Instrument Sans, sans-serif"
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
