@@ -1,0 +1,52 @@
+,,,
+id,state_abbr,full_state,ai_score
+24,MD,Maryland,99.6
+6,CA,California,96.14
+25,MA,Massachusetts,94.31
+34,NJ,New Jersey,93.45
+36,NY,New York,87.81
+8,CO,Colorado,86.12
+51,VA,Virginia,84.98
+13,GA,Georgia,80.04
+53,WA,Washington,79.45
+48,TX,Texas,79.32
+17,IL,Illinois,76.41
+37,NC,North Carolina,76.11
+12,FL,Florida,73.28
+4,AZ,Arizona,71.74
+10,DE,Delaware,70.52
+32,NV,Nevada,69.44
+49,UT,Utah,69.25
+41,OR,Oregon,67.59
+27,MN,Minnesota,64.04
+42,PA,Pennsylvania,62.66
+9,CT,Connecticut,62.44
+44,RI,Rhode Island,61.27
+16,ID,Idaho,57.64
+26,MI,Michigan,56.61
+29,MO,Missouri,55.99
+39,OH,Ohio,55.24
+47,TN,Tennessee,54.69
+33,NH,New Hampshire,53.26
+56,WY,Wyoming,50.52
+20,KS,Kansas,50.51
+45,SC,South Carolina,48.76
+30,MT,Montana,48.06
+15,HI,Hawaii,46.82
+55,WI,Wisconsin,46.48
+18,IN,Indiana,45.72
+1,AL,Alabama,42.04
+31,NE,Nebraska,40.96
+19,IA,Iowa,40.1
+2,AK,Alaska,39.66
+35,NM,New Mexico,39.3
+50,VT,Vermont,38.49
+40,OK,Oklahoma,36.39
+21,KY,Kentucky,31.44
+23,ME,Maine,29.93
+46,SD,South Dakota,28.09
+22,LA,Louisiana,27.53
+5,AR,Arkansas,20.06
+38,ND,North Dakota,18.91
+54,WV,West Virginia,6.93
+28,MS,Mississippi,3.56
