@@ -188,4 +188,89 @@
 
 
 
+
+
+
+
+
+
+
+          // --- CHART 6: CAPEX DASHBOARD LOGIC ---
+
+// 1. Define the Companies to Loop Through
+const capex_series = [
+    { name: 'Microsoft', title: 'Microsoft' },
+    { name: 'Alphabet', title: 'Google (Alphabet)' },
+    { name: 'Amazon', title: 'Amazon' },
+    { name: 'Meta', title: 'Meta' }
+];
+
+// 2. The Loop
+capex_series.forEach((item, index) => {
+    
+    // Create the container dynamically
+    const container = document.createElement('figure');
+    container.id = `capex_chart_${index}`;
+    document.getElementById('capex_dashboard').appendChild(container);
+
+    // Define the Vega-Lite Spec
+    const spec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "width": "container", // Responsive width
+        "height": 150,
+        "title": {
+            "text": item.title,
+            "font": "Instrument Sans, sans-serif",
+            "fontSize": 14,
+            "fontWeight": 600,
+            "anchor": "start",
+            "color": "#1a1a1a"
+        },
+        "data": {
+            // Your GitHub Raw URL for the CSV
+            "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/ai_gap_data.csv"
+        },
+        // FILTER: Isolate the specific company for this iteration
+        "transform": [
+            {"filter": `datum.company == '${item.name}'`}
+        ],
+        "encoding": {
+            "x": {
+                "field": "metric",
+                "type": "nominal",
+                "title": null,
+                "axis": {"labelFont": "Instrument Sans", "labelFontSize": 11, "labelColor": "#64748b"}
+            },
+            "y": {
+                "field": "value",
+                "type": "quantitative",
+                "title": null,
+                "axis": {"grid": true, "tickCount": 3, "labelColor": "#64748b"}
+            },
+            "color": {
+                "field": "metric",
+                "type": "nominal",
+                "scale": {"domain": ["Spend", "Earn"], "range": ["#ef4444", "#10b981"]},
+                "legend": null
+            },
+            "tooltip": [
+                {"field": "company", "title": "Company"},
+                {"field": "metric", "title": "Type"},
+                {"field": "value", "title": "Billions", "format": "$.1f"}
+            ]
+        },
+        "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+        "config": {
+            "font": "Instrument Sans, sans-serif",
+            "view": {"stroke": "transparent"},
+            "background": "transparent"
+        }
+    };
+
+    // Embed the chart
+    vegaEmbed(`#capex_chart_${index}`, spec, {actions: false}).catch(console.error);
+});
+
+
+
     </script>
