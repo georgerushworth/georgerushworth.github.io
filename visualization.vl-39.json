@@ -123,7 +123,7 @@
       "y": {
         "axis": {
           "format": "$.0f",
-          "tickCount": 3
+          "tickCount": 5
         },
         "field": "value",
         "title": null,
