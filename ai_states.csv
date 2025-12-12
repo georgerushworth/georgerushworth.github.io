@@ -1,4 +1,3 @@
-,,,
 id,state_abbr,full_state,ai_score
 24,MD,Maryland,99.6
 6,CA,California,96.14
@@ -49,4 +48,5 @@ id,state_abbr,full_state,ai_score
 5,AR,Arkansas,20.06
 38,ND,North Dakota,18.91
 54,WV,West Virginia,6.93
+
 28,MS,Mississippi,3.56
