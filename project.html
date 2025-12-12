@@ -130,6 +130,48 @@
                                         <figure id="Location4"></figure>
 
 
+
+
+                        <div class="project-card" style="width: 100%; max-width: 1000px; margin: 0 auto;">
+    <span class="card-tag">Fundamental Analysis</span>
+    <h3>The $200bn Gamble: Spending vs. Earning</h3>
+    <p style="margin-bottom: 20px; color: #64748b;">
+        Comparing 2025 TTM Infrastructure Spend (<span style="color: #ef4444; font-weight: 600;">Red</span>) 
+        vs. Implied AI Revenue (<span style="color: #10b981; font-weight: 600;">Green</span>).
+    </p>
+
+    <div id="capex_dashboard" class="dashboard-grid"></div>
+
+    <p style="margin-top: 20px; font-size: 0.9rem; color: #94a3b8; line-height: 1.4;">
+        <strong>Methodology:</strong> Data reflects Trailing Twelve Month (TTM) Capital Expenditure fetched via the Yahoo Finance API. 
+        "Implied Revenue" is modelled using the <a href="https://www.sequoiacap.com/article/ai-600b-question/" target="_blank" style="color: #2563eb; text-decoration: none;">Sequoia Standard</a> assumption (~15% of infrastructure spend).
+    </p>
+</div>
+
+<style>
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-responsive */
+        gap: 20px;
+        width: 100%;
+    }
+
+    .dashboard-grid figure {
+        margin: 0;
+        border: 1px solid #f1f5f9;
+        border-radius: 8px;
+        padding: 15px;
+        background: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+</style>
+
+
+
+
+                        
+
+
                     
       <script>
         let figure_1_spec = "visualization.vl-31.json"; 
