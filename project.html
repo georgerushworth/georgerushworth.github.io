@@ -130,41 +130,50 @@
                                         <figure id="Location4"></figure>
 
 
-
-
-                        <div class="project-card" style="width: 100%; max-width: 1000px; margin: 0 auto;">
+<div class="project-card" style="width: 100%; max-width: 900px; margin: 0 auto;">
     <span class="card-tag">Fundamental Analysis</span>
     <h3>The $200bn Gamble: Spending vs. Earning</h3>
-    <p style="margin-bottom: 20px; color: #64748b;">
+    <p style="margin-bottom: 25px; color: #64748b;">
         Comparing 2025 TTM Infrastructure Spend (<span style="color: #ef4444; font-weight: 600;">Red</span>) 
         vs. Implied AI Revenue (<span style="color: #10b981; font-weight: 600;">Green</span>).
     </p>
 
     <div id="capex_dashboard" class="dashboard-grid"></div>
 
-    <p style="margin-top: 20px; font-size: 0.9rem; color: #94a3b8; line-height: 1.4;">
+    <p style="margin-top: 25px; font-size: 0.85rem; color: #94a3b8; line-height: 1.5; border-top: 1px solid #f1f5f9; padding-top: 15px;">
         <strong>Methodology:</strong> Data reflects Trailing Twelve Month (TTM) Capital Expenditure fetched via the Yahoo Finance API. 
-        "Implied Revenue" is modelled using the <a href="https://www.sequoiacap.com/article/ai-600b-question/" target="_blank" style="color: #2563eb; text-decoration: none;">Sequoia Standard</a> assumption (~15% of infrastructure spend).
+        "Implied Revenue" is modelled using the <a href="https://www.sequoiacap.com/article/ai-600b-question/" target="_blank" style="color: #64748b; text-decoration: underline;">Sequoia Standard</a> assumption (~15% of infrastructure spend).
     </p>
 </div>
 
 <style>
     .dashboard-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-responsive */
+        /* FORCE 2 COLUMNS: 1fr 1fr */
+        grid-template-columns: 1fr 1fr; 
         gap: 20px;
         width: 100%;
     }
 
+    /* Mobile Responsive: Stack to 1 column on small screens */
+    @media (max-width: 600px) {
+        .dashboard-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
     .dashboard-grid figure {
         margin: 0;
-        border: 1px solid #f1f5f9;
-        border-radius: 8px;
-        padding: 15px;
-        background: white;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        border: 1px solid #f1f5f9; /* Subtle border matching your style */
+        border-radius: 6px;
+        padding: 20px 15px 5px 15px;
+        background: #F8FAFC; /* Matches your chart background */
     }
 </style>
+
+
+
+                    
 
 
 
@@ -189,15 +198,8 @@
 
 
 
+// --- CHART 6: CAPEX DASHBOARD LOGIC ---
 
-
-
-
-
-
-          // --- CHART 6: CAPEX DASHBOARD LOGIC ---
-
-// 1. Define the Companies to Loop Through
 const capex_series = [
     { name: 'Microsoft', title: 'Microsoft' },
     { name: 'Alphabet', title: 'Google (Alphabet)' },
@@ -205,32 +207,26 @@ const capex_series = [
     { name: 'Meta', title: 'Meta' }
 ];
 
-// 2. The Loop
 capex_series.forEach((item, index) => {
     
-    // Create the container dynamically
+    // Create container
     const container = document.createElement('figure');
     container.id = `capex_chart_${index}`;
     document.getElementById('capex_dashboard').appendChild(container);
 
-    // Define the Vega-Lite Spec
+    // Vega-Lite Spec
     const spec = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": "container", // Responsive width
-        "height": 150,
+        "width": "container",
+        "height": 120, // Compact height for dashboard
         "title": {
             "text": item.title,
-            "font": "Instrument Sans, sans-serif",
-            "fontSize": 14,
-            "fontWeight": 600,
             "anchor": "start",
-            "color": "#1a1a1a"
+            "offset": 10
         },
         "data": {
-            // Your GitHub Raw URL for the CSV
             "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/ai_gap_data.csv"
         },
-        // FILTER: Isolate the specific company for this iteration
         "transform": [
             {"filter": `datum.company == '${item.name}'`}
         ],
@@ -239,13 +235,20 @@ capex_series.forEach((item, index) => {
                 "field": "metric",
                 "type": "nominal",
                 "title": null,
-                "axis": {"labelFont": "Instrument Sans", "labelFontSize": 11, "labelColor": "#64748b"}
+                "axis": {
+                    "labelFont": "Instrument Sans, sans-serif",
+                    "labelFontSize": 11,
+                    "labelColor": "#676A86"
+                }
             },
             "y": {
                 "field": "value",
                 "type": "quantitative",
                 "title": null,
-                "axis": {"grid": true, "tickCount": 3, "labelColor": "#64748b"}
+                "axis": {
+                    "format": "$.0f", // Clean format ($20)
+                    "tickCount": 3
+                }
             },
             "color": {
                 "field": "metric",
@@ -260,16 +263,54 @@ capex_series.forEach((item, index) => {
             ]
         },
         "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+        
+        // YOUR CUSTOM CONFIGURATION
         "config": {
             "font": "Instrument Sans, sans-serif",
             "view": {"stroke": "transparent"},
-            "background": "transparent"
+            "background": "#F8FAFC",
+            "axis": {
+                "labelColor": "#676A86",
+                "labelFontSize": 11,
+                "labelFont": "Instrument Sans, sans-serif",
+                "labelOpacity": 0.7,
+                "tickColor": "#676A86",
+                "tickOpacity": 0.5,
+                "domainColor": "#676A86",
+                "domainOpacity": 0.5,
+                "gridColor": "#676A86",
+                "gridDash": [2, 2],
+                "gridOpacity": 0.5,
+                "titleColor": "#676A86",
+                "titleOpacity": 0.8,
+                "tickSize": 4
+            },
+            "axisX": {
+                "gridColor": "#676A86",
+                "gridDash": [1, 5],
+                "gridOpacity": 0.5,
+                "ticks": false
+            },
+            "axisY": {
+                "gridColor": "#676A86",
+                "gridDash": [1, 5],
+                "gridOpacity": 0.5,
+                "ticks": false
+            },
+            "title": {
+                "font": "Instrument Sans, sans-serif",
+                "fontSize": 14, // Adjusted for small multiples
+                "fontWeight": 600,
+                "color": "#1a1a1a",
+                "subtitleFontSize": 12,
+                "subtitleColor": "#676A86"
+            }
         }
     };
 
-    // Embed the chart
     vegaEmbed(`#capex_chart_${index}`, spec, {actions: false}).catch(console.error);
 });
+
 
 
 
