@@ -13,21 +13,33 @@
   "config": {
     "font": "Instrument Sans, sans-serif",
     "background": "#F8FAFC",
-    "view": {"stroke": "transparent"}
+    "view": {
+      "stroke": "transparent"
+    }
   },
   "vconcat": [
     {
       "width": 600,
-      "height": 350,
+      "height": 230,
       "data": {
         "url": "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data/world-countries.json",
-        "format": {"type": "json", "property": "features"}
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
       },
-      "transform": [{"filter": "datum.properties.name != 'Antarctica'"}],
+      "transform": [
+        {
+          "filter": "datum.properties.name != 'Antarctica'"
+        }
+      ],
       "projection": {
         "type": "equalEarth",
         "scale": 100,
-        "translate": [200, 160]
+        "translate": [
+          220,
+          130
+        ]
       },
       "layer": [
         {
@@ -45,53 +57,163 @@
               "from": {
                 "data": {
                   "values": [
-                    {"country": "United States of America", "investment": 471},
-                    {"country": "China", "investment": 119},
-                    {"country": "United Kingdom", "investment": 28},
-                    {"country": "Canada", "investment": 15},
-                    {"country": "Israel", "investment": 15},
-                    {"country": "Germany", "investment": 13},
-                    {"country": "India", "investment": 11},
-                    {"country": "France", "investment": 11},
-                    {"country": "South Korea", "investment": 9},
-                    {"country": "Singapore", "investment": 7},
-                    {"country": "Sweden", "investment": 7},
-                    {"country": "Japan", "investment": 6},
-                    {"country": "Australia", "investment": 4},
-                    {"country": "Switzerland", "investment": 4},
-                    {"country": "United Arab Emirates", "investment": 4},
-                    {"country": "Hong Kong", "investment": 4},
-                    {"country": "Netherlands", "investment": 3},
-                    {"country": "Spain", "investment": 3},
-                    {"country": "Austria", "investment": 2},
-                    {"country": "Brazil", "investment": 2},
-                    {"country": "Ireland", "investment": 2},
-                    {"country": "Argentina", "investment": 2},
-                    {"country": "Italy", "investment": 1},
-                    {"country": "Finland", "investment": 1},
-                    {"country": "Belgium", "investment": 1},
-                    {"country": "Taiwan", "investment": 1},
-                    {"country": "Turkey", "investment": 1},
-                    {"country": "Mexico", "investment": 1},
-                    {"country": "Denmark", "investment": 1},
-                    {"country": "Portugal", "investment": 1},
-                    {"country": "Norway", "investment": 1},
-                    {"country": "Chile", "investment": 1},
-                    {"country": "Lithuania", "investment": 1}
+                    {
+                      "country": "United States of America",
+                      "investment": 471
+                    },
+                    {
+                      "country": "China",
+                      "investment": 119
+                    },
+                    {
+                      "country": "United Kingdom",
+                      "investment": 28
+                    },
+                    {
+                      "country": "Canada",
+                      "investment": 15
+                    },
+                    {
+                      "country": "Israel",
+                      "investment": 15
+                    },
+                    {
+                      "country": "Germany",
+                      "investment": 13
+                    },
+                    {
+                      "country": "India",
+                      "investment": 11
+                    },
+                    {
+                      "country": "France",
+                      "investment": 11
+                    },
+                    {
+                      "country": "South Korea",
+                      "investment": 9
+                    },
+                    {
+                      "country": "Singapore",
+                      "investment": 7
+                    },
+                    {
+                      "country": "Sweden",
+                      "investment": 7
+                    },
+                    {
+                      "country": "Japan",
+                      "investment": 6
+                    },
+                    {
+                      "country": "Australia",
+                      "investment": 4
+                    },
+                    {
+                      "country": "Switzerland",
+                      "investment": 4
+                    },
+                    {
+                      "country": "United Arab Emirates",
+                      "investment": 4
+                    },
+                    {
+                      "country": "Hong Kong",
+                      "investment": 4
+                    },
+                    {
+                      "country": "Netherlands",
+                      "investment": 3
+                    },
+                    {
+                      "country": "Spain",
+                      "investment": 3
+                    },
+                    {
+                      "country": "Austria",
+                      "investment": 2
+                    },
+                    {
+                      "country": "Brazil",
+                      "investment": 2
+                    },
+                    {
+                      "country": "Ireland",
+                      "investment": 2
+                    },
+                    {
+                      "country": "Argentina",
+                      "investment": 2
+                    },
+                    {
+                      "country": "Italy",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Finland",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Belgium",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Taiwan",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Turkey",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Mexico",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Denmark",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Portugal",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Norway",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Chile",
+                      "investment": 1
+                    },
+                    {
+                      "country": "Lithuania",
+                      "investment": 1
+                    }
                   ]
                 },
                 "key": "country",
-                "fields": ["investment"]
+                "fields": [
+                  "investment"
+                ]
               }
             },
-            {"filter": "isValid(datum.investment)"}
+            {
+              "filter": "isValid(datum.investment)"
+            }
           ],
-          "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 0.2},
+          "mark": {
+            "type": "geoshape",
+            "stroke": "white",
+            "strokeWidth": 0.2
+          },
           "encoding": {
             "color": {
               "field": "investment",
               "type": "quantitative",
-              "scale": {"type": "log", "scheme": "blues"},
+              "scale": {
+                "type": "log",
+                "scheme": "blues"
+              },
               "legend": {
                 "title": "Investment ($B, Log Scale)",
                 "orient": "bottom-right",
@@ -118,72 +240,185 @@
     },
     {
       "width": 600,
-      "height": 250,
+      "height": 140,
       "title": {
-        "text": "Top 15 Nations by Investment ($B)",
+        "text": "Top Nations by Investment ($B)",
         "anchor": "start",
         "fontSize": 14,
         "color": "#64748b"
       },
       "data": {
         "values": [
-          {"country": "United States of America", "investment": 471},
-          {"country": "China", "investment": 119},
-          {"country": "United Kingdom", "investment": 28},
-          {"country": "Canada", "investment": 15},
-          {"country": "Israel", "investment": 15},
-          {"country": "Germany", "investment": 13},
-          {"country": "India", "investment": 11},
-          {"country": "France", "investment": 11},
-          {"country": "South Korea", "investment": 9},
-          {"country": "Singapore", "investment": 7},
-          {"country": "Sweden", "investment": 7},
-          {"country": "Japan", "investment": 6},
-          {"country": "Australia", "investment": 4},
-          {"country": "Switzerland", "investment": 4},
-          {"country": "United Arab Emirates", "investment": 4},
-          {"country": "Hong Kong", "investment": 4},
-          {"country": "Netherlands", "investment": 3},
-          {"country": "Spain", "investment": 3},
-          {"country": "Austria", "investment": 2},
-          {"country": "Brazil", "investment": 2},
-          {"country": "Ireland", "investment": 2},
-          {"country": "Argentina", "investment": 2},
-          {"country": "Italy", "investment": 1},
-          {"country": "Finland", "investment": 1},
-          {"country": "Belgium", "investment": 1},
-          {"country": "Taiwan", "investment": 1},
-          {"country": "Turkey", "investment": 1},
-          {"country": "Mexico", "investment": 1},
-          {"country": "Denmark", "investment": 1},
-          {"country": "Portugal", "investment": 1},
-          {"country": "Norway", "investment": 1},
-          {"country": "Chile", "investment": 1},
-          {"country": "Lithuania", "investment": 1}
+          {
+            "country": "United States of America",
+            "investment": 471
+          },
+          {
+            "country": "China",
+            "investment": 119
+          },
+          {
+            "country": "United Kingdom",
+            "investment": 28
+          },
+          {
+            "country": "Canada",
+            "investment": 15
+          },
+          {
+            "country": "Israel",
+            "investment": 15
+          },
+          {
+            "country": "Germany",
+            "investment": 13
+          },
+          {
+            "country": "India",
+            "investment": 11
+          },
+          {
+            "country": "France",
+            "investment": 11
+          },
+          {
+            "country": "South Korea",
+            "investment": 9
+          },
+          {
+            "country": "Singapore",
+            "investment": 7
+          },
+          {
+            "country": "Sweden",
+            "investment": 7
+          },
+          {
+            "country": "Japan",
+            "investment": 6
+          },
+          {
+            "country": "Australia",
+            "investment": 4
+          },
+          {
+            "country": "Switzerland",
+            "investment": 4
+          },
+          {
+            "country": "United Arab Emirates",
+            "investment": 4
+          },
+          {
+            "country": "Hong Kong",
+            "investment": 4
+          },
+          {
+            "country": "Netherlands",
+            "investment": 3
+          },
+          {
+            "country": "Spain",
+            "investment": 3
+          },
+          {
+            "country": "Austria",
+            "investment": 2
+          },
+          {
+            "country": "Brazil",
+            "investment": 2
+          },
+          {
+            "country": "Ireland",
+            "investment": 2
+          },
+          {
+            "country": "Argentina",
+            "investment": 2
+          },
+          {
+            "country": "Italy",
+            "investment": 1
+          },
+          {
+            "country": "Finland",
+            "investment": 1
+          },
+          {
+            "country": "Belgium",
+            "investment": 1
+          },
+          {
+            "country": "Taiwan",
+            "investment": 1
+          },
+          {
+            "country": "Turkey",
+            "investment": 1
+          },
+          {
+            "country": "Mexico",
+            "investment": 1
+          },
+          {
+            "country": "Denmark",
+            "investment": 1
+          },
+          {
+            "country": "Portugal",
+            "investment": 1
+          },
+          {
+            "country": "Norway",
+            "investment": 1
+          },
+          {
+            "country": "Chile",
+            "investment": 1
+          },
+          {
+            "country": "Lithuania",
+            "investment": 1
+          }
         ]
       },
-      "transform": [{"filter": "datum.investment >= 4"}],
+      "transform": [
+        {
+          "filter": "datum.investment >= 7"
+        }
+      ],
       "layer": [
         {
-          "mark": {"type": "bar", "cornerRadiusEnd": 4},
+          "mark": {
+            "type": "bar",
+            "cornerRadiusEnd": 4
+          },
           "encoding": {
             "y": {
               "field": "country",
               "type": "nominal",
               "sort": "-x",
               "title": null,
-              "axis": {"labelFontSize": 11, "labelFontWeight": "bold"}
+              "axis": {
+                "labelFontSize": 11,
+                "labelFontWeight": "bold"
+              }
             },
             "x": {
               "field": "investment",
               "type": "quantitative",
               "title": "Investment ($B)",
-              "axis": {"grid": false}
+              "axis": {
+                "grid": false
+              }
             },
             "color": {
               "field": "investment",
               "type": "quantitative",
-              "scale": {"scheme": "blues"},
+              "scale": {
+                "scheme": "blues"
+              },
               "legend": null
             },
             "opacity": {
@@ -203,10 +438,22 @@
             "fontWeight": "bold"
           },
           "encoding": {
-            "y": {"field": "country", "type": "nominal", "sort": "-x"},
-            "x": {"field": "investment", "type": "quantitative"},
-            "text": {"field": "investment", "type": "quantitative"},
-            "color": {"value": "#1a1a1a"}
+            "y": {
+              "field": "country",
+              "type": "nominal",
+              "sort": "-x"
+            },
+            "x": {
+              "field": "investment",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "investment",
+              "type": "quantitative"
+            },
+            "color": {
+              "value": "#1a1a1a"
+            }
           }
         }
       ]
