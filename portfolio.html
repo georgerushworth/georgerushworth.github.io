@@ -21,10 +21,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
-<style>
+
+   <style>
     :root {
         --bs-body-font-family: 'Instrument Serif', serif;
         --bs-font-sans-serif: 'Instrument Sans', sans-serif;
+        --accent-color: #2563eb; /* Matches your charts */
+        --text-grey: #64748b;
     }
     
     body {
@@ -34,6 +37,7 @@
     
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Instrument Serif', serif !important;
+        color: #1a1a1a;
     }
     
     .navbar-brand, .navbar-brand span {
@@ -48,29 +52,87 @@
         font-family: 'Instrument Sans', sans-serif !important;
         font-size: 1.15rem;
         line-height: 1.7;
+        color: #334155;
     }
     
-    footer a {
+    footer, footer a {
         font-family: 'Instrument Sans', sans-serif !important;
+        color: var(--text-grey) !important;
+        text-decoration: none;
+    }
+    footer a:hover {
+        color: var(--accent-color) !important;
     }
     
+    /* --- TILE GRID STYLES --- */
     .chart-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    margin: 20px 0;
-        
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin: 20px 0 60px 0; /* Added bottom margin for spacing */
     }
+    
     @media (max-width: 992px) {
         .chart-grid {
             grid-template-columns: repeat(2, 1fr);
         }
     }
+    
     @media (max-width: 576px) {
         .chart-grid {
             grid-template-columns: 1fr;
         }
+    }
+
+    .project-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 25px;
+        text-decoration: none; /* Removes link underline */
+        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-align: left;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-color: var(--accent-color);
+    }
+
+    .card-tag {
+        font-family: 'Instrument Sans', sans-serif !important;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--accent-color);
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .project-card h4 {
+        font-family: 'Instrument Serif', serif !important;
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        margin: 0 0 10px 0;
+    }
+
+    .project-card p {
+        font-family: 'Instrument Sans', sans-serif !important;
+        font-size: 1rem;
+        color: #64748b;
+        margin: 0;
+        line-height: 1.5;
+    }
+    
+    /* Small separator line */
+    .separator {
+        border-top: 1px solid #e2e8f0;
+        margin: 40px 0;
     }
 </style>
 
