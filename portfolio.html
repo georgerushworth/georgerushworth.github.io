@@ -5,24 +5,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Portfolio | George Rushworth</title>
     
-    <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     
-    <!-- Theme CSS -->
     <link rel="stylesheet" href="theme.css">
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2215%22 fill=%22%234269d0%22/><text x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dominant-baseline=%22central%22 font-family=%22Instrument Serif, serif%22 font-size=%2240%22 font-weight=%22600%22 fill=%22white%22>GR</text></svg>">    <!-- Open Graph meta tags -->
-    <meta property="og:title" content="Portfolio | George Rushworth">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2215%22 fill=%22%234269d0%22/><text x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dominant-baseline=%22central%22 font-family=%22Instrument Serif, serif%22 font-size=%2240%22 font-weight=%22600%22 fill=%22white%22>GR</text></svg>">    <meta property="og:title" content="Portfolio | George Rushworth">
     <meta property="og:description" content="A portfolio of data visualization and economic analysis projects">
     
-    <!-- Vega and Vega-Lite for visualizations -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
 
-   <style>
+    <style>
     :root {
         --bs-body-font-family: 'Instrument Serif', serif;
         --bs-font-sans-serif: 'Instrument Sans', sans-serif;
@@ -53,6 +49,7 @@
         font-size: 1.15rem;
         line-height: 1.7;
         color: #334155;
+        text-align: justify; /* Added justify alignment here */
     }
     
     footer, footer a {
@@ -138,11 +135,9 @@
 
     <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
         <div class="container-fluid d-flex justify-content-between">
-            <!-- Left side - Name/Home link -->
             <a class="navbar-brand pe-md-4 fs-4 text-center" href="index.html">
 <span class="ms-md-1 mt-1 fw-bolder me-md-5" style="font-family: 'Instrument Serif', serif !important;">George Rushworth</span>
             </a>
-            <!-- Right side - Social links -->
             <div class="d-flex align-items-center">
                 <a href="https://georgerushworth.github.io/index.html" aria-label="Home" class="fs-6 link-fancy me-2">
                     Home </a>
@@ -172,8 +167,7 @@
             <div class="row d-flex justify-content-center text-start">
                 <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
                     
-                    <!-- Coding Challenge 1 -->
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 1: Hosting</h3>                   
+                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 1: Hosting</h3>                    
                     <p>
                         Task: Set up a Github account and live page using GitHub Pages; add two charts using the <tt>vegaEmbed</tt> function.
                     </p>
@@ -195,8 +189,7 @@
                     
                     <div style="height: 80px;"></div>
                     
-                    <!-- Coding Challenge 2 -->
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 2: Building</h3>                   
+                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 2: Building</h3>                    
                     <p>Task: Build two charts using the Economics Observatory "create" tool and embed them on the page.</p>
 
                     <b>Chart 1: US Wealth Concentration</b>
@@ -216,7 +209,6 @@
                     
                     <div style="height: 80px;"></div>
                     
-                    <!-- Coding Challenge 3 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 3: Debating</h3>
                     <p>Task: Produce two charts that support or refute a topic of policy debate.</p>
                     <p>Policy Position: Governments should prioritise growth-oriented tax cuts even when unfunded, as economic expansion will generate offsetting revenues.</p>
@@ -239,7 +231,6 @@
 
                     <div style="height: 80px;"></div>
                     
-                    <!-- Coding Challenge 4 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 4: Replication</h3>
                     <p>Task: Find a published chart, replicate it, and then improve on it.</p>
                     
@@ -252,7 +243,7 @@
                     <div style="height: 20px;"></div>
 
                     <b>My Replication</b>
-                                        <p>I replicated the same chart with its issues in my visual style to suit my website.</p>
+                                            <p>I replicated the same chart with its issues in my visual style to suit my website.</p>
 
                     <div style="text-align: center;">
                         <div style="height: 20px;"></div>
@@ -269,7 +260,6 @@
                     <div style="height: 20px;"></div>
                     <div style="height: 80px;"></div>
                     
-                    <!-- Coding Challenge 5 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 5: Accessing Data</h3>
                     <p>Task: Use an API and a web scraper to gather data, then create visualisations.</p>
 
@@ -294,7 +284,6 @@
 
                     <div style="height: 80px;"></div>
                     
-                    <!-- Coding Challenge 6 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 6: Loops - Build a Dashboard</h3>
                     <p>Task: Use a loop to batch download six different series and display them as a dashboard.</p>
                     <p>Google Colab Notebook: <a href="https://colab.research.google.com/drive/109SlinKXKfli654MWXNP93OwCToqiHN5" target="_blank">View batch download code</a></p>
@@ -312,7 +301,6 @@
 <div style="height: 80px;"></div>
                     
                     
-                    <!-- Coding Challenge 7 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 7: Maps</h3>
                     <p>Task: Produce two maps - one of Scotland and one of Wales. One should be a coordinates map, the other a choropleth.</p>
 
@@ -334,12 +322,11 @@
                     <div style="height: 80px;"></div>
 
 
-                     <!-- Coding Challenge 8 -->
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 8: Big Data</h3>
+                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 8: Big Data</h3>
                     <p>Task: Produce two charts using either of the two UK prices datasets provided in class. </p>
 
                     <b>The Price of Breakfast</b>
-                                        <p>Google Colab Notebook: <a href="https://colab.research.google.com/drive/1kqtPyufCpd9F6h2PwC9qWnGvgd16PxIg">View scraping code</a></p>
+                                            <p>Google Colab Notebook: <a href="https://colab.research.google.com/drive/1kqtPyufCpd9F6h2PwC9qWnGvgd16PxIg">View scraping code</a></p>
                     <p>This chart shows the average prices of Full English breakfast components in the UK over time, with a stacked area visualisation breaking down costs by individual items.</p>
                     <div style="text-align: center;">
                         <div style="height: 20px;"></div>
@@ -348,16 +335,15 @@
                     <div style="height: 20px;"></div>
 
                     <b>The Price of Washing It Down</b>
-                                        <p>Google Colab Notebook: <a href="https://colab.research.google.com/drive/1R43GV6HQDFr8wFUgZv1WC82d-U3i29MR?usp=sharing">View scraping code</a></p>
+                                            <p>Google Colab Notebook: <a href="https://colab.research.google.com/drive/1R43GV6HQDFr8wFUgZv1WC82d-U3i29MR?usp=sharing">View scraping code</a></p>
                     <p>This interactive map shows average pint prices across UK regions with a year slider from 2000 to 2024.</p>
                     <div style="text-align: center;">
                         <div style="height: 20px;"></div>
                         <figure id="Location32"></figure>
-                                        </div>
+                                            </div>
                     
                     <div style="height: 80px;"></div>
 
-                    <!-- Coding Challenge 9 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 9: Interactive Charts</h3>
                     <p>Task: create two interactive charts with controls beyond simple hover/tooltips.</p>
 
@@ -380,10 +366,9 @@
                     
                     <div style="height: 80px;"></div>
                     
-                    <!-- Coding Challenge 10 -->
                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 10: Advanced Analytics & Machine Learning</h3>
-                                        <p>Task: Produce a chart that uses advanced analytics, and then conduct an applied data analysis using machine learning techniques.</p>
-                                       
+                                            <p>Task: Produce a chart that uses advanced analytics, and then conduct an applied data analysis using machine learning techniques.</p>
+                                            
                     <b>Bubble Chart</b>
                     <p>This interactive bubble chart plots the top S&P 500 companies by earnings growth versus valuation (P/E ratio). You can filter to show "Magnificent 7" companies only.</p>
 
@@ -393,9 +378,10 @@
                     </div>
                     <div style="height: 20px;"></div>
 
-                                        <b>Linear Regression</b>
+                                            <b>Linear Regression</b>
 
-                    <p>This regression shows the relationship between state GDP per capita and AI usage index.</p> <p>Google Colab Notebook: <a href="https://colab.research.google.com/drive/1l10BK03cZC-Pqw8QB15DyPOM5j3lRDKw" target="_blank">View code</a></p>
+                    <p>This regression shows the relationship between state GDP per capita and AI usage index.</p>
+                                            <p>Google Colab Notebook: <a href="https://colab.research.google.com/drive/1l10BK03cZC-Pqw8QB15DyPOM5j3lRDKw" target="_blank">View code</a></p>
 
 
 
@@ -414,7 +400,6 @@
         </div>
     </main>
 
-    <!-- Navigation footer -->
     <div class="container d-flex justify-content-between">
         <div class="col border-top border-end py-vh-3 d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -432,7 +417,6 @@
 </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="container text-center small py-vh-3">
             Template inspired by <a href="https://templatedeck.com" class="link-fancy" target="_blank">templatedeck.com</a>
@@ -459,10 +443,10 @@
         let figure_22_spec = "visualization.vl-22.json";
         let figure_23_spec = "visualization.vl-23.json";
         let figure_24_spec = "visualization.vl-24.json";        
-        let figure_26_spec = "visualization.vl-26.json";         
+        let figure_26_spec = "visualization.vl-26.json";        
         let figure_27_spec = "visualization.vl-27.json";        
         let figure_28_spec = "visualization.vl-28.json";
-        let figure_30_spec = "visualization.vl-30.json";         
+        let figure_30_spec = "visualization.vl-30.json";        
         let figure_31_spec = "visualization.vl-31.json";        
         let figure_32_spec = "visualization.vl-32.json";
         let figure_33_spec = "visualization.vl-33.json";
@@ -497,7 +481,7 @@
         vegaEmbed('#Location28', figure_28_spec);
         vegaEmbed('#Location30', figure_30_spec);      
         vegaEmbed('#Location31', figure_31_spec);        
-        vegaEmbed('#Location32', figure_32_spec);       
+        vegaEmbed('#Location32', figure_32_spec);      
         vegaEmbed('#Location33', figure_33_spec);
         vegaEmbed('#Location36', figure_36_spec);
         vegaEmbed('#Location43', figure_43_spec);
