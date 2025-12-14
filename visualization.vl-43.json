@@ -1,0 +1,482 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "AI Adoption vs. Economic Strength",
+    "subtitle": [
+      "Relationship between GDP per capita and AI usage across US states",
+      "R² = 0.179, p = 0.002 (statistically significant)",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "width": 600,
+  "height": 400,
+  "data": {"name": "data-afe90c860ac3cec62c97aa89698d5f33"},
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7,
+        "size": 120,
+        "stroke": "white",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "gdp_per_capita_k",
+          "type": "quantitative",
+          "title": "GDP per Capita ($1,000s)",
+          "scale": {"zero": false},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridOpacity": 0.5,
+            "ticks": false,
+            "labelPadding": 5,
+            "titlePadding": 10
+          }
+        },
+        "y": {
+          "field": "ai_usage_index",
+          "type": "quantitative",
+          "title": "AI Usage Index (National Average = 1.0)",
+          "scale": {"zero": false},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridOpacity": 0.5,
+            "ticks": false,
+            "labelPadding": 5,
+            "titleAngle": 0,
+            "titleAlign": "left",
+            "titleBaseline": "bottom",
+            "titleX": 0,
+            "titleY": -5
+          }
+        },
+        "color": {"value": "#4269d0"},
+        "tooltip": [
+          {"field": "state_name", "type": "nominal", "title": "State"},
+          {
+            "field": "gdp_per_capita_k",
+            "type": "quantitative",
+            "title": "GDP per Capita ($K)",
+            "format": "$,.1f"
+          },
+          {
+            "field": "ai_usage_index",
+            "type": "quantitative",
+            "title": "AI Usage Index",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "#ef4444",
+        "strokeWidth": 2.5,
+        "strokeDash": [8, 4]
+      },
+      "encoding": {
+        "x": {"field": "gdp_per_capita_k", "type": "quantitative"},
+        "y": {"field": "predicted_aui", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  },
+  "datasets": {
+    "data-afe90c860ac3cec62c97aa89698d5f33": [
+      {
+        "state_code": "AL",
+        "state_name": "Alabama",
+        "gdp_per_capita_k": 98.46547322417369,
+        "ai_usage_index": 0.3963800287006222,
+        "predicted_aui": 0.4548375419456373
+      },
+      {
+        "state_code": "AK",
+        "state_name": "Alaska",
+        "gdp_per_capita_k": 150.6575887551031,
+        "ai_usage_index": 0.31364556492275864,
+        "predicted_aui": 1.0853915720725018
+      },
+      {
+        "state_code": "AZ",
+        "state_name": "Arizona",
+        "gdp_per_capita_k": 115.32931390204402,
+        "ai_usage_index": 0.6980118332309821,
+        "predicted_aui": 0.6585764131271853
+      },
+      {
+        "state_code": "AR",
+        "state_name": "Arkansas",
+        "gdp_per_capita_k": 96.8333669412252,
+        "ai_usage_index": 0.3559565309798594,
+        "predicted_aui": 0.43511940667099636
+      },
+      {
+        "state_code": "CA",
+        "state_name": "California",
+        "gdp_per_capita_k": 158.25181405574725,
+        "ai_usage_index": 2.126665498802744,
+        "predicted_aui": 1.1771404755285197
+      },
+      {
+        "state_code": "CO",
+        "state_name": "Colorado",
+        "gdp_per_capita_k": 139.78639546901317,
+        "ai_usage_index": 1.3043920503162052,
+        "predicted_aui": 0.9540522946912303
+      },
+      {
+        "state_code": "CT",
+        "state_name": "Connecticut",
+        "gdp_per_capita_k": 154.51238936183697,
+        "ai_usage_index": 0.8704291660918976,
+        "predicted_aui": 1.1319629753043006
+      },
+      {
+        "state_code": "DE",
+        "state_name": "Delaware",
+        "gdp_per_capita_k": 160.12980567919232,
+        "ai_usage_index": 0.7215895102511056,
+        "predicted_aui": 1.1998292509242217
+      },
+      {
+        "state_code": "FL",
+        "state_name": "Florida",
+        "gdp_per_capita_k": 117.29703313413656,
+        "ai_usage_index": 0.6942555225296689,
+        "predicted_aui": 0.6823492240073804
+      },
+      {
+        "state_code": "GA",
+        "state_name": "Georgia",
+        "gdp_per_capita_k": 120.85805177589343,
+        "ai_usage_index": 0.7969123844249343,
+        "predicted_aui": 0.7253713286504858
+      },
+      {
+        "state_code": "HI",
+        "state_name": "Hawaii",
+        "gdp_per_capita_k": 135.883647030066,
+        "ai_usage_index": 0.8436003713400412,
+        "predicted_aui": 0.9069016143304939
+      },
+      {
+        "state_code": "ID",
+        "state_name": "Idaho",
+        "gdp_per_capita_k": 101.32127482579637,
+        "ai_usage_index": 0.503002794368721,
+        "predicted_aui": 0.4893396346626647
+      },
+      {
+        "state_code": "IL",
+        "state_name": "Illinois",
+        "gdp_per_capita_k": 138.10020648662353,
+        "ai_usage_index": 0.8811237163626063,
+        "predicted_aui": 0.9336807644785637
+      },
+      {
+        "state_code": "IN",
+        "state_name": "Indiana",
+        "gdp_per_capita_k": 119.50628132931823,
+        "ai_usage_index": 0.43480398971571227,
+        "predicted_aui": 0.7090400438534695
+      },
+      {
+        "state_code": "IA",
+        "state_name": "Iowa",
+        "gdp_per_capita_k": 126.41109101157085,
+        "ai_usage_index": 0.3834677535905934,
+        "predicted_aui": 0.7924598387422831
+      },
+      {
+        "state_code": "KS",
+        "state_name": "Kansas",
+        "gdp_per_capita_k": 126.31527954282319,
+        "ai_usage_index": 0.5183784141223926,
+        "predicted_aui": 0.7913023016864148
+      },
+      {
+        "state_code": "KY",
+        "state_name": "Kentucky",
+        "gdp_per_capita_k": 100.85469085261883,
+        "ai_usage_index": 0.3466248935539726,
+        "predicted_aui": 0.4837026452115406
+      },
+      {
+        "state_code": "LA",
+        "state_name": "Louisiana",
+        "gdp_per_capita_k": 113.24769847242001,
+        "ai_usage_index": 0.3754584759332098,
+        "predicted_aui": 0.6334275762775686
+      },
+      {
+        "state_code": "ME",
+        "state_name": "Maine",
+        "gdp_per_capita_k": 112.79544087064545,
+        "ai_usage_index": 0.731235124745375,
+        "predicted_aui": 0.627963669506335
+      },
+      {
+        "state_code": "MD",
+        "state_name": "Maryland",
+        "gdp_per_capita_k": 135.3744031478278,
+        "ai_usage_index": 0.9845974475748478,
+        "predicted_aui": 0.9007492332860342
+      },
+      {
+        "state_code": "MA",
+        "state_name": "Massachusetts",
+        "gdp_per_capita_k": 166.38363670658242,
+        "ai_usage_index": 1.423403927713983,
+        "predicted_aui": 1.275384309728389
+      },
+      {
+        "state_code": "MI",
+        "state_name": "Michigan",
+        "gdp_per_capita_k": 109.82571580177353,
+        "ai_usage_index": 0.512736727638983,
+        "predicted_aui": 0.5920852213634104
+      },
+      {
+        "state_code": "MN",
+        "state_name": "Minnesota",
+        "gdp_per_capita_k": 136.30842385609833,
+        "ai_usage_index": 0.7748942666348392,
+        "predicted_aui": 0.9120335147494464
+      },
+      {
+        "state_code": "MS",
+        "state_name": "Mississippi",
+        "gdp_per_capita_k": 84.7403729435161,
+        "ai_usage_index": 0.21370409568452112,
+        "predicted_aui": 0.2890190613604743
+      },
+      {
+        "state_code": "MO",
+        "state_name": "Missouri",
+        "gdp_per_capita_k": 114.52942942843849,
+        "ai_usage_index": 0.9866031486526071,
+        "predicted_aui": 0.6489126856975319
+      },
+      {
+        "state_code": "MT",
+        "state_name": "Montana",
+        "gdp_per_capita_k": 107.75580575960844,
+        "ai_usage_index": 0.5155848387225673,
+        "predicted_aui": 0.56707780202794
+      },
+      {
+        "state_code": "NE",
+        "state_name": "Nebraska",
+        "gdp_per_capita_k": 147.99551410224174,
+        "ai_usage_index": 0.5152675263175607,
+        "predicted_aui": 1.0532299728772063
+      },
+      {
+        "state_code": "NV",
+        "state_name": "Nevada",
+        "gdp_per_capita_k": 123.03628207584477,
+        "ai_usage_index": 1.080031690429606,
+        "predicted_aui": 0.7516874087749795
+      },
+      {
+        "state_code": "NH",
+        "state_name": "New Hampshire",
+        "gdp_per_capita_k": 134.0970451809362,
+        "ai_usage_index": 0.853436852915324,
+        "predicted_aui": 0.8853169557141306
+      },
+      {
+        "state_code": "NJ",
+        "state_name": "New Jersey",
+        "gdp_per_capita_k": 138.5021327778333,
+        "ai_usage_index": 0.8464216079702884,
+        "predicted_aui": 0.9385365983561172
+      },
+      {
+        "state_code": "NM",
+        "state_name": "New Mexico",
+        "gdp_per_capita_k": 105.93503638026021,
+        "ai_usage_index": 0.5237041605533537,
+        "predicted_aui": 0.5450803516774317
+      },
+      {
+        "state_code": "NY",
+        "state_name": "New York",
+        "gdp_per_capita_k": 179.23249010819595,
+        "ai_usage_index": 1.576018493323806,
+        "predicted_aui": 1.4306164978180909
+      },
+      {
+        "state_code": "NC",
+        "state_name": "North Carolina",
+        "gdp_per_capita_k": 119.05835294057556,
+        "ai_usage_index": 0.7685642805938462,
+        "predicted_aui": 0.7036284400536094
+      },
+      {
+        "state_code": "ND",
+        "state_name": "North Dakota",
+        "gdp_per_capita_k": 151.48715764433584,
+        "ai_usage_index": 0.3852991243345701,
+        "predicted_aui": 1.0954139289180218
+      },
+      {
+        "state_code": "OH",
+        "state_name": "Ohio",
+        "gdp_per_capita_k": 123.65156051200756,
+        "ai_usage_index": 0.5011465126496323,
+        "predicted_aui": 0.7591208360968266
+      },
+      {
+        "state_code": "OK",
+        "state_name": "Oklahoma",
+        "gdp_per_capita_k": 102.44582625702589,
+        "ai_usage_index": 0.35829113938374685,
+        "predicted_aui": 0.5029257947528126
+      },
+      {
+        "state_code": "OR",
+        "state_name": "Oregon",
+        "gdp_per_capita_k": 120.32140121975732,
+        "ai_usage_index": 1.0193010648621166,
+        "predicted_aui": 0.7188878365080583
+      },
+      {
+        "state_code": "PA",
+        "state_name": "Pennsylvania",
+        "gdp_per_capita_k": 123.91805875001059,
+        "ai_usage_index": 0.6671707647604617,
+        "predicted_aui": 0.7623405089590031
+      },
+      {
+        "state_code": "RI",
+        "state_name": "Rhode Island",
+        "gdp_per_capita_k": 114.11376724484954,
+        "ai_usage_index": 0.7639645348007197,
+        "predicted_aui": 0.643890902955692
+      },
+      {
+        "state_code": "SC",
+        "state_name": "South Carolina",
+        "gdp_per_capita_k": 102.11086952208557,
+        "ai_usage_index": 0.4216480893338431,
+        "predicted_aui": 0.49887904713612363
+      },
+      {
+        "state_code": "SD",
+        "state_name": "South Dakota",
+        "gdp_per_capita_k": 132.81189273221918,
+        "ai_usage_index": 0.2591818430681677,
+        "predicted_aui": 0.869790509858804
+      },
+      {
+        "state_code": "TN",
+        "state_name": "Tennessee",
+        "gdp_per_capita_k": 118.6198064177135,
+        "ai_usage_index": 0.5372917845688571,
+        "predicted_aui": 0.6983301823651483
+      },
+      {
+        "state_code": "TX",
+        "state_name": "Texas",
+        "gdp_per_capita_k": 131.96319807857498,
+        "ai_usage_index": 0.7092668371335304,
+        "predicted_aui": 0.8595370869277995
+      },
+      {
+        "state_code": "UT",
+        "state_name": "Utah",
+        "gdp_per_capita_k": 130.2330271806615,
+        "ai_usage_index": 3.782670557286113,
+        "predicted_aui": 0.8386341934277067
+      },
+      {
+        "state_code": "VT",
+        "state_name": "Vermont",
+        "gdp_per_capita_k": 111.56260678545276,
+        "ai_usage_index": 1.0998703556170337,
+        "predicted_aui": 0.6130693029341397
+      },
+      {
+        "state_code": "VA",
+        "state_name": "Virginia",
+        "gdp_per_capita_k": 136.00617554217015,
+        "ai_usage_index": 1.5698080479703307,
+        "predicted_aui": 0.9083819307791908
+      },
+      {
+        "state_code": "WA",
+        "state_name": "Washington",
+        "gdp_per_capita_k": 165.22665801627863,
+        "ai_usage_index": 1.5094838436735676,
+        "predicted_aui": 1.2614063828227504
+      },
+      {
+        "state_code": "WV",
+        "state_name": "West Virginia",
+        "gdp_per_capita_k": 97.87477567733173,
+        "ai_usage_index": 0.23436357444969086,
+        "predicted_aui": 0.44770108627683947
+      },
+      {
+        "state_code": "WI",
+        "state_name": "Wisconsin",
+        "gdp_per_capita_k": 119.22205930916056,
+        "ai_usage_index": 0.48448739874237834,
+        "predicted_aui": 0.7056062428197672
+      },
+      {
+        "state_code": "WY",
+        "state_name": "Wyoming",
+        "gdp_per_capita_k": 144.45032534410083,
+        "ai_usage_index": 0.385973352803329,
+        "predicted_aui": 1.0103991154523628
+      }
+    ]
+  }
+}
