@@ -32,9 +32,11 @@
             font-family: 'Instrument Sans', sans-serif !important;
         }
         
-        h1, h2, h3, h4, h5, h6 {
+        /* --- HEADINGS: ALWAYS CENTERED --- */
+        h1, h2, h3, h4, h5, h6, .display-large {
             font-family: 'Instrument Serif', serif !important;
             color: #1a1a1a;
+            text-align: center !important;
         }
         
         .navbar-brand, .navbar-brand span {
@@ -45,13 +47,22 @@
             font-family: 'Instrument Serif', serif !important;
         }
         
-        p, li, blockquote {
+        /* --- BODY TEXT: GLOBALLY JUSTIFIED --- */
+        p, li, blockquote, .lead {
             font-family: 'Instrument Sans', sans-serif !important;
             font-size: 1.15rem;
             line-height: 1.7;
             color: #334155;
+            text-align: justify !important;
+            text-justify: inter-word;
         }
         
+        /* EXCEPTION: Footer text centered */
+        footer p {
+            text-align: center !important;
+            font-size: 0.9rem;
+        }
+
         footer, footer a {
             font-family: 'Instrument Sans', sans-serif !important;
             color: var(--text-grey) !important;
@@ -65,17 +76,18 @@
         /* --- TILE GRID STYLES --- */
         .chart-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 Columns for Symmetry */
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             margin: 20px 0 60px 0;
         }
         
         @media (max-width: 768px) {
             .chart-grid {
-                grid-template-columns: 1fr; /* Stack on mobile */
+                grid-template-columns: 1fr;
             }
         }
 
+        /* --- PROJECT CARD STYLES --- */
         .project-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -86,7 +98,9 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            text-align: left;
+            /* OVERRIDE: Force Center alignment for the cards */
+            text-align: center !important; 
+            align-items: center; /* Centers items horizontally in flex container */
         }
 
         .project-card:hover {
@@ -104,21 +118,25 @@
             color: var(--accent-color);
             margin-bottom: 12px;
             display: block;
+            /* Tag is already centered by parent, but being safe */
+            text-align: center !important; 
         }
 
         .project-card h4 {
-            font-family: 'Instrument Serif', serif !important;
             font-size: 1.5rem;
             color: #1a1a1a;
             margin: 0 0 10px 0;
+            text-align: center !important;
         }
 
+        /* OVERRIDE: Force card paragraphs to be centered, ignoring global justify */
         .project-card p {
             font-family: 'Instrument Sans', sans-serif !important;
             font-size: 1rem;
             color: #64748b;
             margin: 0;
             line-height: 1.5;
+            text-align: center !important; 
         }
         
         /* Small separator line */
@@ -158,41 +176,41 @@
             <div class="row d-flex justify-content-center text-start">
                 <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
                     
-                    <h3 style="text-align: center; font-weight: bold; margin-bottom: 20px;">About</h3>
+                    <h3 style="font-weight: bold; margin-bottom: 20px;">About</h3>
                     
-                    <p style="text-align: justify;">I'm George, an MSc student at LSE studying Inequalities and Social Science. I completed my BSc studies in July 2025 at LSE, where I studied International Social and Public Policy and Economics.</p>
+                    <p>I'm George, an MSc student at LSE studying Inequalities and Social Science. I completed my BSc studies in July 2025 at LSE, where I studied International Social and Public Policy and Economics.</p>
                     
-                    <p style="text-align: justify;">My main area of interest is wealth inequality and, more specifically, whether tax-efficient investment accounts (ISAs in the UK context) can bridge the divide.</p>
+                    <p>My main area of interest is wealth inequality and, more specifically, whether tax-efficient investment accounts (ISAs in the UK context) can bridge the divide.</p>
                     
-                    <p style="text-align: justify; font-size: 1rem; color: #64748b;">
+                    <p style="font-size: 1rem; color: #64748b;">
                         <b>Technical Skills:</b> Python (Pandas, Scraper, Sklearn), Vega-Lite, HTML/CSS, APIs, and GeoJSON mapping.
                     </p>
 
                     <div class="separator"></div>
 
-                    <h3 style="text-align: center; font-weight: bold; margin-bottom: 30px;">PP434 Coursework</h3>
+                    <h3 style="font-weight: bold; margin-bottom: 30px;">PP434 Coursework</h3>
 
                     <div class="chart-grid">
                         <a href="portfolio.html" class="project-card">
-                            <span class="card-tag">Portfolio</span>
+                            <span class="card-tag">Coding Portfolio</span>
                             <h4>Weekly Visualisations</h4>
                             <p>A collection of charts created throughout the term, demonstrating skills in API integration, data scraping, and Vega-Lite grammar.</p>
                         </a>
 
                         <a href="project.html" class="project-card">
-                            <span class="card-tag">Project</span>
+                            <span class="card-tag">Major Project</span>
                             <h4>The Two Cycles of AI</h4>
-                            <p>A data story analysing the divergence between the financial AI bubble and the underlying technological utility.</p>
+                            <p>A deep-dive data story analysing the divergence between the financial AI bubble and the underlying technological utility.</p>
                         </a>
                     </div>
 
                     <div class="separator"></div>
 
-                    <h3 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Publications & Research</h3>
+                    <h3 style="font-weight: bold; margin-bottom: 20px;">Publications & Research</h3>
 
                     <div style="text-align: left;">
                         <div style="margin-bottom: 25px;">
-                            <a href="https://eprints.lse.ac.uk/127883/" target="_blank" style="font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 600; text-decoration: none; color: #1a1a1a;">
+                            <a href="https://eprints.lse.ac.uk/127883/" target="_blank" style="font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 600; text-decoration: none; color: #1a1a1a; display: block; text-align: center;">
                                 Secondary School Admissions in London: Banding and Selection by Aptitude and Ability
                             </a>
                             <p style="font-size: 0.95rem; margin-top: 5px; color: #64748b;">
@@ -202,7 +220,7 @@
                         </div>
 
                         <div style="margin-bottom: 25px;">
-                            <a href="https://www.lse.ac.uk/social-policy/Assets/Documents/PDF/working-paper-series/WPS-03-25.pdf" target="_blank" style="font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 600; text-decoration: none; color: #1a1a1a;">
+                            <a href="https://www.lse.ac.uk/social-policy/Assets/Documents/PDF/working-paper-series/WPS-03-25.pdf" target="_blank" style="font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 600; text-decoration: none; color: #1a1a1a; display: block; text-align: center;">
                                 Selection by Ability: A Comparison of Admissions to Grammar Schools in England and Germany
                             </a>
                             <p style="font-size: 0.95rem; margin-top: 5px; color: #64748b;">
