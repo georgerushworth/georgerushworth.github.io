@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="h-100" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
@@ -18,119 +19,114 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
 
-<style>
-    :root {
-        --bs-body-font-family: 'Instrument Serif', serif;
-        --bs-font-sans-serif: 'Instrument Sans', sans-serif;
-        --accent-color: #2563eb; /* Matches your charts */
-        --text-grey: #64748b;
-    }
-    
-    body {
-        background-color: #F8FAFC;
-        font-family: 'Instrument Sans', sans-serif !important;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Instrument Serif', serif !important;
-        color: #1a1a1a;
-    }
-    
-    .navbar-brand, .navbar-brand span {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    
-    nav a, nav a.link-fancy, .link-fancy, .display-6 {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    
-    p, li, blockquote {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 1.15rem;
-        line-height: 1.7;
-        color: #334155;
-    }
-    
-    footer, footer a {
-        font-family: 'Instrument Sans', sans-serif !important;
-        color: var(--text-grey) !important;
-        text-decoration: none;
-    }
-    footer a:hover {
-        color: var(--accent-color) !important;
-    }
-    
-    /* --- TILE GRID STYLES --- */
-    .chart-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin: 20px 0 60px 0; /* Added bottom margin for spacing */
-    }
-    
-    @media (max-width: 992px) {
-        .chart-grid {
-            grid-template-columns: repeat(2, 1fr);
+    <style>
+        :root {
+            --bs-body-font-family: 'Instrument Serif', serif;
+            --bs-font-sans-serif: 'Instrument Sans', sans-serif;
+            --accent-color: #2563eb;
+            --text-grey: #64748b;
         }
-    }
-    
-    @media (max-width: 576px) {
-        .chart-grid {
-            grid-template-columns: 1fr;
+        
+        body {
+            background-color: #F8FAFC;
+            font-family: 'Instrument Sans', sans-serif !important;
         }
-    }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Instrument Serif', serif !important;
+            color: #1a1a1a;
+        }
+        
+        .navbar-brand, .navbar-brand span {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        nav a, nav a.link-fancy, .link-fancy, .display-6 {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        p, li, blockquote {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #334155;
+        }
+        
+        footer, footer a {
+            font-family: 'Instrument Sans', sans-serif !important;
+            color: var(--text-grey) !important;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: var(--accent-color) !important;
+        }
+        
+        /* --- TILE GRID STYLES --- */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 Columns for Symmetry */
+            gap: 30px;
+            margin: 20px 0 60px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .chart-grid {
+                grid-template-columns: 1fr; /* Stack on mobile */
+            }
+        }
 
-    .project-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 25px;
-        text-decoration: none; /* Removes link underline */
-        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        text-align: left;
-    }
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-align: left;
+        }
 
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        border-color: var(--accent-color);
-    }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--accent-color);
+        }
 
-    .card-tag {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--accent-color);
-        margin-bottom: 12px;
-        display: block;
-    }
+        .card-tag {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            display: block;
+        }
 
-    .project-card h4 {
-        font-family: 'Instrument Serif', serif !important;
-        font-size: 1.5rem;
-        color: #1a1a1a;
-        margin: 0 0 10px 0;
-    }
+        .project-card h4 {
+            font-family: 'Instrument Serif', serif !important;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin: 0 0 10px 0;
+        }
 
-    .project-card p {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 1rem;
-        color: #64748b;
-        margin: 0;
-        line-height: 1.5;
-    }
-    
-    /* Small separator line */
-    .separator {
-        border-top: 1px solid #e2e8f0;
-        margin: 40px 0;
-    }
-</style>
+        .project-card p {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 1rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        /* Small separator line */
+        .separator {
+            border-top: 1px solid #e2e8f0;
+            margin: 40px 0;
+        }
+    </style>
 
     <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
         <div class="container-fluid d-flex justify-content-between">
@@ -161,7 +157,8 @@
             
             <div class="row d-flex justify-content-center text-start">
                 <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
-                    <h3 style="text-align: center; font-weight: bold;">About</h3>
+                    
+                    <h3 style="text-align: center; font-weight: bold; margin-bottom: 20px;">About</h3>
                     
                     <p style="text-align: justify;">I'm George, an MSc student at LSE studying Inequalities and Social Science. I completed my BSc studies in July 2025 at LSE, where I studied International Social and Public Policy and Economics.</p>
                     
@@ -173,10 +170,49 @@
 
                     <div class="separator"></div>
 
-                
+                    <h3 style="text-align: center; font-weight: bold; margin-bottom: 30px;">PP434 Coursework</h3>
 
+                    <div class="chart-grid">
+                        <a href="portfolio.html" class="project-card">
+                            <span class="card-tag">Coding Portfolio</span>
+                            <h4>Weekly Visualisations</h4>
+                            <p>A collection of 10 charts created throughout the term, demonstrating skills in API integration, data scraping, and Vega-Lite grammar.</p>
+                        </a>
+
+                        <a href="project.html" class="project-card">
+                            <span class="card-tag">Major Project</span>
+                            <h4>The Two Cycles of AI</h4>
+                            <p>A deep-dive data story analyzing the divergence between the financial AI bubble and the underlying technological utility.</p>
+                        </a>
                     </div>
+
+                    <div class="separator"></div>
+
+                    <h3 style="text-align: center; font-weight: bold; margin-bottom: 20px;">Publications & Research</h3>
+
+                    <div style="text-align: left;">
+                        <div style="margin-bottom: 25px;">
+                            <a href="#" style="font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 600; text-decoration: none; color: #1a1a1a;">
+                                The ISA Wealth Gap: Policy Recommendations for 2025
+                            </a>
+                            <p style="font-size: 0.95rem; margin-top: 5px; color: #64748b;">
+                                <i>LSE Public Policy Review</i> (Upcoming) <br>
+                                An analysis of how tax-efficient accounts exacerbate intergenerational wealth inequality in the UK.
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 25px;">
+                            <a href="#" style="font-family: 'Instrument Serif', serif; font-size: 1.25rem; font-weight: 600; text-decoration: none; color: #1a1a1a;">
+                                Automated Data Visualisation for Policymaking
+                            </a>
+                            <p style="font-size: 0.95rem; margin-top: 5px; color: #64748b;">
+                                <i>Coursework Portfolio</i> (2025) <br>
+                                Full documentation of the Python and Vega-Lite workflows used to generate the charts on this website.
+                            </p>
+                        </div>
                     </div>
+
+                </div>
             </div>
         </div>
     </main>
