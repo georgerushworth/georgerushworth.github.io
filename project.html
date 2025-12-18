@@ -17,10 +17,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
-<style>
+
+    <style>
     :root {
         --bs-body-font-family: 'Instrument Serif', serif;
         --bs-font-sans-serif: 'Instrument Sans', sans-serif;
+        --accent-color: #2563eb; /* This was missing */
+        --text-grey: #64748b;    /* This was missing */
     }
     
     body {
@@ -30,6 +33,7 @@
     
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Instrument Serif', serif !important;
+        color: #1a1a1a;
     }
     
     .navbar-brand, .navbar-brand span {
@@ -44,10 +48,17 @@
         font-family: 'Instrument Sans', sans-serif !important;
         font-size: 1.15rem;
         line-height: 1.7;
+        color: #334155;
     }
-    
-    footer a {
+
+    /* --- FOOTER STYLING (This was missing) --- */
+    footer, footer a {
         font-family: 'Instrument Sans', sans-serif !important;
+        color: var(--text-grey) !important;
+        text-decoration: none;
+    }
+    footer a:hover {
+        color: var(--accent-color) !important;
     }
     
     .chart-grid {
@@ -67,11 +78,10 @@
         }
     }
     
-    /* Small separator line - CORRECT GLOBAL PLACEMENT */
     .separator {
         border-top: 1px solid #e2e8f0;
         margin: 40px 0;
-        }
+    }
 </style>
 
     <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
