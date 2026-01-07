@@ -2,9 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Labour Impact: The Quantifiable AI Wage Premium",
-    "subtitle": ["Salary Distribution by Experience Level for AI/ML Roles"],
-    "Source: Kaggle",
+    "subtitle": ["Salary Distribution by Experience Level for AI/ML Roles",
+    "Source: Kaggle (2025)",
     ""
+    ],
     "anchor": "start"
   },
   "width": 600,
