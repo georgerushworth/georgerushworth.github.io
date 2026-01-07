@@ -3,8 +3,8 @@
   "title": {
     "text": "AI Adoption vs. Economic Strength",
     "subtitle": [
-      "Relationship between GDP per capita and AI usage across US states",
-      "R² = 0.179, p = 0.002 (statistically significant)",
+      "Relationship between GDP per capita and AI usage across US states. R² = 0.179, p = 0.002",
+      "Source: Anthropic Economic Index (2025)"
       ""
     ],
     "anchor": "start"
