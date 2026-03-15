@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "title": {
+    "text": "Britain’s growth engine stalled after the 2008 financial crisis",
+    "subtitle": [
+      "Output per hour worked, Index (Q2 2008 = 100). Pre-crisis trend assumes 2.2% annual growth.",
+      "Source: ONS",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "data": {
+    "url": "https://georgerushworth.github.io/Portfolio%20Charts/outputperhour.csv",
+    "format": {
+      "type": "csv",
+      "parse": {"Output": "number", "Date": "date:'%d/%m/%Y'"}
+    }
+  },
+  "transform": [
+    {"filter": "datum.Output != null && datum.Output > 0"},
+    {"calculate": "datum.Output / 94.0 * 100", "as": "rebased"},
+    {
+      "calculate": "100 * pow(1.022, (datum.Date - datetime(2008, 3, 1)) / (365.25 * 24 * 60 * 60 * 1000))",
+      "as": "trend"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "interpolate": "monotone",
+        "color": "#2563eb"
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": null,
+          "scale": {"round": true},
+          "axis": {"grid": false, "format": "%Y"}
+        },
+        "y": {
+          "field": "rebased",
+          "type": "quantitative",
+          "title": "Index (Q2 2008 = 100)",
+          "scale": {"domain": [40, 150]},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridOpacity": 0.5,
+            "ticks": false,
+            "labelPadding": 5,
+            "titleAngle": 0,
+            "titleAlign": "left",
+            "titleBaseline": "bottom",
+            "titleX": 0,
+            "titleY": -5
+          }
+        },
+        "tooltip": [
+          {"field": "Quarter", "type": "nominal", "title": "Quarter"},
+          {
+            "field": "rebased",
+            "type": "quantitative",
+            "title": "Actual",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Date >= datetime(2008, 3, 1)"}],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "interpolate": "monotone",
+        "color": "#f5a623",
+        "strokeDash": [6, 3]
+      },
+      "encoding": {
+        "x": {"field": "Date", "type": "temporal", "scale": {"round": true}},
+        "y": {"field": "trend", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Quarter", "type": "nominal", "title": "Quarter"},
+          {
+            "field": "trend",
+            "type": "quantitative",
+            "title": "Pre-crisis trend",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#676A86",
+        "strokeDash": [4, 4],
+        "strokeWidth": 1.5,
+        "opacity": 0.7
+      },
+      "encoding": {
+        "x": {
+          "datum": {"year": 2008, "month": 4, "date": 1},
+          "type": "temporal",
+          "scale": {"round": true}
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6,
+        "color": "#676A86",
+        "fontSize": 12,
+        "fontWeight": 500
+      },
+      "encoding": {
+        "x": {
+          "datum": {"year": 2008, "month": 4, "date": 1},
+          "type": "temporal",
+          "scale": {"round": true}
+        },
+        "y": {"datum": 145},
+        "text": {"value": "Global financial crisis"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.Date >= datetime(2008, 3, 1)"}],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 5,
+        "color": "#f5a623",
+        "fontSize": 12,
+        "fontWeight": 500
+      },
+      "encoding": {
+        "x": {
+          "datum": {"year": 2018, "month": 1, "date": 1},
+          "type": "temporal",
+          "scale": {"round": true}
+        },
+        "y": {"datum": 121},
+        "text": {"value": "Pre-crisis trend"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 5,
+        "color": "#2563eb",
+        "fontSize": 12,
+        "fontWeight": 500
+      },
+      "encoding": {
+        "x": {
+          "datum": {"year": 2018, "month": 1, "date": 1},
+          "type": "temporal",
+          "scale": {"round": true}
+        },
+        "y": {"datum": 97},
+        "text": {"value": "Actual"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 12,
+      "subtitleColor": "#676A86"
+    },
+    "text": {"font": "Instrument Sans, sans-serif", "fontWeight": 500}
+  }
+}
