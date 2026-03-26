@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Most UK regions fall well below the national average for productivity",
+    "anchor": "start",
+    "subtitle": [
+      "Output per hour worked relative to the UK average (%).",
+      "Source: ONS",
+      ""
+    ]
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/Portfolio%20Charts/regionproductivity.csv"
+  },
+  "transform": [
+    {
+      "lookup": "Region Code (ITL1)",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/jhellingsdata/RADataHub/refs/heads/main/misc/bigdata/seminar/uk_region_map.json",
+          "format": {"property": "features"}
+        },
+        "key": "properties.id",
+        "fields": ["geometry", "properties", "type"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "#676A86", "strokeWidth": 0.8},
+  "encoding": {
+    "color": {
+      "field": "Output per hour relative to UK (%)",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"},
+      "legend": {
+        "title": "Relative to UK Avg (%)",
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 200,
+        "format": "+.1f"
+      }
+    },
+    "tooltip": [
+      {"field": "Region", "type": "nominal", "title": "Region"},
+      {
+        "field": "Output per hour relative to UK (%)",
+        "type": "quantitative",
+        "title": "Productivity (%)",
+        "format": "+.1f"
+      }
+    ]
+  },
+  "projection": {"type": "mercator"},
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "legend": {
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 14,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelFontSize": 12,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#676A86"
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleFont": "Instrument Sans, sans-serif",
+      "subtitleColor": "#676A86"
+    }
+  }
+}
