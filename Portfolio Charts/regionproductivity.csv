@@ -1,0 +1,13 @@
+Region,Region Code (ITL1),Year,Output per hour relative to UK (%)
+London,UKI,2023,28.5
+South East,UKJ,2023,7.7
+Scotland,UKM,2023,-1.1
+North West,UKD,2023,-5.2
+East of England,UKH,2023,-5.3
+South West,UKK,2023,-7.5
+Yorkshire and The Humber,UKE,2023,-12.1
+Northern Ireland,UKN,2023,-12.4
+North East,UKC,2023,-14.6
+East Midlands,UKF,2023,-14.7
+West Midlands,UKG,2023,-14.8
+Wales,UKL,2023,-15.1
