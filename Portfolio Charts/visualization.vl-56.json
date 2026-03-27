@@ -1,0 +1,293 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Capital market exclusion is deepest in low-productivity regions",
+    "subtitle": [
+      "Regional Productivity vs. Stocks & Shares ISA Participation Rate.",
+      "Source: ONS & HMRC",
+      ""
+    ],
+    "anchor": "start",
+    "offset": 5
+  },
+  "width": 600,
+  "height": 400,
+  "data": {
+    "values": [
+      {
+        "Region": "London",
+        "Productivity": 28.5,
+        "ISARate": 9.7,
+        "labelAlign": "right",
+        "dx": -5,
+        "dy": -15
+      },
+      {
+        "Region": "South East",
+        "Productivity": 7.7,
+        "ISARate": 8.6,
+        "labelAlign": "left",
+        "dx": 8,
+        "dy": 12
+      },
+      {
+        "Region": "Scotland",
+        "Productivity": -1.1,
+        "ISARate": 6.3,
+        "labelAlign": "left",
+        "dx": 8,
+        "dy": -10
+      },
+      {
+        "Region": "North West",
+        "Productivity": -5.2,
+        "ISARate": 5.9,
+        "labelAlign": "left",
+        "dx": 8,
+        "dy": -14
+      },
+      {
+        "Region": "East of England",
+        "Productivity": -5.3,
+        "ISARate": 7.5,
+        "labelAlign": "left",
+        "dx": 8,
+        "dy": 10
+      },
+      {
+        "Region": "South West",
+        "Productivity": -7.5,
+        "ISARate": 7.7,
+        "labelAlign": "left",
+        "dx": 9,
+        "dy": 12
+      },
+      {
+        "Region": "Yorkshire & Humber",
+        "Productivity": -12.1,
+        "ISARate": 6,
+        "labelAlign": "right",
+        "dx": -5,
+        "dy": 20
+      },
+      {
+        "Region": "Northern Ireland",
+        "Productivity": -12.4,
+        "ISARate": 4.6,
+        "labelAlign": "left",
+        "dx": 8,
+        "dy": -10
+      },
+      {
+        "Region": "North East",
+        "Productivity": -14.6,
+        "ISARate": 5.1,
+        "labelAlign": "left",
+        "dx": 8,
+        "dy": 12
+      },
+      {
+        "Region": "East Midlands",
+        "Productivity": -14.7,
+        "ISARate": 6.1,
+        "labelAlign": "right",
+        "dx": -10,
+        "dy": -8
+      },
+      {
+        "Region": "West Midlands",
+        "Productivity": -14.8,
+        "ISARate": 5.5,
+        "labelAlign": "right",
+        "dx": -10,
+        "dy": 10
+      },
+      {
+        "Region": "Wales",
+        "Productivity": -15.1,
+        "ISARate": 5.5,
+        "labelAlign": "right",
+        "dx": -5,
+        "dy": -14
+      }
+    ]
+  },
+  "transform": [
+    {"calculate": "datum.Productivity + datum.dx * 0.15", "as": "x_label"},
+    {"calculate": "datum.ISARate + datum.dy * 0.02", "as": "y_label"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100,
+        "color": "#2563eb",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "Productivity",
+          "type": "quantitative",
+          "title": "Productivity (Relative to UK Average %)",
+          "scale": {"domain": [-25, 30]},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridColor": "#cbd5e1",
+            "titleColor": "#676A86",
+            "titleOpacity": 0.8,
+            "labelColor": "#676A86",
+            "labelOpacity": 0.7,
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "titleAngle": 0,
+            "titleAlign": "center",
+            "titleBaseline": "top",
+            "titleY": 30,
+            "labelExpr": "datum.value > 0 ? '+' + datum.value + '%' : datum.value + '%'"
+          }
+        },
+        "y": {
+          "field": "ISARate",
+          "type": "quantitative",
+          "title": "S&S ISA Participation Rate (%)",
+          "scale": {"zero": false, "domainMin": 4},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridColor": "#cbd5e1",
+            "titleColor": "#676A86",
+            "titleOpacity": 0.8,
+            "labelColor": "#676A86",
+            "labelOpacity": 0.7,
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "titleAngle": 0,
+            "titleAlign": "left",
+            "titleBaseline": "bottom",
+            "titleX": 0,
+            "titleY": -10,
+            "ticks": false,
+            "labelPadding": 5,
+            "labelExpr": "datum.value + '%'"
+          }
+        },
+        "tooltip": [
+          {"field": "Region", "type": "nominal"},
+          {
+            "field": "Productivity",
+            "type": "quantitative",
+            "format": "+.1f",
+            "title": "Productivity"
+          },
+          {
+            "field": "ISARate",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "ISA Rate (%)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#676A86",
+        "strokeWidth": 0.8,
+        "opacity": 0.5
+      },
+      "encoding": {
+        "x": {"field": "Productivity", "type": "quantitative"},
+        "y": {"field": "ISARate", "type": "quantitative"},
+        "x2": {"field": "Productivity"},
+        "y2": {"field": "y_label"}
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#676A86",
+        "strokeWidth": 0.8,
+        "opacity": 0.5
+      },
+      "encoding": {
+        "x": {"field": "Productivity", "type": "quantitative"},
+        "y": {"field": "y_label", "type": "quantitative"},
+        "x2": {"field": "x_label"},
+        "y2": {"field": "y_label"}
+      }
+    },
+    {
+      "transform": [{"regression": "ISARate", "on": "Productivity"}],
+      "mark": {
+        "type": "line",
+        "color": "#94a3b8",
+        "strokeDash": [4, 4],
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {"field": "Productivity", "type": "quantitative"},
+        "y": {"field": "ISARate", "type": "quantitative"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.labelAlign === 'left'"}],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 11,
+        "font": "Instrument Sans, sans-serif",
+        "color": "#1a1a1a"
+      },
+      "encoding": {
+        "x": {"field": "x_label", "type": "quantitative"},
+        "y": {"field": "y_label", "type": "quantitative"},
+        "text": {"field": "Region"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.labelAlign === 'right'"}],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "fontSize": 11,
+        "font": "Instrument Sans, sans-serif",
+        "color": "#1a1a1a"
+      },
+      "encoding": {
+        "x": {"field": "x_label", "type": "quantitative"},
+        "y": {"field": "y_label", "type": "quantitative"},
+        "text": {"field": "Region"}
+      }
+    }
+  ],
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
