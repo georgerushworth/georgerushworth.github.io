@@ -1,0 +1,218 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The vast majority of ISA accounts remain locked in low-yield cash",
+    "subtitle": [
+      "Number of subscribed Individual Savings Accounts per tax year (Millions).",
+      "Source: HMRC ISA Statistics",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "width": 600,
+  "height": 350,
+  "data": {
+    "values": [
+      {
+        "Year": "2008",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 3
+      },
+      {
+        "Year": "2009",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.7
+      },
+      {
+        "Year": "2010",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.8
+      },
+      {
+        "Year": "2011",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.9
+      },
+      {
+        "Year": "2012",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.8
+      },
+      {
+        "Year": "2013",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.8
+      },
+      {
+        "Year": "2014",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.7
+      },
+      {
+        "Year": "2015",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.5
+      },
+      {
+        "Year": "2016",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.6
+      },
+      {
+        "Year": "2017",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.8
+      },
+      {
+        "Year": "2018",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.4
+      },
+      {
+        "Year": "2019",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 2.7
+      },
+      {
+        "Year": "2020",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 3.6
+      },
+      {
+        "Year": "2021",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 3.9
+      },
+      {
+        "Year": "2022",
+        "Account": "Stocks & Shares ISA",
+        "Accounts_Millions": 3.8
+      },
+      {"Year": "2008", "Account": "Cash ISA", "Accounts_Millions": 12.2},
+      {"Year": "2009", "Account": "Cash ISA", "Accounts_Millions": 14.4},
+      {"Year": "2010", "Account": "Cash ISA", "Accounts_Millions": 14.7},
+      {"Year": "2011", "Account": "Cash ISA", "Accounts_Millions": 13.8},
+      {"Year": "2012", "Account": "Cash ISA", "Accounts_Millions": 12},
+      {"Year": "2013", "Account": "Cash ISA", "Accounts_Millions": 11.7},
+      {"Year": "2014", "Account": "Cash ISA", "Accounts_Millions": 10.5},
+      {"Year": "2015", "Account": "Cash ISA", "Accounts_Millions": 10.1},
+      {"Year": "2016", "Account": "Cash ISA", "Accounts_Millions": 8.5},
+      {"Year": "2017", "Account": "Cash ISA", "Accounts_Millions": 7.8},
+      {"Year": "2018", "Account": "Cash ISA", "Accounts_Millions": 8.5},
+      {"Year": "2019", "Account": "Cash ISA", "Accounts_Millions": 9.7},
+      {"Year": "2020", "Account": "Cash ISA", "Accounts_Millions": 8},
+      {"Year": "2021", "Account": "Cash ISA", "Accounts_Millions": 7.1},
+      {"Year": "2022", "Account": "Cash ISA", "Accounts_Millions": 7.9}
+    ]
+  },
+  "mark": {
+    "type": "area",
+    "line": {"color": "#1a1a1a", "strokeWidth": 1},
+    "opacity": 0.9
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": null,
+      "axis": {
+        "grid": false,
+        "labelAngle": 0,
+        "tickCount": 10,
+        "labelPadding": 5
+      }
+    },
+    "y": {
+      "field": "Accounts_Millions",
+      "type": "quantitative",
+      "title": "Accounts Subscribed (Millions)",
+      "axis": {
+        "grid": true,
+        "gridDash": [1, 5],
+        "gridOpacity": 0.5,
+        "ticks": false,
+        "labelPadding": 5,
+        "titleAngle": 0,
+        "titleAlign": "left",
+        "titleBaseline": "bottom",
+        "titleX": 0,
+        "titleY": -15
+      }
+    },
+    "color": {
+      "field": "Account",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Cash ISA", "Stocks & Shares ISA"],
+        "range": ["#94a3b8", "#2563eb"]
+      },
+      "legend": {
+        "orient": "top-right",
+        "direction": "vertical",
+        "title": null,
+        "labelLimit": 200,
+        "offset": 5
+      }
+    },
+    "order": {"field": "Account", "sort": "ascending"},
+    "tooltip": [
+      {
+        "field": "Year",
+        "type": "temporal",
+        "timeUnit": "year",
+        "title": "Tax Year"
+      },
+      {"field": "Account", "type": "nominal", "title": "Account Type"},
+      {
+        "field": "Accounts_Millions",
+        "type": "quantitative",
+        "title": "Millions of Accounts"
+      }
+    ]
+  },
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "legend": {
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 13,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#1a1a1a",
+      "labelFontSize": 12,
+      "symbolSize": 150,
+      "symbolStrokeWidth": 0,
+      "labelLimit": 100
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 13,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
