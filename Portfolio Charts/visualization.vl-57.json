@@ -1,0 +1,196 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Auto-Enrolment Effect",
+    "subtitle": [
+      "UK workplace pension participation (%). Private sector uptake surged after the 2012 rollout.",
+      "Source: Department for Work and Pensions",
+      ""
+    ],
+    "anchor": "start"
+  },
+  "width": 650,
+  "height": 380,
+  "data": {
+    "values": [
+      {"year": "2009", "sector": "Public", "rate": 88},
+      {"year": "2010", "sector": "Public", "rate": 88},
+      {"year": "2011", "sector": "Public", "rate": 87},
+      {"year": "2012", "sector": "Public", "rate": 87},
+      {"year": "2013", "sector": "Public", "rate": 88},
+      {"year": "2014", "sector": "Public", "rate": 89},
+      {"year": "2015", "sector": "Public", "rate": 90},
+      {"year": "2016", "sector": "Public", "rate": 91},
+      {"year": "2017", "sector": "Public", "rate": 91},
+      {"year": "2018", "sector": "Public", "rate": 92},
+      {"year": "2019", "sector": "Public", "rate": 93},
+      {"year": "2020", "sector": "Public", "rate": 93},
+      {"year": "2021", "sector": "Public", "rate": 93},
+      {"year": "2009", "sector": "Private", "rate": 45},
+      {"year": "2010", "sector": "Private", "rate": 44},
+      {"year": "2011", "sector": "Private", "rate": 43},
+      {"year": "2012", "sector": "Private", "rate": 42},
+      {"year": "2013", "sector": "Private", "rate": 50},
+      {"year": "2014", "sector": "Private", "rate": 59},
+      {"year": "2015", "sector": "Private", "rate": 64},
+      {"year": "2016", "sector": "Private", "rate": 70},
+      {"year": "2017", "sector": "Private", "rate": 78},
+      {"year": "2018", "sector": "Private", "rate": 84},
+      {"year": "2019", "sector": "Private", "rate": 85},
+      {"year": "2020", "sector": "Private", "rate": 86},
+      {"year": "2021", "sector": "Private", "rate": 86}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "strokeWidth": 1.5, "strokeDash": [6, 4]},
+      "data": {"values": [{"year": "2012"}]},
+      "encoding": {
+        "x": {"field": "year", "type": "temporal"},
+        "color": {"value": "#676A86"},
+        "opacity": {"value": 0.6}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "dy": -170,
+        "fontSize": 11,
+        "font": "Instrument Sans, sans-serif"
+      },
+      "data": {"values": [{"year": "2012", "label": "AE rollout begins"}]},
+      "encoding": {
+        "x": {"field": "year", "type": "temporal"},
+        "text": {"field": "label", "type": "nominal"},
+        "color": {"value": "#676A86"},
+        "opacity": {"value": 0.8}
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "seriesHover",
+          "select": {
+            "type": "point",
+            "fields": ["sector"],
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5,
+        "point": {"filled": true, "size": 30, "opacity": 0},
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal",
+          "title": null,
+          "axis": {"grid": false, "format": "%Y"}
+        },
+        "y": {
+          "field": "rate",
+          "type": "quantitative",
+          "title": "Participation (%)",
+          "scale": {"domain": [0, 100]},
+          "axis": {
+            "grid": true,
+            "gridDash": [1, 5],
+            "gridOpacity": 0.5,
+            "ticks": false,
+            "labelPadding": 5,
+            "titleAngle": 0,
+            "titleAlign": "left",
+            "titleBaseline": "bottom",
+            "titleX": 0,
+            "titleY": -5
+          }
+        },
+        "color": {
+          "field": "sector",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": ["Public", "Private"],
+            "range": ["#2563eb", "#10b981"]
+          },
+          "legend": {
+            "orient": "none",
+            "legendX": 490,
+            "legendY": -16,
+            "direction": "horizontal",
+            "labelLimit": 200
+          }
+        },
+        "opacity": {
+          "condition": {"param": "seriesHover", "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "temporal",
+            "format": "%Y",
+            "title": "Year"
+          },
+          {"field": "sector", "type": "nominal", "title": "Sector"},
+          {
+            "field": "rate",
+            "type": "quantitative",
+            "format": ".0f",
+            "title": "Participation (%)"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "font": "Instrument Sans, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#F8FAFC",
+    "line": {"strokeWidth": 2.5},
+    "point": {"filled": true, "size": 60},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Instrument Sans, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisX": {"grid": false},
+    "axisY": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false
+    },
+    "legend": {
+      "titleFont": "Instrument Sans, sans-serif",
+      "titleFontSize": 14,
+      "titleColor": "#1a1a1a",
+      "labelColor": "#1a1a1a",
+      "labelFontSize": 12
+    },
+    "title": {
+      "font": "Instrument Sans, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
