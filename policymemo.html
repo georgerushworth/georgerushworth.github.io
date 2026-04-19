@@ -59,39 +59,66 @@
         margin: 40px 0;
     }
 
-    /* Footnote styles */
+    /* Footnote popover styles */
     sup.fn a {
         color: var(--accent-color);
         text-decoration: none;
         font-family: 'Instrument Sans', sans-serif !important;
         font-size: 0.75rem;
         font-weight: 600;
+        cursor: pointer;
     }
     sup.fn a:hover {
         text-decoration: underline;
     }
-    .footnotes {
-        text-align: left;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid #e2e8f0;
+    sup.fn {
+        position: relative;
     }
-    .footnotes p {
-        font-size: 0.9rem !important;
+    .fn-popover {
+        position: absolute;
+        bottom: calc(100% + 8px);
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        padding: 12px 16px;
+        width: 320px;
+        z-index: 1000;
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 0.85rem;
         line-height: 1.5;
-        color: var(--text-grey) !important;
-        margin-bottom: 0.5rem;
+        color: #334155;
+        text-align: left;
     }
-    .footnotes a {
+    .fn-popover::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 6px solid transparent;
+        border-top-color: #ffffff;
+    }
+    .fn-popover::before {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 7px solid transparent;
+        border-top-color: #e2e8f0;
+    }
+    .fn-popover a {
         color: var(--accent-color);
         text-decoration: none;
     }
-    .footnotes a:hover {
+    .fn-popover a:hover {
         text-decoration: underline;
     }
-    .fn-back {
-        font-size: 0.8rem;
-        margin-right: 4px;
+    .fn-popover em {
+        font-style: italic;
     }
     </style>
 
@@ -121,14 +148,14 @@
             <div class="col-12 col-lg-10 col-xl-8">
 
                 <h1 class="display-large fw-bold">Economic Policy Memo</h1>
-                <p class="lead pt-2">Unlocking Household Savings to Close the UK's Productivity Gap<sup class="fn"><a href="#fn1" id="ref1">1</a></sup></p>
+                <p class="lead pt-2">Unlocking Household Savings to Close the UK's Productivity Gap<sup class="fn"><a href="javascript:void(0)" data-fn="1">1</a></sup></p>
                 <div style="height: 40px;"></div>
                 <div>
 
                 <!-- ========== EXECUTIVE SUMMARY ========== -->
                 <h3 style="text-align: center; font-weight: bold;">Executive Summary</h3>
 
-                <p style="text-align: justify;">The Chancellor should introduce auto-enrolment into Stocks and Shares ISAs (S&amp;S), paired with a UK Productive Finance Fund, to address both the household wealth gap and chronic underinvestment in productive capital. Britain's productivity has averaged just 0.5% annual growth since 2008<sup class="fn"><a href="#fn2" id="ref2">2</a></sup>, near the bottom of OECD rankings. A crucial overlooked dimension is where ordinary people's savings sit: 84% of UK adults hold no S&amp;S ISA<sup class="fn"><a href="#fn3" id="ref3">3</a></sup>, leaving household wealth in low-return cash vehicles that fund little productive activity. Auto-enrolment would channel household savings toward the firms and regions that need capital most, while building wealth for those currently excluded.</p>
+                <p style="text-align: justify;">The Chancellor should introduce auto-enrolment into Stocks and Shares ISAs (S&amp;S), paired with a UK Productive Finance Fund, to address both the household wealth gap and chronic underinvestment in productive capital. Britain's productivity has averaged just 0.5% annual growth since 2008<sup class="fn"><a href="javascript:void(0)" data-fn="2">2</a></sup>, near the bottom of OECD rankings. A crucial overlooked dimension is where ordinary people's savings sit: 84% of UK adults hold no S&amp;S ISA<sup class="fn"><a href="javascript:void(0)" data-fn="3">3</a></sup>, leaving household wealth in low-return cash vehicles that fund little productive activity. Auto-enrolment would channel household savings toward the firms and regions that need capital most, while building wealth for those currently excluded.</p>
 
                 <div class="separator"></div>
 
@@ -142,7 +169,7 @@
                 <!-- ========== CHRONIC UNDERINVESTMENT ========== -->
                 <h3 style="text-align: center; font-weight: bold;">Chronic Underinvestment Has Stalled UK Productivity</h3>
 
-                <p style="text-align: justify;">UK productivity has barely grown since the financial crisis. Output per hour worked has risen only around 6% since 2008, against a pre-crisis trend that would have delivered nearly 40% growth. Annual productivity growth averaged just 0.5% from 2010 to 2022, placing the UK well behind France, Germany, and the United States<sup class="fn"><a href="#fn4" id="ref4">4</a></sup>. If this continues, the UK cannot sustain current living standards.</p>
+                <p style="text-align: justify;">UK productivity has barely grown since the financial crisis. Output per hour worked has risen only around 6% since 2008, against a pre-crisis trend that would have delivered nearly 40% growth. Annual productivity growth averaged just 0.5% from 2010 to 2022, placing the UK well behind France, Germany, and the United States<sup class="fn"><a href="javascript:void(0)" data-fn="4">4</a></sup>. If this continues, the UK cannot sustain current living standards.</p>
 
                 <!-- Chart 1: Productivity index -->
                 <div style="height: 20px;"></div>
@@ -154,7 +181,7 @@
                 <figure id="Location2"></figure>
                 <div style="height: 20px;"></div>
 
-                <p style="text-align: justify;">The root cause is broad-based underinvestment. Total investment as a share of GDP has declined since the 1980s across both public and private capital. Decades of neglect in skills and training have trapped many firms in a low-skill, low-wage, low-productivity cycle, while austerity from the 2010s further weakened public investment. The consequences are uneven: most regions show productivity levels well below London<sup class="fn"><a href="#fn5" id="ref5">5</a></sup>. What this diagnosis overlooks is household savings – the vast majority of which sit in low-return cash vehicles. The transmission mechanism runs through valuations and cost of capital: sustained retail demand for UK equities supports higher market prices, which lowers the cost for mid-tier firms to raise new capital through primary issuance. When borrowing and equity issuance become cheaper, investment in equipment, skills and technology follows.</p>
+                <p style="text-align: justify;">The root cause is broad-based underinvestment. Total investment as a share of GDP has declined since the 1980s across both public and private capital. Decades of neglect in skills and training have trapped many firms in a low-skill, low-wage, low-productivity cycle, while austerity from the 2010s further weakened public investment. The consequences are uneven: most regions show productivity levels well below London<sup class="fn"><a href="javascript:void(0)" data-fn="5">5</a></sup>. What this diagnosis overlooks is household savings – the vast majority of which sit in low-return cash vehicles. The transmission mechanism runs through valuations and cost of capital: sustained retail demand for UK equities supports higher market prices, which lowers the cost for mid-tier firms to raise new capital through primary issuance. When borrowing and equity issuance become cheaper, investment in equipment, skills and technology follows.</p>
 
                 <!-- Chart 3: Regional productivity map -->
                 <div style="height: 20px;"></div>
@@ -166,14 +193,14 @@
                 <!-- ========== S&S ISAs WORK ========== -->
                 <h3 style="text-align: center; font-weight: bold;">S&amp;S ISAs Work But Participation Is Narrow</h3>
 
-                <p style="text-align: justify;">S&amp;S ISAs are effective wealth-building tools, but their reach is far too narrow. Long-run UK equity returns have historically averaged 5–7% annually in real terms – well above cash savings<sup class="fn"><a href="#fn6" id="ref6">6</a></sup>. S&amp;S ISA holders accumulate approximately 27% more wealth over 14 years than similar non-holders, even after controlling for income, age, and initial wealth<sup class="fn"><a href="#fn7" id="ref7">7</a></sup>.</p>
+                <p style="text-align: justify;">S&amp;S ISAs are effective wealth-building tools, but their reach is far too narrow. Long-run UK equity returns have historically averaged 5–7% annually in real terms – well above cash savings<sup class="fn"><a href="javascript:void(0)" data-fn="6">6</a></sup>. S&amp;S ISA holders accumulate approximately 27% more wealth over 14 years than similar non-holders, even after controlling for income, age, and initial wealth<sup class="fn"><a href="javascript:void(0)" data-fn="7">7</a></sup>.</p>
 
                 <!-- Chart 4: ISA accounts subscribed -->
                 <div style="height: 20px;"></div>
                 <figure id="Location4"></figure>
                 <div style="height: 20px;"></div>
 
-                <p style="text-align: justify;">Yet only 16% of UK adults held an S&amp;S ISA by 2025, against 31% for Cash ISAs. Participation is deeply skewed: 60% of those earning over £150,000 maximise their annual allowance, while lower earners participate far less. The Resolution Foundation estimates the £6.7 billion annual foregone tax revenue flows disproportionately to higher earners<sup class="fn"><a href="#fn8" id="ref8">8</a></sup>. A policy designed to democratise wealth is functioning as a subsidy for the already wealthy.</p>
+                <p style="text-align: justify;">Yet only 16% of UK adults held an S&amp;S ISA by 2025, against 31% for Cash ISAs. Participation is deeply skewed: 60% of those earning over £150,000 maximise their annual allowance, while lower earners participate far less. The Resolution Foundation estimates the £6.7 billion annual foregone tax revenue flows disproportionately to higher earners<sup class="fn"><a href="javascript:void(0)" data-fn="8">8</a></sup>. A policy designed to democratise wealth is functioning as a subsidy for the already wealthy.</p>
 
                 <!-- Chart 5: ISA contributions by income -->
                 <div style="height: 20px;"></div>
@@ -185,7 +212,7 @@
                 <!-- ========== BARRIER IS ENTRY ========== -->
                 <h3 style="text-align: center; font-weight: bold;">The Barrier Is Entry, Not The Product</h3>
 
-                <p style="text-align: justify;">S&amp;S ISAs are not inherently elitist. The barrier is getting people through the door. Behavioural economics shows that asset ownership generates not just financial returns but lasting changes in financial habits that compound over time<sup class="fn"><a href="#fn9" id="ref9">9</a></sup><sup>,</sup><sup class="fn"><a href="#fn10" id="ref10">10</a></sup>. UK evidence shows that less-educated individuals see larger wealth gains from adoption than graduates, likely because their portfolios are least diversified and benefit most from equity exposure<sup class="fn"><a href="#fn11" id="ref11">11</a></sup>.</p>
+                <p style="text-align: justify;">S&amp;S ISAs are not inherently elitist. The barrier is getting people through the door. Behavioural economics shows that asset ownership generates not just financial returns but lasting changes in financial habits that compound over time<sup class="fn"><a href="javascript:void(0)" data-fn="9">9</a></sup><sup>,</sup><sup class="fn"><a href="javascript:void(0)" data-fn="10">10</a></sup>. UK evidence shows that less-educated individuals see larger wealth gains from adoption than graduates, likely because their portfolios are least diversified and benefit most from equity exposure<sup class="fn"><a href="javascript:void(0)" data-fn="11">11</a></sup>.</p>
 
                 <p style="text-align: justify;">This connects directly to productivity. The households most excluded from capital markets – lower-income, less-educated, in post-industrial regions – are those where the productivity gap is deepest. Low wages make saving harder, limiting investment participation, concentrating wealth, deepening regional inequality, and sustaining low productivity. Breaking this cycle requires targeting the entry barrier.</p>
 
@@ -205,7 +232,7 @@
 
                 <ol style="text-align: justify; padding-left: 1.5rem;">
                     <li style="margin-bottom: 1.5rem;">
-                        <strong>Auto-enrol workers into S&amp;S ISAs.</strong> Modelled on the 2012 pension auto-enrolment reforms, workers aged 22–50 should be automatically enrolled at 1.5% of gross salary, rising by 0.5 percentage points annually to a cap of 3%, with a simple opt-out. Pension auto-enrolment confirms the power of defaults: private sector participation rose from 42% to 86% within six years<sup class="fn"><a href="#fn12" id="ref12">12</a></sup>. HMRC and employers already have the infrastructure. The default fund should be a diversified, low-cost index tracker. Target: raising participation from 16% to at least 50% within a decade.
+                        <strong>Auto-enrol workers into S&amp;S ISAs.</strong> Modelled on the 2012 pension auto-enrolment reforms, workers aged 22–50 should be automatically enrolled at 1.5% of gross salary, rising by 0.5 percentage points annually to a cap of 3%, with a simple opt-out. Pension auto-enrolment confirms the power of defaults: private sector participation rose from 42% to 86% within six years<sup class="fn"><a href="javascript:void(0)" data-fn="12">12</a></sup>. HMRC and employers already have the infrastructure. The default fund should be a diversified, low-cost index tracker. Target: raising participation from 16% to at least 50% within a decade.
                     </li>
                 </ol>
 
@@ -226,24 +253,6 @@
                 <h3 style="text-align: center; font-weight: bold;">Conclusion</h3>
 
                 <p style="text-align: justify;">Britain's productivity crisis is typically framed as a failure of government and corporate investment. That framing is incomplete. Ordinary people's savings are part of the story, and right now they are in the wrong place. Auto-enrolment works. ISAs work. What is missing is the will to combine them. The Autumn Budget 2025 signalled intent by cutting Cash ISA limits while preserving the S&amp;S allowance, but that change takes effect only in 2027. Pairing the restriction with auto-enrolment means both policies reinforce each other. The architecture exists. Acting now would give ordinary people a stake in the economy and give the economy the capital it needs to grow.</p>
-
-                <!-- ========== REFERENCES ========== -->
-                <div class="separator"></div>
-                <h3 style="text-align: center; font-weight: bold;">References</h3>
-                <section class="footnotes" style="border-top: none; margin-top: 20px; padding-top: 0;">
-                    <p id="fn1"><a class="fn-back" href="#ref1">1.</a> George Rushworth, <em>Unlocking Household Savings to Close the UK's Productivity Gap (Interactive)</em>, 2026, <a href="https://georgerushworth.github.io/policymemo.html">Link</a></p>
-                    <p id="fn2"><a class="fn-back" href="#ref2">2.</a> Office for National Statistics, <em>Output per Worker</em>, 2026, <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/productivitymeasures/datasets/outputperworkeruk">Link</a></p>
-                    <p id="fn3"><a class="fn-back" href="#ref3">3.</a> The Investment Association, <em>Almost 1 in 5 Brits Have Never Heard of Stocks &amp; Shares ISAs</em>, 2025, <a href="https://www.theia.org/news/press-releases/almost-1-5-brits-have-never-heard-stocks-shares-isa-investment-industry-urges">Link</a></p>
-                    <p id="fn4"><a class="fn-back" href="#ref4">4.</a> Economics Observatory, <em>What Explains the UK's Productivity Problem?</em>, 2024, <a href="https://www.economicsobservatory.com/what-explains-the-uks-productivity-problem">Link</a></p>
-                    <p id="fn5"><a class="fn-back" href="#ref5">5.</a> Office for National Statistics, <em>Regional and Subregional Labour Productivity</em>, 2025, <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/productivitymeasures/bulletins/regionalandsubregionallabourproductivityuk/2023">Link</a></p>
-                    <p id="fn6"><a class="fn-back" href="#ref6">6.</a> Credit Suisse, <em>Credit Suisse Global Investment Returns Yearbook</em>, 2023, <a href="https://ub-sachdokpdf.ub.unibas.ch/9963586200105504/9963586200105504_D2023_Yearbook 2023.pdf">Link</a></p>
-                    <p id="fn7"><a class="fn-back" href="#ref7">7.</a> London School of Economics, <em>Bridging the Wealth Divide?</em>, 2026, <a href="https://www.lse.ac.uk/asset-library/department-of-social-policy/Working-Paper-Series-2026/WPS-01-26-George-Rushworth.pdf">Link</a></p>
-                    <p id="fn8"><a class="fn-back" href="#ref8">8.</a> Resolution Foundation, <em>Ineffective Savings Accounts</em>, 2025, <a href="https://www.resolutionfoundation.org/publications/ineffective-savings-accounts/">Link</a></p>
-                    <p id="fn9"><a class="fn-back" href="#ref9">9.</a> Journal of Political Economy, <em>Save More Tomorrow: Using Behavioural Economics to Increase Employee Saving</em>, 2004, <a href="https://www.jstor.org/stable/10.1086/380085?seq=1">Link</a></p>
-                    <p id="fn10"><a class="fn-back" href="#ref10">10.</a> Assets and the Poor, <em>New American Welfare Policy</em>, 1991, <a href="#">Link</a></p>
-                    <p id="fn11"><a class="fn-back" href="#ref11">11.</a> London School of Economics, <em>Bridging the Wealth Divide?</em>, 2026, <a href="https://www.lse.ac.uk/asset-library/department-of-social-policy/Working-Paper-Series-2026/WPS-01-26-George-Rushworth.pdf">Link</a></p>
-                    <p id="fn12"><a class="fn-back" href="#ref12">12.</a> Department for Work and Pensions, <em>Analysis of Automatic Enrolment saving levels</em>, 2025, <a href="https://www.gov.uk/government/statistics/analysis-of-automatic-enrolment-saving-levels/analysis-of-automatic-enrolment-saving-levels">Link</a></p>
-                </section>
 
                 </div> <!-- end inner div -->
             </div> <!-- end col -->
@@ -277,6 +286,80 @@
         vegaEmbed('#Location6', figure_6_spec);
         let figure_7_spec = "https://georgerushworth.github.io/Portfolio%20Charts/visualization.vl-57.json";
         vegaEmbed('#Location7', figure_7_spec);
+    </script>
+
+    <script>
+        // Footnote data
+        const footnotes = {
+            1: 'George Rushworth, <em>Unlocking Household Savings to Close the UK\'s Productivity Gap (Interactive)</em>, 2026, <a href="https://georgerushworth.github.io/policymemo.html" target="_blank">Link</a>',
+            2: 'Office for National Statistics, <em>Output per Worker</em>, 2026, <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/productivitymeasures/datasets/outputperworkeruk" target="_blank">Link</a>',
+            3: 'The Investment Association, <em>Almost 1 in 5 Brits Have Never Heard of Stocks &amp; Shares ISAs</em>, 2025, <a href="https://www.theia.org/news/press-releases/almost-1-5-brits-have-never-heard-stocks-shares-isa-investment-industry-urges" target="_blank">Link</a>',
+            4: 'Economics Observatory, <em>What Explains the UK\'s Productivity Problem?</em>, 2024, <a href="https://www.economicsobservatory.com/what-explains-the-uks-productivity-problem" target="_blank">Link</a>',
+            5: 'Office for National Statistics, <em>Regional and Subregional Labour Productivity</em>, 2025, <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/productivitymeasures/bulletins/regionalandsubregionallabourproductivityuk/2023" target="_blank">Link</a>',
+            6: 'Credit Suisse, <em>Credit Suisse Global Investment Returns Yearbook</em>, 2023, <a href="https://ub-sachdokpdf.ub.unibas.ch/9963586200105504/9963586200105504_D2023_Yearbook 2023.pdf" target="_blank">Link</a>',
+            7: 'London School of Economics, <em>Bridging the Wealth Divide?</em>, 2026, <a href="https://www.lse.ac.uk/asset-library/department-of-social-policy/Working-Paper-Series-2026/WPS-01-26-George-Rushworth.pdf" target="_blank">Link</a>',
+            8: 'Resolution Foundation, <em>Ineffective Savings Accounts</em>, 2025, <a href="https://www.resolutionfoundation.org/publications/ineffective-savings-accounts/" target="_blank">Link</a>',
+            9: 'Journal of Political Economy, <em>Save More Tomorrow: Using Behavioural Economics to Increase Employee Saving</em>, 2004, <a href="https://www.jstor.org/stable/10.1086/380085?seq=1" target="_blank">Link</a>',
+            10: 'Assets and the Poor, <em>New American Welfare Policy</em>, 1991',
+            11: 'London School of Economics, <em>Bridging the Wealth Divide?</em>, 2026, <a href="https://www.lse.ac.uk/asset-library/department-of-social-policy/Working-Paper-Series-2026/WPS-01-26-George-Rushworth.pdf" target="_blank">Link</a>',
+            12: 'Department for Work and Pensions, <em>Analysis of Automatic Enrolment saving levels</em>, 2025, <a href="https://www.gov.uk/government/statistics/analysis-of-automatic-enrolment-saving-levels/analysis-of-automatic-enrolment-saving-levels" target="_blank">Link</a>'
+        };
+
+        let activePopover = null;
+
+        document.querySelectorAll('sup.fn a[data-fn]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const fnNum = this.getAttribute('data-fn');
+                const sup = this.parentElement;
+
+                // If this popover is already open, close it
+                if (activePopover && activePopover.parentElement === sup) {
+                    activePopover.remove();
+                    activePopover = null;
+                    return;
+                }
+
+                // Close any existing popover
+                if (activePopover) {
+                    activePopover.remove();
+                    activePopover = null;
+                }
+
+                // Create popover
+                const popover = document.createElement('div');
+                popover.className = 'fn-popover';
+                popover.innerHTML = footnotes[fnNum];
+                popover.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+                sup.appendChild(popover);
+                activePopover = popover;
+
+                // Reposition if it overflows the viewport
+                const rect = popover.getBoundingClientRect();
+                if (rect.left < 8) {
+                    const offset = 8 - rect.left;
+                    popover.style.transform = `translateX(calc(-50% + ${offset}px))`;
+                } else if (rect.right > window.innerWidth - 8) {
+                    const offset = rect.right - window.innerWidth + 8;
+                    popover.style.transform = `translateX(calc(-50% - ${offset}px))`;
+                }
+                if (rect.top < 8) {
+                    popover.style.bottom = 'auto';
+                    popover.style.top = 'calc(100% + 8px)';
+                }
+            });
+        });
+
+        // Close popover when clicking elsewhere
+        document.addEventListener('click', function() {
+            if (activePopover) {
+                activePopover.remove();
+                activePopover = null;
+            }
+        });
     </script>
 
 </body>
