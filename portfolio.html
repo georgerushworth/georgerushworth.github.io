@@ -5,402 +5,670 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Portfolio | George Rushworth</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="theme.css">
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2215%22 fill=%22%234269d0%22/><text x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dominant-baseline=%22central%22 font-family=%22Instrument Serif, serif%22 font-size=%2240%22 font-weight=%22600%22 fill=%22white%22>GR</text></svg>">    <meta property="og:title" content="Portfolio | George Rushworth">
-    <meta property="og:description" content="A portfolio of data visualization and economic analysis projects">
-    
-    
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.svg">
+
+    <meta property="og:title" content="Portfolio | George Rushworth">
+    <meta property="og:description" content="A portfolio of data visualisation and economic analysis projects">
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
 
     <style>
-    :root {
-        --bs-body-font-family: 'Instrument Serif', serif;
-        --bs-font-sans-serif: 'Instrument Sans', sans-serif;
-        --accent-color: #2563eb; /* Matches your charts */
-        --text-grey: #64748b;
-    }
-    
-    body {
-        background-color: #F8FAFC;
-        font-family: 'Instrument Sans', sans-serif !important;
-    }
-    
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Instrument Serif', serif !important;
-        color: #1a1a1a;
-    }
-    
-    .navbar-brand, .navbar-brand span {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    
-    nav a, nav a.link-fancy, .link-fancy, .display-6 {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    
-    p, li, blockquote {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 1.15rem;
-        line-height: 1.7;
-        color: #334155;
-    }
-    
-    footer, footer a {
-        font-family: 'Instrument Sans', sans-serif !important;
-        color: var(--text-grey) !important;
-        text-decoration: none;
-    }
-    footer a:hover {
-        color: var(--accent-color) !important;
-    }
-    
-    /* --- TILE GRID STYLES --- */
-    .chart-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin: 20px 0 60px 0; /* Added bottom margin for spacing */
-    }
-    
-    @media (max-width: 992px) {
-        .chart-grid {
-            grid-template-columns: repeat(2, 1fr);
+        :root {
+            --bs-body-font-family: 'Instrument Serif', serif;
+            --bs-font-sans-serif: 'Instrument Sans', sans-serif;
+            --accent-color: #2563eb;
+            --text-grey: #64748b;
         }
-    }
-    
-    @media (max-width: 576px) {
-        .chart-grid {
-            grid-template-columns: 1fr;
+        
+        body {
+            background-color: #F8FAFC;
+            font-family: 'Instrument Sans', sans-serif !important;
         }
-    }
+        
+        /* --- HEADINGS --- */
+        h1, h2, h3, h4, h5, h6, .display-large {
+            font-family: 'Instrument Serif', serif !important;
+            color: #1a1a1a;
+            text-align: center !important;
+        }
 
-    .project-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        padding: 25px;
-        text-decoration: none; /* Removes link underline */
-        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        text-align: left;
-    }
+        .text-justify {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        
+        .navbar-brand, .navbar-brand span {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        nav a, nav a.link-fancy, .link-fancy, .display-6 {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        /* --- BODY TEXT --- */
+        p, li, blockquote {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #334155;
+        }
+        
+        /* EXCEPTION: Footer text centered */
+        footer p {
+            text-align: center !important;
+            font-size: 0.9rem;
+        }
 
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        border-color: var(--accent-color);
-    }
+        footer, footer a {
+            font-family: 'Instrument Sans', sans-serif !important;
+            color: var(--text-grey) !important;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: var(--accent-color) !important;
+        }
 
-    .card-tag {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--accent-color);
-        margin-bottom: 12px;
-        display: block;
-    }
+        /* ========================================
+           NAVIGATION — DROPDOWN STYLE
+           ======================================== */
+        .site-nav {
+            padding: 24px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .project-card h4 {
-        font-family: 'Instrument Serif', serif !important;
-        font-size: 1.5rem;
-        color: #1a1a1a;
-        margin: 0 0 10px 0;
-    }
+        .site-nav .brand {
+            font-family: 'Instrument Serif', serif !important;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
 
-    .project-card p {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 1rem;
-        color: #64748b;
-        margin: 0;
-        line-height: 1.5;
-    }
-    
-    /* Small separator line */
-    .separator {
-        border-top: 1px solid #e2e8f0;
-        margin: 40px 0;
-    }
-</style>
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
-        <div class="container-fluid d-flex justify-content-between">
-            <a class="navbar-brand pe-md-4 fs-4 text-center" href="index.html">
-<span class="ms-md-1 mt-1 fw-bolder me-md-5" style="font-family: 'Instrument Serif', serif !important;">George Rushworth</span>
-            </a>
-            <div class="d-flex align-items-center">
-                <a href="https://georgerushworth.github.io/index.html" aria-label="Home" class="fs-6 link-fancy me-2">
-                    Home </a>
-               <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/portfolio.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">
-                    Portfolio </a>
-                 <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/project.html" aria-label="Project" class="fs-6 link-fancy me-2">
-                    Project </a>
-                <span class="mx-2">|</span>
-                           <a href="https://georgerushworth.github.io/policymemo.html" aria-label="Policy Memo" class="fs-6 link-fancy me-2">Policy Memo</a>
-                <span class="mx-2">|</span>
-                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">
-                    GitHub </a>
-                <span class="mx-2">|</span>
-                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">
-                    LinkedIn
-                </a>
+        .nav-links a, .nav-dropdown > span {
+            font-family: 'Instrument Serif', serif !important;
+            font-size: 1.05rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background-color 0.2s, color 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-dropdown:hover > span {
+            background-color: #f1f5f9;
+            color: var(--accent-color);
+        }
+
+        .nav-sep {
+            color: #cbd5e1;
+            user-select: none;
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.9rem;
+        }
+
+        /* Dropdown container */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > span::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid #94a3b8;
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown:hover > span::after {
+            transform: rotate(180deg);
+            border-top-color: var(--accent-color);
+        }
+
+        .dropdown-menu-custom {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            min-width: 220px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-4px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 100;
+        }
+
+        .nav-dropdown:hover .dropdown-menu-custom {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu-custom a {
+            display: block;
+            padding: 10px 18px;
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.95rem;
+            color: #334155;
+            text-decoration: none;
+            transition: background-color 0.15s, color 0.15s;
+            border-radius: 0;
+        }
+
+        .dropdown-menu-custom a:hover {
+            background-color: #f1f5f9;
+            color: var(--accent-color);
+        }
+
+        .dropdown-label {
+            display: block;
+            padding: 8px 18px 4px;
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #94a3b8;
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #e2e8f0;
+            margin: 6px 0;
+        }
+
+        /* Mobile nav */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #ffffff;
+                border-bottom: 1px solid #e2e8f0;
+                padding: 16px 5vw;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+                z-index: 99;
+            }
+            .nav-links.open .nav-sep { display: none; }
+            .nav-links.open .nav-dropdown .dropdown-menu-custom {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: 12px;
+                min-width: auto;
+            }
+            .mobile-toggle { display: block; }
+            .site-nav { position: relative; }
+        }
+
+        /* ========================================
+           SECTION HEADING WITH ACCENT UNDERLINE
+           ======================================== */
+        .section-heading {
+            font-weight: bold;
+            margin-bottom: 30px;
+            padding-bottom: 14px;
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* ========================================
+           TILE GRID STYLES (CC6 Dashboard)
+           ======================================== */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 20px 0 60px 0;
+        }
+        
+        @media (max-width: 992px) {
+            .chart-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
+           SEPARATOR
+           ======================================== */
+        .separator {
+            border-top: 1px solid #e2e8f0;
+            margin: 50px 0;
+        }
+
+        /* ========================================
+           SCROLL REVEAL ANIMATION
+           ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================================
+           HERO AREA
+           ======================================== */
+        .hero-area {
+            padding-top: 60px;
+            padding-bottom: 20px;
+        }
+
+        .hero-area h1 {
+            font-size: 3rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-area .lead {
+            color: var(--text-grey);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero-area h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ========================================
+           CHART SECTION STYLES
+           ======================================== */
+        .cc-section {
+            margin-bottom: 20px;
+        }
+
+        .chart-block {
+            margin-bottom: 30px;
+        }
+
+        .chart-block b {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 1.05rem;
+            color: #1a1a1a;
+        }
+
+        .chart-block figure {
+            margin: 20px 0;
+        }
+
+        .colab-link {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .colab-link:hover {
+            border-bottom-color: var(--accent-color);
+        }
+    </style>
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="site-nav" id="navScroll" tabindex="0">
+        <a class="brand" href="index.html">George Rushworth</a>
+
+        <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            Menu ▾
+        </button>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <span class="nav-sep">|</span>
+
+            <div class="nav-dropdown">
+                <span>Work</span>
+                <div class="dropdown-menu-custom">
+                    <span class="dropdown-label">PP434 Coursework</span>
+                    <a href="portfolio.html">Weekly Visualisations</a>
+                    <a href="project.html">The Two Cycles of AI</a>
+                    <div class="dropdown-divider"></div>
+                    <span class="dropdown-label">PP404</span>
+                    <a href="https://georgerushworth.github.io/policymemo.html">Economic Policy Memo</a>
+                </div>
+            </div>
+
+            <span class="nav-sep">|</span>
+
+            <div class="nav-dropdown">
+                <span>Links</span>
+                <div class="dropdown-menu-custom">
+                    <a href="https://github.com/georgerushworth/georgerushworth.github.io" target="_blank">GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/grushworth/" target="_blank">LinkedIn ↗</a>
+                </div>
             </div>
         </div>
     </nav>
-    <main class="container py-vh-3">
 
-        <div class="row d-flex justify-content-center text-center">
-            <div class="col-12 col-lg-10 col-xl-8">
-<h1 class="display-large fw-bold">Data Visualisation Portfolio</h1>
-                <p class="lead pt-2 py-vh-2">A collection of coding challenges (CC) exploring data visualisation, web scraping, APIs, and interactive charts.</p>
-     
-            </div>
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="container" style="max-width: 780px;">
 
-            <div class="row d-flex justify-content-center text-start">
-                <div class="col-12 col-lg-10 col-xl-8 py-vh-2">
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 1: Hosting</h3>                    
-                    <p style="text-align: justify;">
-                        Task: Set up a Github account and live page using GitHub Pages; add two charts using the <tt>vegaEmbed</tt> function.
-                    </p>
+        <!-- Hero -->
+        <div class="hero-area text-center reveal">
+            <h1 class="display-large fw-bold">Data Visualisation Portfolio</h1>
+            <p class="lead pt-2" style="padding-bottom: 30px;">A collection of coding challenges (CC) exploring data visualisation, web scraping, APIs, and interactive charts.</p>
+        </div>
 
-                    <b>Chart 1: Real GDP Per Capita</b>
-                    <p style="text-align: justify;">This chart shows how real GDP per capita has evolved across six countries over time.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location12"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
+        <!-- CC1: Hosting -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 1: Hosting</h3>
+            <p class="text-justify">Task: Set up a Github account and live page using GitHub Pages; add two charts using the <tt>vegaEmbed</tt> function.</p>
 
-                    <b>Chart 2: G7 Inflation Rates</b>
-                    <p style="text-align: justify;">This chart tracks inflation rates in four G7 economies—France, Germany, the United Kingdom, and the United States.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location18"></figure>
-                    </div>
-                    
-                    <div style="height: 80px;"></div>
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 2: Building</h3>                    
-                    <p style="text-align: justify;">Task: Build two charts using the Economics Observatory "create" tool and embed them on the page.</p>
-
-                    <b>Chart 1: US Wealth Concentration</b>
-                    <p style="text-align: justify;">This chart tracks the share of total U.S. net worth held by the top 0.1%, using FRED data.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location19"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-
-                    <b>Chart 2: China's Renewable Energy</b>
-                    <p style="text-align: justify;">This visualisation shows the dramatic growth of renewable energy output in China, measured in gigawatt-hours (GWh).</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location20"></figure>
-                    </div>
-                    
-                    <div style="height: 80px;"></div>
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 3: Debating</h3>
-                    <p style="text-align: justify;">Task: Produce two charts that support or refute a topic of policy debate.</p>
-                    <p style="text-align: justify;">Policy Position: Governments should prioritise growth-oriented tax cuts even when unfunded, as economic expansion will generate offsetting revenues.</p>
-
-                    <b>Chart 1: Bank Rate Response</b>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location21"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-                    <p style="text-align: justify;">Commentary: Unfunded tax cuts in Truss's mini-budget fueled inflation fears, prompting steeper rate hikes that stifled growth.</p>
-
-                    <b>Chart 2: Gilt Yield Impact</b>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location22"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-                    <p style="text-align: justify;">Commentary: The mini-budget spiked gilt yields, crashed investor confidence, and proved unfunded cuts destabilise markets rather than generate revenues.</p>
-
-                    <div style="height: 80px;"></div>
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 4: Replication</h3>
-                    <p style="text-align: justify;">Task: Find a published chart, replicate it, and then improve on it.</p>
-                    
-                    <b>Original Chart</b>
-                    <p style="text-align: justify;">This chart shows the top 10 happiest countries from the 2023 World Happiness Report, but has two issues: the bars are in reverse order (with #1 Finland having the shortest bar), and without showing the actual happiness scores or scale, it exaggerates what are small differences between similarly happy countries.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <img src="Image.jpeg" alt="Original happiness rankings chart" style="width: 600px; height: 400px; object-fit: contain; background: #F8FAFC; margin: 20px 0;">
-                    </div>
-                    <div style="height: 20px;"></div>
-
-                    <b>My Replication</b>
-                    <p style="text-align: justify;">I replicated the same chart with its issues in my visual style to suit my website.</p>
-
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location23"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-
-                    <b>My Improvement</b>
-                    <p style="text-align: justify;">I replaced misleading rank bars with actual happiness scores, showing true differences and correct direction for clearer interpretation.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location24"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-                    <div style="height: 80px;"></div>
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 5: Accessing Data</h3>
-                    <p style="text-align: justify;">Task: Use an API and a web scraper to gather data, then create visualisations.</p>
-
-                    <b>API Task: Cryptocurrency Price Changes</b>
-                    <p style="text-align: justify;">API Description: The CoinGecko API provides cryptocurrency market data.</p>
-                        
-                    <p style="text-align: justify;">Full URL: <tt>https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10</tt></p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location10"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-
-                    <b>Scraper Task: Forbes Billionaire Rankings</b>
-                    <p style="text-align: justify;">Google Colab Notebook: <a href="https://colab.research.google.com/drive/12xg4uQ5jDTBjLSJliavehQOfCqnJH4nI" target="_blank">View scraping code</a></p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location11"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-                    <p style="text-align: justify;">Commentary: Scraped 39 years of Forbes data from Wikipedia. Main challenge: identifying correct years and handling duplicate tables.</p>
-
-                    <div style="height: 80px;"></div>
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 6: Loops - Build a Dashboard</h3>
-                    <p style="text-align: justify;">Task: Use a loop to batch download six different series and display them as a dashboard.</p>
-                    <p style="text-align: justify;">Google Colab Notebook: <a href="https://colab.research.google.com/drive/109SlinKXKfli654MWXNP93OwCToqiHN5" target="_blank">View batch download code</a></p>
-                    <p style="text-align: justify;">This dashboard displays six key US economic indicators (GDP, unemployment, CPI, Fed Funds Rate, 10-Year Treasury, and 30-Year Mortgage rates) from 2015 to 2025.</p>
-                    
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        
-                        <div style="font-family: 'Instrument Sans', sans-serif !important; font-weight: 600; font-size: 16px; color: #1a1a1a; margin-bottom: 5px;">US Economic Indicators</div>
-                        <div style="font-family: 'Instrument Sans', sans-serif !important; color: #676A86; font-size: 14px; margin-bottom: 30px;">Data: Federal Reserve Economic Data (FRED) | 2015 - 2025</div>
-    
-    <div class="chart-grid" id="cc6_chartGrid"></div>
-</div>
-
-<div style="height: 80px;"></div>
-                    
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 7: Maps</h3>
-                    <p style="text-align: justify;">Task: Produce two maps - one of Scotland and one of Wales. One should be a coordinates map, the other a choropleth.</p>
-
-                    <b>Scotland: Coordinates Map</b>
-                    <p style="text-align: justify;">This chart shows the geographic distribution of schools across Scotland, with each circle representing an individual school plotted on a map of Scottish local authority districts. Hovering over points reveals further details.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location27"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-
-                    <b>Wales: Choropleth Map</b>
-                    <p style="text-align: justify;">This chart shows fertility rates across Welsh local authorities in 2024, with each area shaded in blue according to its fertility rate.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location26"></figure>
-                    </div>
-                    
-                    <div style="height: 80px;"></div>
-
-
-                     <h3 style="text-align: center; font-weight: bold;">Coding Challenge 8: Big Data</h3>
-                    <p style="text-align: justify;">Task: Produce two charts using either of the two UK prices datasets provided in class. </p>
-
-                    <b>The Price of Breakfast</b>
-                    <p style="text-align: justify;">Google Colab Notebook: <a href="https://colab.research.google.com/drive/1vVdFn-JBAAvaIXrl5c9xwyaHwiUSovfP">View scraping code</a></p>
-                    <p style="text-align: justify;">This chart shows the average prices of Full English breakfast components in the UK over time, with a stacked area visualisation breaking down costs by individual items.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location30"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-
-                    <b>The Price of Washing It Down</b>
-                    <p style="text-align: justify;">Google Colab Notebook: <a href="https://colab.research.google.com/drive/1R43GV6HQDFr8wFUgZv1WC82d-U3i29MR?usp=sharing">View scraping code</a></p>
-                    <p style="text-align: justify;">This interactive map shows average pint prices across UK regions with a year slider from 2000 to 2024.</p>
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location32"></figure>
-                    </div>
-                    
-                    <div style="height: 80px;"></div>
-
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 9: Interactive Charts</h3>
-                    <p style="text-align: justify;">Task: create two interactive charts with controls beyond simple hover/tooltips.</p>
-
-                    <b>CAPE Ratio</b>
-                    <p style="text-align: justify;">The chart displays the Shiller CAPE ratio from 1871 to 2025, showing market valuations over time with coloured risk zones and a historical mean line at 17. Click and drag on the bottom brush selector to zoom into specific time periods.</p>
-
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location31"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-                    <b>Composition of the S&P 500</b>
-                     <p style="text-align: justify;">The chart displays market concentration in the S&P 500 from the Magnificent 7 tech stocks versus the rest of the market over time, with an interactive selector to focus on individual stock contributions.</p>
-
-                                        <p style="text-align: justify;">Google Colab Notebook: <a href="https://colab.research.google.com/drive/1bFbrsaSmGYxWd6sw6h9GLJWuGQQCA16K?usp=sharing" target="_blank">View code</a></p>
-
-
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location33"></figure>
-
-                    </div>
-                    
-                    <div style="height: 80px;"></div>
-                    
-                    <h3 style="text-align: center; font-weight: bold;">Coding Challenge 10: Advanced Analytics & Machine Learning</h3>
-                    <p style="text-align: justify;">Task: Produce a chart that uses advanced analytics, and then conduct an applied data analysis using machine learning techniques.</p>
-                                            
-                    <b>Bubble Chart</b>
-                    <p style="text-align: justify;">This interactive bubble chart plots the top S&P 500 companies by earnings growth versus valuation (P/E ratio). You can filter to show "Magnificent 7" companies only.</p>
-
-                                                                            <p style="text-align: justify;">Google Colab Notebook: <a href="https://colab.research.google.com/drive/1CDPcCbU6mh-V2LFl3dErTzEnd4yA-3y4?usp=sharing" target="_blank">View code</a></p>
-
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location36"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-
-                    <b>Linear Regression</b>
-
-                    <p style="text-align: justify;">This regression shows the relationship between state GDP per capita and AI usage index.</p>
-                    <p style="text-align: justify;">Google Colab Notebook: <a href="https://colab.research.google.com/drive/1l10BK03cZC-Pqw8QB15DyPOM5j3lRDKw" target="_blank">View code</a></p>
-
-                    <div style="text-align: center;">
-                        <div style="height: 20px;"></div>
-                        <figure id="Location43"></figure>
-                    </div>
-                    <div style="height: 20px;"></div>
-
+            <div class="chart-block">
+                <b>Chart 1: Real GDP Per Capita</b>
+                <p class="text-justify">This chart shows how real GDP per capita has evolved across six countries over time.</p>
+                <div style="text-align: center;">
+                    <figure id="Location12"></figure>
                 </div>
             </div>
+
+            <div class="chart-block">
+                <b>Chart 2: G7 Inflation Rates</b>
+                <p class="text-justify">This chart tracks inflation rates in four G7 economies—France, Germany, the United Kingdom, and the United States.</p>
+                <div style="text-align: center;">
+                    <figure id="Location18"></figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC2: Building -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 2: Building</h3>
+            <p class="text-justify">Task: Build two charts using the Economics Observatory "create" tool and embed them on the page.</p>
+
+            <div class="chart-block">
+                <b>Chart 1: US Wealth Concentration</b>
+                <p class="text-justify">This chart tracks the share of total U.S. net worth held by the top 0.1%, using FRED data.</p>
+                <div style="text-align: center;">
+                    <figure id="Location19"></figure>
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>Chart 2: China's Renewable Energy</b>
+                <p class="text-justify">This visualisation shows the dramatic growth of renewable energy output in China, measured in gigawatt-hours (GWh).</p>
+                <div style="text-align: center;">
+                    <figure id="Location20"></figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC3: Debating -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 3: Debating</h3>
+            <p class="text-justify">Task: Produce two charts that support or refute a topic of policy debate.</p>
+            <p class="text-justify">Policy Position: Governments should prioritise growth-oriented tax cuts even when unfunded, as economic expansion will generate offsetting revenues.</p>
+
+            <div class="chart-block">
+                <b>Chart 1: Bank Rate Response</b>
+                <div style="text-align: center;">
+                    <figure id="Location21"></figure>
+                </div>
+                <p class="text-justify">Commentary: Unfunded tax cuts in Truss's mini-budget fueled inflation fears, prompting steeper rate hikes that stifled growth.</p>
+            </div>
+
+            <div class="chart-block">
+                <b>Chart 2: Gilt Yield Impact</b>
+                <div style="text-align: center;">
+                    <figure id="Location22"></figure>
+                </div>
+                <p class="text-justify">Commentary: The mini-budget spiked gilt yields, crashed investor confidence, and proved unfunded cuts destabilise markets rather than generate revenues.</p>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC4: Replication -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 4: Replication</h3>
+            <p class="text-justify">Task: Find a published chart, replicate it, and then improve on it.</p>
+
+            <div class="chart-block">
+                <b>Original Chart</b>
+                <p class="text-justify">This chart shows the top 10 happiest countries from the 2023 World Happiness Report, but has two issues: the bars are in reverse order (with #1 Finland having the shortest bar), and without showing the actual happiness scores or scale, it exaggerates what are small differences between similarly happy countries.</p>
+                <div style="text-align: center;">
+                    <img src="Image.jpeg" alt="Original happiness rankings chart" style="width: 600px; height: 400px; object-fit: contain; background: #F8FAFC; margin: 20px 0;">
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>My Replication</b>
+                <p class="text-justify">I replicated the same chart with its issues in my visual style to suit my website.</p>
+                <div style="text-align: center;">
+                    <figure id="Location23"></figure>
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>My Improvement</b>
+                <p class="text-justify">I replaced misleading rank bars with actual happiness scores, showing true differences and correct direction for clearer interpretation.</p>
+                <div style="text-align: center;">
+                    <figure id="Location24"></figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC5: Accessing Data -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 5: Accessing Data</h3>
+            <p class="text-justify">Task: Use an API and a web scraper to gather data, then create visualisations.</p>
+
+            <div class="chart-block">
+                <b>API Task: Cryptocurrency Price Changes</b>
+                <p class="text-justify">API Description: The CoinGecko API provides cryptocurrency market data.</p>
+                <p class="text-justify" style="font-size: 0.95rem;"><tt>https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10</tt></p>
+                <div style="text-align: center;">
+                    <figure id="Location10"></figure>
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>Scraper Task: Forbes Billionaire Rankings</b>
+                <p class="text-justify"><a href="https://colab.research.google.com/drive/12xg4uQ5jDTBjLSJliavehQOfCqnJH4nI" target="_blank" class="colab-link">View scraping code →</a></p>
+                <div style="text-align: center;">
+                    <figure id="Location11"></figure>
+                </div>
+                <p class="text-justify">Commentary: Scraped 39 years of Forbes data from Wikipedia. Main challenge: identifying correct years and handling duplicate tables.</p>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC6: Loops Dashboard -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 6: Loops — Build a Dashboard</h3>
+            <p class="text-justify">Task: Use a loop to batch download six different series and display them as a dashboard.</p>
+            <p class="text-justify"><a href="https://colab.research.google.com/drive/109SlinKXKfli654MWXNP93OwCToqiHN5" target="_blank" class="colab-link">View batch download code →</a></p>
+            <p class="text-justify">This dashboard displays six key US economic indicators (GDP, unemployment, CPI, Fed Funds Rate, 10-Year Treasury, and 30-Year Mortgage rates) from 2015 to 2025.</p>
+            
+            <div style="text-align: center;">
+                <div style="font-family: 'Instrument Sans', sans-serif !important; font-weight: 600; font-size: 16px; color: #1a1a1a; margin-bottom: 5px;">US Economic Indicators</div>
+                <div style="font-family: 'Instrument Sans', sans-serif !important; color: #676A86; font-size: 14px; margin-bottom: 30px;">Data: Federal Reserve Economic Data (FRED) | 2015 – 2025</div>
+                <div class="chart-grid" id="cc6_chartGrid"></div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC7: Maps -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 7: Maps</h3>
+            <p class="text-justify">Task: Produce two maps — one of Scotland and one of Wales. One should be a coordinates map, the other a choropleth.</p>
+
+            <div class="chart-block">
+                <b>Scotland: Coordinates Map</b>
+                <p class="text-justify">This chart shows the geographic distribution of schools across Scotland, with each circle representing an individual school plotted on a map of Scottish local authority districts. Hovering over points reveals further details.</p>
+                <div style="text-align: center;">
+                    <figure id="Location27"></figure>
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>Wales: Choropleth Map</b>
+                <p class="text-justify">This chart shows fertility rates across Welsh local authorities in 2024, with each area shaded in blue according to its fertility rate.</p>
+                <div style="text-align: center;">
+                    <figure id="Location26"></figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC8: Big Data -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 8: Big Data</h3>
+            <p class="text-justify">Task: Produce two charts using either of the two UK prices datasets provided in class.</p>
+
+            <div class="chart-block">
+                <b>The Price of Breakfast</b>
+                <p class="text-justify"><a href="https://colab.research.google.com/drive/1vVdFn-JBAAvaIXrl5c9xwyaHwiUSovfP" target="_blank" class="colab-link">View code →</a></p>
+                <p class="text-justify">This chart shows the average prices of Full English breakfast components in the UK over time, with a stacked area visualisation breaking down costs by individual items.</p>
+                <div style="text-align: center;">
+                    <figure id="Location30"></figure>
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>The Price of Washing It Down</b>
+                <p class="text-justify"><a href="https://colab.research.google.com/drive/1R43GV6HQDFr8wFUgZv1WC82d-U3i29MR?usp=sharing" target="_blank" class="colab-link">View code →</a></p>
+                <p class="text-justify">This interactive map shows average pint prices across UK regions with a year slider from 2000 to 2024.</p>
+                <div style="text-align: center;">
+                    <figure id="Location32"></figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC9: Interactive Charts -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 9: Interactive Charts</h3>
+            <p class="text-justify">Task: Create two interactive charts with controls beyond simple hover/tooltips.</p>
+
+            <div class="chart-block">
+                <b>CAPE Ratio</b>
+                <p class="text-justify">The chart displays the Shiller CAPE ratio from 1871 to 2025, showing market valuations over time with coloured risk zones and a historical mean line at 17. Click and drag on the bottom brush selector to zoom into specific time periods.</p>
+                <div style="text-align: center;">
+                    <figure id="Location31"></figure>
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>Composition of the S&P 500</b>
+                <p class="text-justify">The chart displays market concentration in the S&P 500 from the Magnificent 7 tech stocks versus the rest of the market over time, with an interactive selector to focus on individual stock contributions.</p>
+                <p class="text-justify"><a href="https://colab.research.google.com/drive/1bFbrsaSmGYxWd6sw6h9GLJWuGQQCA16K?usp=sharing" target="_blank" class="colab-link">View code →</a></p>
+                <div style="text-align: center;">
+                    <figure id="Location33"></figure>
+                </div>
+            </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- CC10: Advanced Analytics & ML -->
+        <section class="cc-section reveal">
+            <h3 class="section-heading">Coding Challenge 10: Advanced Analytics &amp; Machine Learning</h3>
+            <p class="text-justify">Task: Produce a chart that uses advanced analytics, and then conduct an applied data analysis using machine learning techniques.</p>
+
+            <div class="chart-block">
+                <b>Bubble Chart</b>
+                <p class="text-justify">This interactive bubble chart plots the top S&P 500 companies by earnings growth versus valuation (P/E ratio). You can filter to show "Magnificent 7" companies only.</p>
+                <p class="text-justify"><a href="https://colab.research.google.com/drive/1CDPcCbU6mh-V2LFl3dErTzEnd4yA-3y4?usp=sharing" target="_blank" class="colab-link">View code →</a></p>
+                <div style="text-align: center;">
+                    <figure id="Location36"></figure>
+                </div>
+            </div>
+
+            <div class="chart-block">
+                <b>Linear Regression</b>
+                <p class="text-justify">This regression shows the relationship between state GDP per capita and AI usage index.</p>
+                <p class="text-justify"><a href="https://colab.research.google.com/drive/1l10BK03cZC-Pqw8QB15DyPOM5j3lRDKw" target="_blank" class="colab-link">View code →</a></p>
+                <div style="text-align: center;">
+                    <figure id="Location43"></figure>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    
-<footer class="container py-4 border-top">
+    <!-- ========== FOOTER ========== -->
+    <footer class="container py-4 border-top" style="max-width: 780px;">
         <div class="row">
             <div class="col-12 text-center small">
                 
@@ -444,11 +712,24 @@
             </div>
         </div>
     </footer>
-    
-<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+
+    <!-- ========== SCROLL REVEAL SCRIPT ========== -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+    <!-- ========== VEGA SCRIPTS ========== -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
 
     <script>
         // Chart specifications
@@ -510,95 +791,48 @@
         vegaEmbed('#Location43', figure_43_spec);
 
         // Coding Challenge 6: Loop to create dashboard
-const cc6_series = [
-    {
-        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_gdp.json',
-        title: 'US GDP (Billions $)'
-    },
-    {
-        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_unemployment.json',
-        title: 'US Unemployment (%)'
-    },
-    {
-        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_inflation.json',
-        title: 'US CPI (Index)'
-    },
-    {
-        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_10year_treasury.json',
-        title: '10-Year Treasury (%)'
-    },
-    {
-        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_fed_funds_rate.json',
-        title: 'Fed Funds Rate (%)'
-    },
-    {
-        url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_mortgage_rate.json',
-        title: '30-Year Mortgage (%)'
-    }
-];
+        const cc6_series = [
+            { url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_gdp.json', title: 'US GDP (Billions $)' },
+            { url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_unemployment.json', title: 'US Unemployment (%)' },
+            { url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_inflation.json', title: 'US CPI (Index)' },
+            { url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_10year_treasury.json', title: '10-Year Treasury (%)' },
+            { url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_fed_funds_rate.json', title: 'Fed Funds Rate (%)' },
+            { url: 'https://raw.githubusercontent.com/georgerushworth/georgerushworth.github.io/refs/heads/main/us_mortgage_rate.json', title: '30-Year Mortgage (%)' }
+        ];
 
-// LOOP to create and embed all 6 charts
-cc6_series.forEach((item, index) => {
-    const container = document.createElement('figure');
-    container.id = `cc6_chart${index}`;
-    document.getElementById('cc6_chartGrid').appendChild(container);
+        cc6_series.forEach((item, index) => {
+            const container = document.createElement('figure');
+            container.id = `cc6_chart${index}`;
+            document.getElementById('cc6_chartGrid').appendChild(container);
 
-    const spec = {
-        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "width": 200,
-        "height": 150,
-        "title": {
-            "text": item.title,
-            "font": "Instrument Sans, sans-serif",
-            "fontSize": 13,
-            "fontWeight": 600,
-            "color": "#1a1a1a",
-            "anchor": "start",
-            "offset": 8
-        },
-        "data": {
-            "url": item.url,
-            "format": {"type": "json", "property": "observations"}
-        },
-        "transform": [
-            {"filter": "datum.value != '.'"},
-            {"filter": "toDate(datum.date) >= toDate('2015-01-01')"}
-        ],
-        "encoding": {
-            "x": {
-                "field": "date",
-                "type": "temporal",
-                "title": null,
-                "axis": {
-                    "grid": false,
-                    "labelColor": "#676A86",
-                    "labelFontSize": 10,
-                    "labelOpacity": 0.7,
-                    "tickColor": "#676A86",
-                    "tickOpacity": 0.5,
-                    "domainColor": "#676A86",
-                    "domainOpacity": 0.5,
-                    "format": "%Y"
-                }
-            }
-        },
-        "layer": [
-            {
-                "mark": {
-                    "type": "line",
-                    "color": "#4269d0",
-                    "strokeWidth": 2
+            const spec = {
+                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+                "width": 200,
+                "height": 150,
+                "title": {
+                    "text": item.title,
+                    "font": "Instrument Sans, sans-serif",
+                    "fontSize": 13,
+                    "fontWeight": 600,
+                    "color": "#1a1a1a",
+                    "anchor": "start",
+                    "offset": 8
                 },
+                "data": {
+                    "url": item.url,
+                    "format": {"type": "json", "property": "observations"}
+                },
+                "transform": [
+                    {"filter": "datum.value != '.'"},
+                    {"filter": "toDate(datum.date) >= toDate('2015-01-01')"}
+                ],
                 "encoding": {
-                    "y": {
-                        "field": "value",
-                        "type": "quantitative",
-                        "scale": {"zero": false},
+                    "x": {
+                        "field": "date",
+                        "type": "temporal",
                         "title": null,
                         "axis": {
-                            "gridColor": "#676A86",
-                            "gridDash": [1, 5],
-                            "gridOpacity": 0.5,
+                            "grid": false,
                             "labelColor": "#676A86",
                             "labelFontSize": 10,
                             "labelOpacity": 0.7,
@@ -606,46 +840,74 @@ cc6_series.forEach((item, index) => {
                             "tickOpacity": 0.5,
                             "domainColor": "#676A86",
                             "domainOpacity": 0.5,
-                            "tickCount": 4
+                            "format": "%Y"
                         }
                     }
-                }
-            },
-            {
-                "mark": "rule",
-                "encoding": {
-                    "opacity": {
-                        "condition": {"value": 0.3, "param": "hover", "empty": false},
-                        "value": 0
-                    },
-                    "tooltip": [
-                        {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
-                        {"field": "value", "type": "quantitative", "title": "Value", "format": ".2f"}
-                    ]
                 },
-                "params": [
+                "layer": [
                     {
-                        "name": "hover",
-                        "select": {
-                            "type": "point",
-                            "fields": ["date"],
-                            "nearest": true,
-                            "on": "pointerover",
-                            "clear": "pointerout"
+                        "mark": {
+                            "type": "line",
+                            "color": "#4269d0",
+                            "strokeWidth": 2
+                        },
+                        "encoding": {
+                            "y": {
+                                "field": "value",
+                                "type": "quantitative",
+                                "scale": {"zero": false},
+                                "title": null,
+                                "axis": {
+                                    "gridColor": "#676A86",
+                                    "gridDash": [1, 5],
+                                    "gridOpacity": 0.5,
+                                    "labelColor": "#676A86",
+                                    "labelFontSize": 10,
+                                    "labelOpacity": 0.7,
+                                    "tickColor": "#676A86",
+                                    "tickOpacity": 0.5,
+                                    "domainColor": "#676A86",
+                                    "domainOpacity": 0.5,
+                                    "tickCount": 4
+                                }
+                            }
                         }
+                    },
+                    {
+                        "mark": "rule",
+                        "encoding": {
+                            "opacity": {
+                                "condition": {"value": 0.3, "param": "hover", "empty": false},
+                                "value": 0
+                            },
+                            "tooltip": [
+                                {"field": "date", "type": "temporal", "title": "Date", "format": "%b %Y"},
+                                {"field": "value", "type": "quantitative", "title": "Value", "format": ".2f"}
+                            ]
+                        },
+                        "params": [
+                            {
+                                "name": "hover",
+                                "select": {
+                                    "type": "point",
+                                    "fields": ["date"],
+                                    "nearest": true,
+                                    "on": "pointerover",
+                                    "clear": "pointerout"
+                                }
+                            }
+                        ]
                     }
-                ]
-            }
-        ],
-        "config": {
-            "font": "Instrument Sans, sans-serif",
-            "view": {"stroke": "transparent"},
-            "background": "#F8FAFC"
-        }
-    };
+                ],
+                "config": {
+                    "font": "Instrument Sans, sans-serif",
+                    "view": {"stroke": "transparent"},
+                    "background": "#F8FAFC"
+                }
+            };
 
-    vegaEmbed(`#cc6_chart${index}`, spec, {actions: false});
-});
+            vegaEmbed(`#cc6_chart${index}`, spec, {actions: false});
+        });
 
         // Handle footnote links smoothly
         document.addEventListener('click', function(e) {
