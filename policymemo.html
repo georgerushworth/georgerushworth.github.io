@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Policy Memo | George Rushworth</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="theme.css">
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2215%22 fill=%22%234269d0%22/><text x=%2250%22 y=%2250%22 text-anchor=%22middle%22 dominant-baseline=%22central%22 font-family=%22Instrument Serif, serif%22 font-size=%2240%22 font-weight=%22600%22 fill=%22white%22>GR</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.svg">
+
     <meta property="og:title" content="Policy Memo | George Rushworth">
-    <meta property="og:description" content="A portfolio of data visualization and economic analysis projects">
+    <meta property="og:description" content="A portfolio of data visualisation and economic analysis projects">
     
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -20,246 +22,549 @@
 <body data-bs-spy="scroll" data-bs-target="#navScroll">
 
     <style>
-    :root {
-        --bs-body-font-family: 'Instrument Serif', serif;
-        --bs-font-sans-serif: 'Instrument Sans', sans-serif;
-        --accent-color: #2563eb;
-        --text-grey: #64748b;
-    }
-    body {
-        background-color: #F8FAFC;
-        font-family: 'Instrument Sans', sans-serif !important;
-    }
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Instrument Serif', serif !important;
-        color: #1a1a1a;
-    }
-    .navbar-brand, .navbar-brand span {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    nav a, nav a.link-fancy, .link-fancy, .display-6 {
-        font-family: 'Instrument Serif', serif !important;
-    }
-    p, li, blockquote {
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 1.15rem;
-        line-height: 1.7;
-        color: #334155;
-    }
-    footer, footer a {
-        font-family: 'Instrument Sans', sans-serif !important;
-        color: var(--text-grey) !important;
-        text-decoration: none;
-    }
-    footer a:hover {
-        color: var(--accent-color) !important;
-    }
-    .separator {
-        border-top: 1px solid #e2e8f0;
-        margin: 40px 0;
-    }
+        :root {
+            --bs-body-font-family: 'Instrument Serif', serif;
+            --bs-font-sans-serif: 'Instrument Sans', sans-serif;
+            --accent-color: #2563eb;
+            --text-grey: #64748b;
+        }
+        
+        body {
+            background-color: #F8FAFC;
+            font-family: 'Instrument Sans', sans-serif !important;
+        }
+        
+        /* --- HEADINGS --- */
+        h1, h2, h3, h4, h5, h6, .display-large {
+            font-family: 'Instrument Serif', serif !important;
+            color: #1a1a1a;
+            text-align: center !important;
+        }
 
-    /* Footnote popover styles */
-    sup.fn a {
-        color: var(--accent-color);
-        text-decoration: none;
-        font-family: 'Instrument Sans', sans-serif !important;
-        font-size: 0.75rem;
-        font-weight: 600;
-        cursor: pointer;
-    }
-    sup.fn a:hover {
-        text-decoration: underline;
-    }
-    sup.fn {
-        position: relative;
-    }
-    .fn-popover {
-        position: absolute;
-        bottom: calc(100% + 8px);
-        left: 50%;
-        transform: translateX(-50%);
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 8px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-        padding: 12px 16px;
-        width: 320px;
-        z-index: 1000;
-        font-family: 'Instrument Sans', sans-serif;
-        font-size: 0.85rem;
-        line-height: 1.5;
-        color: #334155;
-        text-align: left;
-    }
-    .fn-popover::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 6px solid transparent;
-        border-top-color: #ffffff;
-    }
-    .fn-popover::before {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 7px solid transparent;
-        border-top-color: #e2e8f0;
-    }
-    .fn-popover a {
-        color: var(--accent-color);
-        text-decoration: none;
-    }
-    .fn-popover a:hover {
-        text-decoration: underline;
-    }
-    .fn-popover em {
-        font-style: italic;
-    }
+        .text-justify {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        
+        .navbar-brand, .navbar-brand span {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        nav a, nav a.link-fancy, .link-fancy, .display-6 {
+            font-family: 'Instrument Serif', serif !important;
+        }
+        
+        /* --- BODY TEXT --- */
+        p, li, blockquote {
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #334155;
+        }
+        
+        /* EXCEPTION: Footer text centered */
+        footer p {
+            text-align: center !important;
+            font-size: 0.9rem;
+        }
+
+        footer, footer a {
+            font-family: 'Instrument Sans', sans-serif !important;
+            color: var(--text-grey) !important;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: var(--accent-color) !important;
+        }
+
+        /* ========================================
+           NAVIGATION — DROPDOWN STYLE
+           ======================================== */
+        .site-nav {
+            padding: 24px 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-nav .brand {
+            font-family: 'Instrument Serif', serif !important;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a, .nav-dropdown > span {
+            font-family: 'Instrument Serif', serif !important;
+            font-size: 1.05rem;
+            color: #1a1a1a;
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: background-color 0.2s, color 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover, .nav-dropdown:hover > span {
+            background-color: #f1f5f9;
+            color: var(--accent-color);
+        }
+
+        .nav-sep {
+            color: #cbd5e1;
+            user-select: none;
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.9rem;
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown > span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-dropdown > span::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid #94a3b8;
+            transition: transform 0.2s;
+        }
+
+        .nav-dropdown:hover > span::after {
+            transform: rotate(180deg);
+            border-top-color: var(--accent-color);
+        }
+
+        .dropdown-menu-custom {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            min-width: 220px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-4px);
+            transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+            z-index: 100;
+        }
+
+        .nav-dropdown:hover .dropdown-menu-custom {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu-custom a {
+            display: block;
+            padding: 10px 18px;
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.95rem;
+            color: #334155;
+            text-decoration: none;
+            transition: background-color 0.15s, color 0.15s;
+            border-radius: 0;
+        }
+
+        .dropdown-menu-custom a:hover {
+            background-color: #f1f5f9;
+            color: var(--accent-color);
+        }
+
+        .dropdown-label {
+            display: block;
+            padding: 8px 18px 4px;
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #94a3b8;
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #e2e8f0;
+            margin: 6px 0;
+        }
+
+        /* Mobile nav */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #ffffff;
+                border-bottom: 1px solid #e2e8f0;
+                padding: 16px 5vw;
+                box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+                z-index: 99;
+            }
+            .nav-links.open .nav-sep { display: none; }
+            .nav-links.open .nav-dropdown .dropdown-menu-custom {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                border: none;
+                padding-left: 12px;
+                min-width: auto;
+            }
+            .mobile-toggle { display: block; }
+            .site-nav { position: relative; }
+        }
+
+        /* ========================================
+           SECTION HEADING WITH ACCENT UNDERLINE
+           ======================================== */
+        .section-heading {
+            font-weight: bold;
+            margin-bottom: 30px;
+            padding-bottom: 14px;
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* ========================================
+           SEPARATOR
+           ======================================== */
+        .separator {
+            border-top: 1px solid #e2e8f0;
+            margin: 50px 0;
+        }
+
+        /* ========================================
+           SCROLL REVEAL ANIMATION
+           ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), 
+                        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================================
+           HERO AREA
+           ======================================== */
+        .hero-area {
+            padding-top: 60px;
+            padding-bottom: 20px;
+        }
+
+        .hero-area h1 {
+            font-size: 3rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-area .lead {
+            color: var(--text-grey);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .hero-area h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* ========================================
+           CHART BLOCKS
+           ======================================== */
+        .chart-block {
+            margin-bottom: 30px;
+        }
+
+        .chart-block figure {
+            margin: 20px 0;
+        }
+
+        /* ========================================
+           FOOTNOTE POPOVER STYLES
+           ======================================== */
+        sup.fn a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Instrument Sans', sans-serif !important;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        sup.fn a:hover {
+            text-decoration: underline;
+        }
+        sup.fn {
+            position: relative;
+        }
+        .fn-popover {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            padding: 12px 16px;
+            width: 320px;
+            z-index: 1000;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #334155;
+            text-align: left;
+        }
+        .fn-popover::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #ffffff;
+        }
+        .fn-popover::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 7px solid transparent;
+            border-top-color: #e2e8f0;
+        }
+        .fn-popover a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+        .fn-popover a:hover {
+            text-decoration: underline;
+        }
+        .fn-popover em {
+            font-style: italic;
+        }
     </style>
 
-    <nav id="navScroll" class="navbar navbar-light py-vh-3 pb-0 px-vw-5" tabindex="0">
-        <div class="container-fluid d-flex justify-content-between">
-            <a class="navbar-brand pe-md-4 fs-4 text-center" href="index.html">
-                <span class="ms-md-1 mt-1 fw-bolder me-md-5" style="font-family: 'Instrument Serif', serif !important;">George Rushworth</span>
-            </a>
-            <div class="d-flex align-items-center">
-                <a href="https://georgerushworth.github.io/index.html" aria-label="Home" class="fs-6 link-fancy me-2">Home</a>
-                <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/portfolio.html" aria-label="Portfolio" class="fs-6 link-fancy me-2">Portfolio</a>
-                <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/project.html" aria-label="Project" class="fs-6 link-fancy me-2">Project</a>
-                <span class="mx-2">|</span>
-                <a href="https://georgerushworth.github.io/policymemo.html" aria-label="Policy Memo" class="fs-6 link-fancy me-2">Policy Memo</a>
-                <span class="mx-2">|</span>
-                <a href="https://github.com/georgerushworth/georgerushworth.github.io" aria-label="GitHub" class="fs-6 link-fancy me-2">GitHub</a>
-                <span class="mx-2">|</span>
-                <a href="https://www.linkedin.com/in/grushworth/" aria-label="LinkedIn" class="fs-6 link-fancy">LinkedIn</a>
+    <!-- ========== NAVIGATION ========== -->
+    <nav class="site-nav" id="navScroll" tabindex="0">
+        <a class="brand" href="index.html">George Rushworth</a>
+
+        <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+            Menu ▾
+        </button>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <span class="nav-sep">|</span>
+
+            <div class="nav-dropdown">
+                <span>Work</span>
+                <div class="dropdown-menu-custom">
+                    <span class="dropdown-label">PP434 Coursework</span>
+                    <a href="portfolio.html">Weekly Visualisations</a>
+                    <a href="project.html">The Two Cycles of AI</a>
+                    <div class="dropdown-divider"></div>
+                    <span class="dropdown-label">PP404</span>
+                    <a href="https://georgerushworth.github.io/policymemo.html">Economic Policy Memo</a>
+                </div>
+            </div>
+
+            <span class="nav-sep">|</span>
+
+            <div class="nav-dropdown">
+                <span>Links</span>
+                <div class="dropdown-menu-custom">
+                    <a href="https://github.com/georgerushworth/georgerushworth.github.io" target="_blank">GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/grushworth/" target="_blank">LinkedIn ↗</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main class="container py-vh-3">
-        <div class="row d-flex justify-content-center text-center">
-            <div class="col-12 col-lg-10 col-xl-8">
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="container" style="max-width: 780px;">
 
-                <h1 class="display-large fw-bold">Economic Policy Memo</h1>
-                <p class="lead pt-2">Unlocking Household Savings to Close the UK's Productivity Gap<sup class="fn"><a href="javascript:void(0)" data-fn="1">1</a></sup></p>
-                <div style="height: 40px;"></div>
-                <div>
+        <!-- Hero -->
+        <div class="hero-area text-center reveal">
+            <h1 class="display-large fw-bold">Economic Policy Memo</h1>
+            <p class="lead pt-2" style="padding-bottom: 30px;">Unlocking Household Savings to Close the UK's Productivity Gap<sup class="fn"><a href="javascript:void(0)" data-fn="1">1</a></sup></p>
+        </div>
 
-                <!-- ========== EXECUTIVE SUMMARY ========== -->
-                <h3 style="text-align: center; font-weight: bold;">Executive Summary</h3>
+        <!-- Executive Summary -->
+        <section class="reveal">
+            <h3 class="section-heading">Executive Summary</h3>
+            <p class="text-justify">The Chancellor should introduce auto-enrolment into Stocks and Shares ISAs (S&amp;S), paired with a UK Productive Finance Fund, to address both the household wealth gap and chronic underinvestment in productive capital. Britain's productivity has averaged just 0.5% annual growth since 2008<sup class="fn"><a href="javascript:void(0)" data-fn="2">2</a></sup>, near the bottom of OECD rankings. A crucial overlooked dimension is where ordinary people's savings sit: 84% of UK adults hold no S&amp;S ISA<sup class="fn"><a href="javascript:void(0)" data-fn="3">3</a></sup>, leaving household wealth in low-return cash vehicles that fund little productive activity. Auto-enrolment would channel household savings toward the firms and regions that need capital most, while building wealth for those currently excluded.</p>
+        </section>
 
-                <p style="text-align: justify;">The Chancellor should introduce auto-enrolment into Stocks and Shares ISAs (S&amp;S), paired with a UK Productive Finance Fund, to address both the household wealth gap and chronic underinvestment in productive capital. Britain's productivity has averaged just 0.5% annual growth since 2008<sup class="fn"><a href="javascript:void(0)" data-fn="2">2</a></sup>, near the bottom of OECD rankings. A crucial overlooked dimension is where ordinary people's savings sit: 84% of UK adults hold no S&amp;S ISA<sup class="fn"><a href="javascript:void(0)" data-fn="3">3</a></sup>, leaving household wealth in low-return cash vehicles that fund little productive activity. Auto-enrolment would channel household savings toward the firms and regions that need capital most, while building wealth for those currently excluded.</p>
+        <div class="separator"></div>
 
-                <div class="separator"></div>
+        <!-- Background -->
+        <section class="reveal">
+            <h3 class="section-heading">Background</h3>
+            <p class="text-justify">Productivity, output per hour worked, is the primary driver of wages and living standards. An S&amp;S ISA allows UK residents to invest up to £20,000 annually in stocks, bonds, and funds tax-free. Unlike a Cash ISA, which functions like a savings account, an S&amp;S ISA exposes savings to capital markets, offering higher long-term returns in exchange for some investment risk.</p>
+        </section>
 
-                <!-- ========== BACKGROUND ========== -->
-                <h3 style="text-align: center; font-weight: bold;">Background</h3>
+        <div class="separator"></div>
 
-                <p style="text-align: justify;">Productivity, output per hour worked, is the primary driver of wages and living standards. An S&amp;S ISA allows UK residents to invest up to £20,000 annually in stocks, bonds, and funds tax-free. Unlike a Cash ISA, which functions like a savings account, an S&amp;S ISA exposes savings to capital markets, offering higher long-term returns in exchange for some investment risk.</p>
+        <!-- Chronic Underinvestment -->
+        <section class="reveal">
+            <h3 class="section-heading">Chronic Underinvestment Has Stalled UK Productivity</h3>
 
-                <div class="separator"></div>
+            <p class="text-justify">UK productivity has barely grown since the financial crisis. Output per hour worked has risen only around 6% since 2008, against a pre-crisis trend that would have delivered nearly 40% growth. Annual productivity growth averaged just 0.5% from 2010 to 2022, placing the UK well behind France, Germany, and the United States<sup class="fn"><a href="javascript:void(0)" data-fn="4">4</a></sup>. If this continues, the UK cannot sustain current living standards.</p>
 
-                <!-- ========== CHRONIC UNDERINVESTMENT ========== -->
-                <h3 style="text-align: center; font-weight: bold;">Chronic Underinvestment Has Stalled UK Productivity</h3>
+            <div class="chart-block">
+                <div style="text-align: center;">
+                    <figure id="Location1"></figure>
+                </div>
+            </div>
 
-                <p style="text-align: justify;">UK productivity has barely grown since the financial crisis. Output per hour worked has risen only around 6% since 2008, against a pre-crisis trend that would have delivered nearly 40% growth. Annual productivity growth averaged just 0.5% from 2010 to 2022, placing the UK well behind France, Germany, and the United States<sup class="fn"><a href="javascript:void(0)" data-fn="4">4</a></sup>. If this continues, the UK cannot sustain current living standards.</p>
+            <div class="chart-block">
+                <div style="text-align: center;">
+                    <figure id="Location2"></figure>
+                </div>
+            </div>
 
-                <!-- Chart 1: Productivity index -->
-                <div style="height: 20px;"></div>
-                <figure id="Location1"></figure>
-                <div style="height: 20px;"></div>
+            <p class="text-justify">The root cause is broad-based underinvestment. Total investment as a share of GDP has declined since the 1980s across both public and private capital. Decades of neglect in skills and training have trapped many firms in a low-skill, low-wage, low-productivity cycle, while austerity from the 2010s further weakened public investment. The consequences are uneven: most regions show productivity levels well below London<sup class="fn"><a href="javascript:void(0)" data-fn="5">5</a></sup>. What this diagnosis overlooks is household savings – the vast majority of which sit in low-return cash vehicles. The transmission mechanism runs through valuations and cost of capital: sustained retail demand for UK equities supports higher market prices, which lowers the cost for mid-tier firms to raise new capital through primary issuance. When borrowing and equity issuance become cheaper, investment in equipment, skills and technology follows.</p>
 
-                <!-- Chart 2: G7 GFCF -->
-                <div style="height: 20px;"></div>
-                <figure id="Location2"></figure>
-                <div style="height: 20px;"></div>
+            <div class="chart-block">
+                <div style="text-align: center;">
+                    <figure id="Location3"></figure>
+                </div>
+            </div>
+        </section>
 
-                <p style="text-align: justify;">The root cause is broad-based underinvestment. Total investment as a share of GDP has declined since the 1980s across both public and private capital. Decades of neglect in skills and training have trapped many firms in a low-skill, low-wage, low-productivity cycle, while austerity from the 2010s further weakened public investment. The consequences are uneven: most regions show productivity levels well below London<sup class="fn"><a href="javascript:void(0)" data-fn="5">5</a></sup>. What this diagnosis overlooks is household savings – the vast majority of which sit in low-return cash vehicles. The transmission mechanism runs through valuations and cost of capital: sustained retail demand for UK equities supports higher market prices, which lowers the cost for mid-tier firms to raise new capital through primary issuance. When borrowing and equity issuance become cheaper, investment in equipment, skills and technology follows.</p>
+        <div class="separator"></div>
 
-                <!-- Chart 3: Regional productivity map -->
-                <div style="height: 20px;"></div>
-                <figure id="Location3"></figure>
-                <div style="height: 20px;"></div>
+        <!-- S&S ISAs Work -->
+        <section class="reveal">
+            <h3 class="section-heading">S&amp;S ISAs Work But Participation Is Narrow</h3>
 
-                <div class="separator"></div>
+            <p class="text-justify">S&amp;S ISAs are effective wealth-building tools, but their reach is far too narrow. Long-run UK equity returns have historically averaged 5–7% annually in real terms – well above cash savings<sup class="fn"><a href="javascript:void(0)" data-fn="6">6</a></sup>. S&amp;S ISA holders accumulate approximately 27% more wealth over 14 years than similar non-holders, even after controlling for income, age, and initial wealth<sup class="fn"><a href="javascript:void(0)" data-fn="7">7</a></sup>.</p>
 
-                <!-- ========== S&S ISAs WORK ========== -->
-                <h3 style="text-align: center; font-weight: bold;">S&amp;S ISAs Work But Participation Is Narrow</h3>
+            <div class="chart-block">
+                <div style="text-align: center;">
+                    <figure id="Location4"></figure>
+                </div>
+            </div>
 
-                <p style="text-align: justify;">S&amp;S ISAs are effective wealth-building tools, but their reach is far too narrow. Long-run UK equity returns have historically averaged 5–7% annually in real terms – well above cash savings<sup class="fn"><a href="javascript:void(0)" data-fn="6">6</a></sup>. S&amp;S ISA holders accumulate approximately 27% more wealth over 14 years than similar non-holders, even after controlling for income, age, and initial wealth<sup class="fn"><a href="javascript:void(0)" data-fn="7">7</a></sup>.</p>
+            <p class="text-justify">Yet only 16% of UK adults held an S&amp;S ISA by 2025, against 31% for Cash ISAs. Participation is deeply skewed: 60% of those earning over £150,000 maximise their annual allowance, while lower earners participate far less. The Resolution Foundation estimates the £6.7 billion annual foregone tax revenue flows disproportionately to higher earners<sup class="fn"><a href="javascript:void(0)" data-fn="8">8</a></sup>. A policy designed to democratise wealth is functioning as a subsidy for the already wealthy.</p>
 
-                <!-- Chart 4: ISA accounts subscribed -->
-                <div style="height: 20px;"></div>
-                <figure id="Location4"></figure>
-                <div style="height: 20px;"></div>
+            <div class="chart-block">
+                <div style="text-align: center;">
+                    <figure id="Location5"></figure>
+                </div>
+            </div>
+        </section>
 
-                <p style="text-align: justify;">Yet only 16% of UK adults held an S&amp;S ISA by 2025, against 31% for Cash ISAs. Participation is deeply skewed: 60% of those earning over £150,000 maximise their annual allowance, while lower earners participate far less. The Resolution Foundation estimates the £6.7 billion annual foregone tax revenue flows disproportionately to higher earners<sup class="fn"><a href="javascript:void(0)" data-fn="8">8</a></sup>. A policy designed to democratise wealth is functioning as a subsidy for the already wealthy.</p>
+        <div class="separator"></div>
 
-                <!-- Chart 5: ISA contributions by income -->
-                <div style="height: 20px;"></div>
-                <figure id="Location5"></figure>
-                <div style="height: 20px;"></div>
+        <!-- Barrier Is Entry -->
+        <section class="reveal">
+            <h3 class="section-heading">The Barrier Is Entry, Not The Product</h3>
 
-                <div class="separator"></div>
+            <p class="text-justify">S&amp;S ISAs are not inherently elitist. The barrier is getting people through the door. Behavioural economics shows that asset ownership generates not just financial returns but lasting changes in financial habits that compound over time<sup class="fn"><a href="javascript:void(0)" data-fn="9">9</a></sup><sup>,</sup><sup class="fn"><a href="javascript:void(0)" data-fn="10">10</a></sup>. UK evidence shows that less-educated individuals see larger wealth gains from adoption than graduates, likely because their portfolios are least diversified and benefit most from equity exposure<sup class="fn"><a href="javascript:void(0)" data-fn="11">11</a></sup>.</p>
 
-                <!-- ========== BARRIER IS ENTRY ========== -->
-                <h3 style="text-align: center; font-weight: bold;">The Barrier Is Entry, Not The Product</h3>
+            <p class="text-justify">This connects directly to productivity. The households most excluded from capital markets – lower-income, less-educated, in post-industrial regions – are those where the productivity gap is deepest. Low wages make saving harder, limiting investment participation, concentrating wealth, deepening regional inequality, and sustaining low productivity. Breaking this cycle requires targeting the entry barrier.</p>
 
-                <p style="text-align: justify;">S&amp;S ISAs are not inherently elitist. The barrier is getting people through the door. Behavioural economics shows that asset ownership generates not just financial returns but lasting changes in financial habits that compound over time<sup class="fn"><a href="javascript:void(0)" data-fn="9">9</a></sup><sup>,</sup><sup class="fn"><a href="javascript:void(0)" data-fn="10">10</a></sup>. UK evidence shows that less-educated individuals see larger wealth gains from adoption than graduates, likely because their portfolios are least diversified and benefit most from equity exposure<sup class="fn"><a href="javascript:void(0)" data-fn="11">11</a></sup>.</p>
+            <div class="chart-block">
+                <div style="text-align: center;">
+                    <figure id="Location6"></figure>
+                </div>
+            </div>
 
-                <p style="text-align: justify;">This connects directly to productivity. The households most excluded from capital markets – lower-income, less-educated, in post-industrial regions – are those where the productivity gap is deepest. Low wages make saving harder, limiting investment participation, concentrating wealth, deepening regional inequality, and sustaining low productivity. Breaking this cycle requires targeting the entry barrier.</p>
+            <p class="text-justify">Low take-up represents a market failure. First, a behavioural failure: status quo bias and loss aversion mean households systematically choose the perceived safety of cash over higher long-term equity returns. Second, a positive externality: when savings shift into productive equity, the resulting firm investment generates wages and productivity gains beyond the individual saver – benefits they do not capture and so do not factor into their decision. Both failures justify intervention.</p>
+        </section>
 
-                <!-- Chart 6: Regional productivity vs S&S ISA participation -->
-                <div style="height: 20px;"></div>
-                <figure id="Location6"></figure>
-                <div style="height: 20px;"></div>
+        <div class="separator"></div>
 
-                <p style="text-align: justify;">Low take-up represents a market failure. First, a behavioural failure: status quo bias and loss aversion mean households systematically choose the perceived safety of cash over higher long-term equity returns. Second, a positive externality: when savings shift into productive equity, the resulting firm investment generates wages and productivity gains beyond the individual saver – benefits they do not capture and so do not factor into their decision. Both failures justify intervention.</p>
+        <!-- Recommendations -->
+        <section class="reveal">
+            <h3 class="section-heading">Recommendations</h3>
 
-                <div class="separator"></div>
+            <p class="text-justify">Two linked recommendations address both the wealth gap and the productive investment shortfall.</p>
 
-                <!-- ========== RECOMMENDATIONS ========== -->
-                <h3 style="text-align: center; font-weight: bold;">Recommendations</h3>
+            <ol style="text-align: justify; padding-left: 1.5rem;">
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>Auto-enrol workers into S&amp;S ISAs.</strong> Modelled on the 2012 pension auto-enrolment reforms, workers aged 22–50 should be automatically enrolled at 1.5% of gross salary, rising by 0.5 percentage points annually to a cap of 3%, with a simple opt-out. Pension auto-enrolment confirms the power of defaults: private sector participation rose from 42% to 86% within six years<sup class="fn"><a href="javascript:void(0)" data-fn="12">12</a></sup>. HMRC and employers already have the infrastructure. The default fund should be a diversified, low-cost index tracker. Target: raising participation from 16% to at least 50% within a decade.
+                </li>
+            </ol>
 
-                <p style="text-align: justify;">Two linked recommendations address both the wealth gap and the productive investment shortfall.</p>
+            <div class="chart-block">
+                <div style="text-align: center;">
+                    <figure id="Location7"></figure>
+                </div>
+            </div>
 
-                <ol style="text-align: justify; padding-left: 1.5rem;">
-                    <li style="margin-bottom: 1.5rem;">
-                        <strong>Auto-enrol workers into S&amp;S ISAs.</strong> Modelled on the 2012 pension auto-enrolment reforms, workers aged 22–50 should be automatically enrolled at 1.5% of gross salary, rising by 0.5 percentage points annually to a cap of 3%, with a simple opt-out. Pension auto-enrolment confirms the power of defaults: private sector participation rose from 42% to 86% within six years<sup class="fn"><a href="javascript:void(0)" data-fn="12">12</a></sup>. HMRC and employers already have the infrastructure. The default fund should be a diversified, low-cost index tracker. Target: raising participation from 16% to at least 50% within a decade.
-                    </li>
-                </ol>
+            <ol start="2" style="text-align: justify; padding-left: 1.5rem;">
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>Create a UK Productive Finance ISA (PF-ISA).</strong> A ring-fenced fund investing in mid-tier UK firms – those most in need of capital to close the productivity gap. The government should co-invest 25p per £1 for first-time investors earning below median income, funded by redirecting a portion of the existing £6.7bn tax expenditure from high-earner Cash ISA relief. Liquidity risk for low-income holders can be managed through a five-year minimum holding period with hardship exemptions. Australia's superannuation system and France's Plan d'Épargne en Actions demonstrate domestic allocation mandates are manageable at scale.
+                </li>
+            </ol>
+        </section>
 
-                <!-- Chart 7: Auto-enrolment effect -->
-                <div style="height: 20px;"></div>
-                <figure id="Location7"></figure>
-                <div style="height: 20px;"></div>
+        <div class="separator"></div>
 
-                <ol start="2" style="text-align: justify; padding-left: 1.5rem;">
-                    <li style="margin-bottom: 1.5rem;">
-                        <strong>Create a UK Productive Finance ISA (PF-ISA).</strong> A ring-fenced fund investing in mid-tier UK firms – those most in need of capital to close the productivity gap. The government should co-invest 25p per £1 for first-time investors earning below median income, funded by redirecting a portion of the existing £6.7bn tax expenditure from high-earner Cash ISA relief. Liquidity risk for low-income holders can be managed through a five-year minimum holding period with hardship exemptions. Australia's superannuation system and France's Plan d'Épargne en Actions demonstrate domestic allocation mandates are manageable at scale.
-                    </li>
-                </ol>
+        <!-- Conclusion -->
+        <section class="reveal">
+            <h3 class="section-heading">Conclusion</h3>
+            <p class="text-justify">Britain's productivity crisis is typically framed as a failure of government and corporate investment. That framing is incomplete. Ordinary people's savings are part of the story, and right now they are in the wrong place. Auto-enrolment works. ISAs work. What is missing is the will to combine them. The Autumn Budget 2025 signalled intent by cutting Cash ISA limits while preserving the S&amp;S allowance, but that change takes effect only in 2027. Pairing the restriction with auto-enrolment means both policies reinforce each other. The architecture exists. Acting now would give ordinary people a stake in the economy and give the economy the capital it needs to grow.</p>
+        </section>
 
-                <div class="separator"></div>
-
-                <!-- ========== CONCLUSION ========== -->
-                <h3 style="text-align: center; font-weight: bold;">Conclusion</h3>
-
-                <p style="text-align: justify;">Britain's productivity crisis is typically framed as a failure of government and corporate investment. That framing is incomplete. Ordinary people's savings are part of the story, and right now they are in the wrong place. Auto-enrolment works. ISAs work. What is missing is the will to combine them. The Autumn Budget 2025 signalled intent by cutting Cash ISA limits while preserving the S&amp;S allowance, but that change takes effect only in 2027. Pairing the restriction with auto-enrolment means both policies reinforce each other. The architecture exists. Acting now would give ordinary people a stake in the economy and give the economy the capital it needs to grow.</p>
-
-                </div> <!-- end inner div -->
-            </div> <!-- end col -->
-        </div> <!-- end row -->
     </main>
 
-    <footer class="container py-4 border-top">
+    <!-- ========== FOOTER ========== -->
+    <footer class="container py-4 border-top" style="max-width: 780px;">
         <div class="row">
             <div class="col-12 text-center small">
                 <p class="mb-1">© 2025 George Rushworth</p>
@@ -271,6 +576,20 @@
         </div>
     </footer>
 
+    <!-- ========== SCROLL REVEAL SCRIPT ========== -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+    <!-- ========== VEGA CHART EMBEDS ========== -->
     <script>
         let figure_1_spec = "https://georgerushworth.github.io/Portfolio%20Charts/visualization.vl-48.json";
         vegaEmbed('#Location1', figure_1_spec);
@@ -288,8 +607,8 @@
         vegaEmbed('#Location7', figure_7_spec);
     </script>
 
+    <!-- ========== FOOTNOTE POPOVER SCRIPT ========== -->
     <script>
-        // Footnote data
         const footnotes = {
             1: 'George Rushworth, <em>Unlocking Household Savings to Close the UK\'s Productivity Gap (Interactive)</em>, 2026, <a href="https://georgerushworth.github.io/policymemo.html" target="_blank">Link</a>',
             2: 'Office for National Statistics, <em>Output per Worker</em>, 2026, <a href="https://www.ons.gov.uk/economy/economicoutputandproductivity/productivitymeasures/datasets/outputperworkeruk" target="_blank">Link</a>',
@@ -314,20 +633,17 @@
                 const fnNum = this.getAttribute('data-fn');
                 const sup = this.parentElement;
 
-                // If this popover is already open, close it
                 if (activePopover && activePopover.parentElement === sup) {
                     activePopover.remove();
                     activePopover = null;
                     return;
                 }
 
-                // Close any existing popover
                 if (activePopover) {
                     activePopover.remove();
                     activePopover = null;
                 }
 
-                // Create popover
                 const popover = document.createElement('div');
                 popover.className = 'fn-popover';
                 popover.innerHTML = footnotes[fnNum];
@@ -337,7 +653,6 @@
                 sup.appendChild(popover);
                 activePopover = popover;
 
-                // Reposition if it overflows the viewport
                 const rect = popover.getBoundingClientRect();
                 if (rect.left < 8) {
                     const offset = 8 - rect.left;
@@ -353,7 +668,6 @@
             });
         });
 
-        // Close popover when clicking elsewhere
         document.addEventListener('click', function() {
             if (activePopover) {
                 activePopover.remove();
