@@ -404,6 +404,30 @@
             text-align: left !important;
         }
 
+        /* Hidden until "See more" is clicked */
+        .pub-extra { display: none; }
+        .pubs-expanded .pub-extra { display: block; }
+
+        .see-more-btn {
+            display: block;
+            margin: 8px auto 0;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .see-more-btn:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.08);
+        }
+
         /* ========================================
            SEPARATOR
            ======================================== */
@@ -510,9 +534,9 @@
             <h3 class="section-heading">About</h3>
 
             <div class="text-justify">
-                <p>I'm George, an Research Assistant in Economics at the London School of Economics (LSE). I am based in the Policy Hub of the Huth Initative for a New Political Economy.</p> 
-                    
-                </p>I completed my MSc at LSE studying Inequalities and Social Science in 2026. I also completed my BSc at LSE, where I studied International Social and Public Policy and Economics.</p>
+                <p>I'm George, a Research Assistant in Economics at the London School of Economics (LSE). I am based in the Policy Hub of the Huth Initiative for a New Political Economy.</p>
+
+                <p>I completed my MSc at LSE studying Inequalities and Social Science in 2026. I also completed my BSc at LSE, where I studied International Social and Public Policy and Economics.</p>
                 
                 <p>My main area of interest is in financial behaviour and, more specifically, whether tax-efficient investment accounts (ISAs in the UK context) can bridge the wealth divide.</p>
 
@@ -586,7 +610,14 @@
         <section class="reveal">
             <h3 class="section-heading">Publications &amp; Research</h3>
 
-            <div class="reveal-stagger">
+            <div class="reveal-stagger" id="pubList">
+                <!-- NEW: Economics Observatory article -->
+                <a href="https://www.economicsobservatory.com/where-is-uk-public-debt-ahead-of-the-autumn-2026-budget" target="_blank" class="pub-card reveal">
+                    <span class="pub-venue">Economics Observatory · October 2026</span>
+                    <div class="pub-title">Where is UK public debt ahead of the autumn 2026 budget?</div>
+                    <p class="pub-desc">An explainer on why UK debt is on a rising path despite being below its historic peaks, covering interest costs, an ageing population, fiscal headroom and how the UK compares with the G7.</p>
+                </a>
+
                 <a href="https://www.lse.ac.uk/asset-library/department-of-social-policy/Working-Paper-Series-2026/WPS-01-26-George-Rushworth.pdf" target="_blank" class="pub-card reveal">
                     <span class="pub-venue">LSE Social Policy Working Paper</span>
                     <div class="pub-title">Bridging the Wealth Divide? Examining the Role of Stocks and Shares ISAs in Reducing Wealth Inequality in the UK</div>
@@ -599,12 +630,15 @@
                     <p class="pub-desc">Research analysing the complexity of admissions criteria and social selectivity in London's secondary schools.</p>
                 </a>
 
-                <a href="https://www.lse.ac.uk/social-policy/Assets/Documents/PDF/working-paper-series/WPS-03-25.pdf" target="_blank" class="pub-card reveal">
+                <!-- Hidden behind "See more" -->
+                <a href="https://www.lse.ac.uk/social-policy/Assets/Documents/PDF/working-paper-series/WPS-03-25.pdf" target="_blank" class="pub-card pub-extra reveal">
                     <span class="pub-venue">LSE Social Policy Working Paper</span>
                     <div class="pub-title">Selection by Ability: A Comparison of Admissions to Grammar Schools in England and Germany</div>
                     <p class="pub-desc">A comparative study of selective education systems and their social implications.</p>
                 </a>
             </div>
+
+            <button class="see-more-btn" id="pubToggle" aria-expanded="false">See more</button>
         </section>
 
     </main>
@@ -666,6 +700,23 @@
         }, { threshold: 0.12 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+    <!-- ========== PUBLICATIONS "SEE MORE" SCRIPT ========== -->
+    <script>
+        const pubList = document.getElementById('pubList');
+        const pubToggle = document.getElementById('pubToggle');
+
+        pubToggle.addEventListener('click', () => {
+            const expanded = pubList.classList.toggle('pubs-expanded');
+            pubToggle.textContent = expanded ? 'Show less' : 'See more';
+            pubToggle.setAttribute('aria-expanded', expanded);
+
+            // make sure the scroll-reveal animation doesn't leave them invisible
+            if (expanded) {
+                pubList.querySelectorAll('.pub-extra').forEach(el => el.classList.add('visible'));
+            }
+        });
     </script>
 
 </body>
